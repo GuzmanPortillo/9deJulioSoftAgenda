@@ -26,16 +26,18 @@ namespace CapaPresentacion
         {
             if(txtConfirmarContrasenia.Text == txtContrasenia.Text)
             { 
-            var modeloUsuario = new CN_Usuarios(
-                            //idUsuario: InicioSesion.idusuario,
-                            users: txtUsuario.Text,
-                            contrasenia: txtContrasenia.Text,
-                            nombres: txtNombres.Text,
-                            apellidos: txtApellidos.Text,
-                            estado: "Activo");
-            var resultado = modeloUsuario.altaUsuario();
-            MessageBox.Show(resultado);
-            Utiles.LimpiarControles(this);
+                var modeloUsuario = new CN_Usuarios(
+                                //idUsuario: InicioSesion.idusuario,
+                                users: txtUsuario.Text,
+                                contrasenia: txtContrasenia.Text,
+                                nombres: txtNombres.Text,
+                                apellidos: txtApellidos.Text,
+                                estado: "Activo");
+                var resultado = modeloUsuario.altaUsuario();
+                MessageBox.Show(resultado);
+
+                CN_Log.Insertar(1, "Insert", "Alta de usuario " + txtUsuario.Text);
+                Utiles.LimpiarControles(this);
             }
             else
                 MessageBox.Show("La contraseña no coincide, intentar nuevamente");
