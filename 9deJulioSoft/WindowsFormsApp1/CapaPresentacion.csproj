@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{97B06DA0-F490-40DD-ADA7-A180B1DEF0FE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CapaPresentacion</RootNamespace>
+    <AssemblyName>WindowsFormsApp1</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>CapaPresentacion.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.13.3\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AltaUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AltaUsuarios.Designer.cs">
+      <DependentUpon>AltaUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Confirmar Reserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Confirmar Reserva.designer.cs">
+      <DependentUpon>Confirmar Reserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificarUsuarios.Designer.cs">
+      <DependentUpon>ModificarUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AccesoUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccesoUsuarios.Designer.cs">
+      <DependentUpon>AccesoUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AcercaSoft.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AcercaSoft.Designer.cs">
+      <DependentUpon>AcercaSoft.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AgendaDeportiva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgendaDeportiva.Designer.cs">
+      <DependentUpon>AgendaDeportiva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AltaSocios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AltaSocios.Designer.cs">
+      <DependentUpon>AltaSocios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bitacora.cs" />
+    <Compile Include="CargarEventos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CargarEventos.Designer.cs">
+      <DependentUpon>CargarEventos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Empleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Empleados.Designer.cs">
+      <DependentUpon>Empleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporte.Designer.cs">
+      <DependentUpon>frmReporte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PermisoUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PermisoUsuario.Designer.cs">
+      <DependentUpon>PermisoUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteAgenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteAgenda.Designer.cs">
+      <DependentUpon>ReporteAgenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteReservas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteReservas.designer.cs">
+      <DependentUpon>ReporteReservas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SociosInformes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SociosInformes.Designer.cs">
+      <DependentUpon>SociosInformes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Socios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Socios.Designer.cs">
+      <DependentUpon>Socios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AltaEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AltaEmpleados.Designer.cs">
+      <DependentUpon>AltaEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPrincipal.Designer.cs">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pagos.Designer.cs">
+      <DependentUpon>Pagos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reservas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reservas.Designer.cs">
+      <DependentUpon>Reservas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stock.Designer.cs">
+      <DependentUpon>Stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utiles.cs" />
+    <EmbeddedResource Include="AltaUsuarios.resx">
+      <DependentUpon>AltaUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Confirmar Reserva.resx">
+      <DependentUpon>Confirmar Reserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarUsuarios.resx">
+      <DependentUpon>ModificarUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccesoUsuarios.resx">
+      <DependentUpon>AccesoUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AcercaSoft.resx">
+      <DependentUpon>AcercaSoft.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgendaDeportiva.resx">
+      <DependentUpon>AgendaDeportiva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AltaSocios.resx">
+      <DependentUpon>AltaSocios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CargarEventos.resx">
+      <DependentUpon>CargarEventos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Empleados.resx">
+      <DependentUpon>Empleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporte.resx">
+      <DependentUpon>frmReporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PermisoUsuario.resx">
+      <DependentUpon>PermisoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteAgenda.rdlc" />
+    <EmbeddedResource Include="ReporteAgenda.resx">
+      <DependentUpon>ReporteAgenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteReservas.resx">
+      <DependentUpon>ReporteReservas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SociosInformes.resx">
+      <DependentUpon>SociosInformes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Socios.resx">
+      <DependentUpon>Socios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AltaEmpleados.resx">
+      <DependentUpon>AltaEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPrincipal.resx">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pagos.resx">
+      <DependentUpon>Pagos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Reservas.resx">
+      <DependentUpon>Reservas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stock.resx">
+      <DependentUpon>Stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj">
+      <Project>{5e1d8508-c287-4dbb-823f-06c5201e1a58}</Project>
+      <Name>CapaNegocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClassLibrary2\CapaSoporte.csproj">
+      <Project>{d76f067c-f332-4041-8854-0d623b0d16b4}</Project>
+      <Name>CapaSoporte</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plantilla.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoClub.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PlantillaPagos.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PlantillaReservas.html" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
