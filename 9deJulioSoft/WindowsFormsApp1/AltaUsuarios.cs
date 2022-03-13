@@ -36,7 +36,7 @@ namespace CapaPresentacion
                 var resultado = modeloUsuario.altaUsuario();
                 MessageBox.Show(resultado);
 
-                CN_Log.Insertar(1, "Insert", "Alta de usuario " + txtUsuario.Text);
+                CN_Bitacora.Insertar(InicioSesion.idusuario, "Usuario", "Insert", "Alta de usuario " + txtUsuario.Text);
                 Utiles.LimpiarControles(this);
             }
             else
@@ -44,5 +44,7 @@ namespace CapaPresentacion
             
             
         }
+
+      
     }
 }

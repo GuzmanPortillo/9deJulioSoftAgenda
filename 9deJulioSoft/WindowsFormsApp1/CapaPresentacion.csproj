@@ -71,6 +71,12 @@
     <Compile Include="Confirmar Reserva.designer.cs">
       <DependentUpon>Confirmar Reserva.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmBitacora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBitacora.Designer.cs">
+      <DependentUpon>FrmBitacora.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModificarUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,7 +107,6 @@
     <Compile Include="AltaSocios.Designer.cs">
       <DependentUpon>AltaSocios.cs</DependentUpon>
     </Compile>
-    <Compile Include="Bitacora.cs" />
     <Compile Include="CargarEventos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Confirmar Reserva.resx">
       <DependentUpon>Confirmar Reserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBitacora.resx">
+      <DependentUpon>FrmBitacora.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModificarUsuarios.resx">
       <DependentUpon>ModificarUsuarios.cs</DependentUpon>

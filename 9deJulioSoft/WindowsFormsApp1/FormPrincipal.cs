@@ -31,6 +31,8 @@ namespace CapaPresentacion
 
                 formulario.TopLevel = false;
                 formulario.FormBorderStyle = FormBorderStyle.FixedSingle;
+                formulario.StartPosition = FormStartPosition.CenterScreen; //TODO por algun motivo no lo toma
+                formulario.Icon = this.Icon;
                 //formulario.Dock = DockStyle.Fill;
                 panelformularios.Controls.Add(formulario);
                 panelformularios.Tag = formulario;
@@ -135,6 +137,11 @@ namespace CapaPresentacion
         private void reporteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             AbrirFormulario<ReporteReservas>();
+        }
+
+        private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<FrmBitacora>();
         }
     }
 }

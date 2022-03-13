@@ -72,14 +72,14 @@ namespace CapaDatos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    //command.CommandText = "select *from tUsuarios where Usuario=@user and Pass=@pass";
-                    //command.Parameters.AddWithValue("@user", usuario);
-                    //command.Parameters.AddWithValue("@pass", pass);
+                    
                     command.CommandText = "select * from tUsuario where Usuario=@user and contrasenia=@contrasenia";
                     command.Parameters.AddWithValue("@user", user);
                     command.Parameters.AddWithValue("@contrasenia", contrasenia);
                     command.CommandType = CommandType.Text;
                     SqlDataReader reader = command.ExecuteReader();
+
+
                     if (reader.HasRows)
                     {
                         while (reader.Read())
@@ -90,13 +90,13 @@ namespace CapaDatos
                             InicioSesion.apellidos = reader.GetString(3);
                             InicioSesion.contrasenia = reader.GetString(4);
                             //InicioSesion.cargo = reader.GetInt32(4);
-                            
                         }
-
                         return true;
                     }
-                    else
+                    else 
+                    {
                         return false;
+                    }
                 }
             }
         }
