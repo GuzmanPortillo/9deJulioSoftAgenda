@@ -29,7 +29,7 @@ namespace CapaNegocio
         Accesodatos accesoDatos = new Accesodatos();
 
 
-        private int Id_Socio;
+        //private int Id_Socio;
         private string Nombre;
         private string Apellido;
         private string Id_Doc;
@@ -51,11 +51,11 @@ namespace CapaNegocio
         private string CodigoPostal;
         private string Id_Sexo;
 
-        public ModeloSocio(int Id_Socio, string Nombre, string Apellido, string Id_Doc, string Nº_Doc, string Fecha_Nac, string email, string Telefono1,
+        public ModeloSocio(string Nombre, string Apellido, string Id_Doc, string Nº_Doc, string Fecha_Nac, string email, string Telefono1,
            string Telefono2, string Domicilio, string Piso, string Dpto, string Localidad, string Id_Provincia, string Categoria, string Id_Deporte1, string Id_Deporte2,
            string Id_Estado, byte[] foto, string CodigoPostal, string Id_Sexo)
         {
-            this.Id_Socio = Id_Socio;
+            //this.Id_Socio = Id_Socio;
             this.Nombre = Nombre;
             this.Apellido = Apellido;
             this.Id_Doc = Id_Doc;
@@ -82,15 +82,15 @@ namespace CapaNegocio
         {
             try
             {
-                accesoDatos.NuevoSocio(Id_Socio, Nombre, Apellido, Id_Doc, Nº_Doc, Fecha_Nac, email, Telefono1, Telefono2, Domicilio, Piso, Dpto, Localidad,
+                accesoDatos.NuevoSocio(Nombre, Apellido, Id_Doc, Nº_Doc, Fecha_Nac, email, Telefono1, Telefono2, Domicilio, Piso, Dpto, Localidad,
                     Id_Provincia, Categoria, Id_Deporte1, Id_Deporte2, Id_Estado, foto, CodigoPostal, Id_Sexo);
 
                 return "El Socio ha sido creado satisfactoriamente";
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return "El Socio no pudo crearse, vuelva a intentarlo";
+                return "El Socio no pudo crearse, vuelva a intentarlo" + ex;
             }
         }
 
@@ -160,7 +160,6 @@ namespace CapaNegocio
                 return "El Empleado no pudo crearse, vuelva a intentarlo";
             }
         }
-
 
     }
 }

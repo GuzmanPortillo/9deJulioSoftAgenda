@@ -50,14 +50,15 @@ namespace CapaDatos
                 {
                     command.Connection = connection;
                     command.CommandText = "insert  into tusuario(Usuario,Nombres, Apellidos, Contrasenia, Estado )" +
-                                            "Values" + "('" + usuario + "','" + contrasenia + "','" + nombres + "','" + apellidos + "','" + estado + "')";
+                                            "Values" + "('" + usuario + "','" + nombres + "','" + apellidos  + "','" + contrasenia  + "','" + estado + "')";
                     command.Parameters.AddWithValue("@usuario", usuario);
-                    command.Parameters.AddWithValue("@contrasenia", contrasenia);
                     command.Parameters.AddWithValue("@Nombres", nombres);
                     command.Parameters.AddWithValue("@apellidos", apellidos);
+                    command.Parameters.AddWithValue("@contrasenia", contrasenia);
+                    command.Parameters.AddWithValue("@estado", estado);
                     //command.Parameters.AddWithValue("@mail", mail);
                     //command.Parameters.AddWithValue("@id", id);
-                    command.Parameters.AddWithValue("@estado", estado);
+
                     command.CommandType = CommandType.Text;
                     command.ExecuteNonQuery();
                 }
@@ -72,9 +73,6 @@ namespace CapaDatos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    //command.CommandText = "select *from tUsuarios where Usuario=@user and Pass=@pass";
-                    //command.Parameters.AddWithValue("@user", usuario);
-                    //command.Parameters.AddWithValue("@pass", pass);
                     command.CommandText = "select * from tUsuario where Usuario=@user and contrasenia=@contrasenia";
                     command.Parameters.AddWithValue("@user", user);
                     command.Parameters.AddWithValue("@contrasenia", contrasenia);
@@ -110,7 +108,7 @@ namespace CapaDatos
             { }
         }
         //Socios
-        public void NuevoSocio(int Id_Socio, string Nombre, string Apellido, string Id_Doc, string Nº_Doc, string Fecha_Nac, string email, string Telefono1,
+        public void NuevoSocio(string Nombre, string Apellido, string Id_Doc, string Nº_Doc, string Fecha_Nac, string email, string Telefono1,
            string Telefono2, string Domicilio, string Piso, string Dpto, string Localidad, string Id_Provincia, string Categoria, string Id_Deporte1, string Id_Deporte2,
            string Id_Estado, byte[] foto, string CodigoPostal, string Id_Sexo)
         {
@@ -151,6 +149,47 @@ namespace CapaDatos
             }
         }
 
+        public void EditarSocio(string Nombre, string Apellido, string Id_Doc, int dni, string Fecha_Nac, string email, string Telefono1,
+           string Telefono2, string Domicilio, string Piso, string Dpto, string Localidad, string Id_Provincia, string Categoria, string Id_Deporte1, string Id_Deporte2,
+           string Id_Estado, byte[] foto, string CodigoPostal, string Id_Sexo)
+
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandText = "sp_Actualizar_socios";
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Nombre", Nombre);
+                    command.Parameters.AddWithValue("@Apellido ", Apellido);
+                    command.Parameters.AddWithValue("@Id_Doc", Id_Doc);
+                    command.Parameters.AddWithValue("@Nro_Doc", dni);
+                    command.Parameters.AddWithValue("@Fecha_Nac", Fecha_Nac);
+                    command.Parameters.AddWithValue("@email", email);
+                    command.Parameters.AddWithValue("@Telefono1", Telefono1);
+                    command.Parameters.AddWithValue("@Telefono2", Telefono2);
+                    command.Parameters.AddWithValue("@Domicilio", Domicilio);
+                    command.Parameters.AddWithValue("@Piso", Piso);
+                    command.Parameters.AddWithValue("@Dpto", Dpto);
+                    command.Parameters.AddWithValue("@Localidad", Localidad);
+                    command.Parameters.AddWithValue("@Id_Provincia", Id_Provincia);
+                    command.Parameters.AddWithValue("@Categoria", Categoria);
+                    command.Parameters.AddWithValue("@Id_Deporte1", Id_Deporte1);
+                    command.Parameters.AddWithValue("@Id_Deporte2", Id_Deporte2);
+                    command.Parameters.AddWithValue("@Id_Estado", Id_Estado);
+                    command.Parameters.AddWithValue("@foto ", SqlDbType.Image).Value = foto;
+                    command.Parameters.AddWithValue("@CodigoPostal", CodigoPostal);
+                    command.Parameters.AddWithValue("@Id_Sexo", Id_Sexo);
+                    command.ExecuteNonQuery();
+                    command.Parameters.Clear();
+
+                    connection.Close();
+
+                }
+            }
+        }
         //Empleados
         public void NuevoEmpleado(int Id_Socio, string Nombre, string Apellido, string Id_Doc, string Nº_Doc, string Fecha_Nac, string email, string Telefono1,
         string Telefono2, string Domicilio, string Piso, string Dpto, string Localidad, string Id_Provincia, string Id_Sector, string Id_Puesto, byte[] foto, string CodigoPostal, string Id_Sexo)
@@ -166,7 +205,7 @@ namespace CapaDatos
                     command.Parameters.AddWithValue("@Nombre", Nombre);
                     command.Parameters.AddWithValue("@Apellido ", Apellido);
                     command.Parameters.AddWithValue("@Id_Doc", Id_Doc);
-                    command.Parameters.AddWithValue("@Nº_Doc", Nº_Doc);
+                    command.Parameters.AddWithValue("@Nro_Doc", Nº_Doc);
                     command.Parameters.AddWithValue("@Fecha_Nac", Fecha_Nac);
                     command.Parameters.AddWithValue("@email", email);
                     command.Parameters.AddWithValue("@Telefono1", Telefono1);

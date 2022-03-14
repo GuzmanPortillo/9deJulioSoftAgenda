@@ -15,32 +15,35 @@ namespace CapaPresentacion
 {
     public partial class AltaUsuarios : Form
     {
+        private CN_Usuarios objCNUsuarios = new CN_Usuarios();
         public AltaUsuarios()
         {
             InitializeComponent();
         }
 
-
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if(txtConfirmarContrasenia.Text == txtContrasenia.Text)
-            { 
-            var modeloUsuario = new CN_Usuarios(
-                            //idUsuario: InicioSesion.idusuario,
-                            users: txtUsuario.Text,
-                            contrasenia: txtContrasenia.Text,
-                            nombres: txtNombres.Text,
-                            apellidos: txtApellidos.Text,
-                            estado: "Activo");
-            var resultado = modeloUsuario.altaUsuario();
-            MessageBox.Show(resultado);
-            Utiles.LimpiarControles(this);
+            DataTable dt = objCNUsuarios.No_EXiste(txtUsuario.Text);
+            if (dt.Rows.Count == 0)
+            {
+                if (txtConfirmarContrasenia.Text == txtContrasenia.Text)
+                {
+                    var modeloUsuario = new CN_Usuarios(
+                                    users: txtUsuario.Text,
+                                    contrasenia: txtContrasenia.Text,
+                                    nombres: txtNombres.Text,
+                                    apellidos: txtApellidos.Text,
+                                    estado: "Activo");
+                    var resultado = modeloUsuario.altaUsuario();
+                    MessageBox.Show(resultado);
+                    Utiles.LimpiarControles(this);
+                }
+                else
+                    MessageBox.Show("La contraseña no coincide, intentar nuevamente");
             }
             else
-                MessageBox.Show("La contraseña no coincide, intentar nuevamente");
-            
-            
+                MessageBox.Show("Ya existe el usuario, ingrese otro");
         }
+
     }
 }

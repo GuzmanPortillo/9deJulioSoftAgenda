@@ -50,6 +50,9 @@ namespace CapaPresentacion
             this.txtContraseñaActual = new System.Windows.Forms.TextBox();
             this.rbtActivo = new System.Windows.Forms.RadioButton();
             this.rbtInactivo = new System.Windows.Forms.RadioButton();
+            this.BtnOtroUsuario = new System.Windows.Forms.Button();
+            this.txtBucarUsuario = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,7 +122,7 @@ namespace CapaPresentacion
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(292, 224);
+            this.btnGuardar.Location = new System.Drawing.Point(390, 224);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 21);
@@ -130,7 +133,7 @@ namespace CapaPresentacion
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(371, 224);
+            this.btnSalir.Location = new System.Drawing.Point(390, 265);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 21);
@@ -149,7 +152,7 @@ namespace CapaPresentacion
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 11);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 62);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(136, 120);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -177,7 +180,7 @@ namespace CapaPresentacion
             // lblDatoNombres
             // 
             this.lblDatoNombres.AutoSize = true;
-            this.lblDatoNombres.Location = new System.Drawing.Point(57, 134);
+            this.lblDatoNombres.Location = new System.Drawing.Point(48, 185);
             this.lblDatoNombres.Name = "lblDatoNombres";
             this.lblDatoNombres.Size = new System.Drawing.Size(52, 13);
             this.lblDatoNombres.TabIndex = 17;
@@ -186,7 +189,7 @@ namespace CapaPresentacion
             // lblDatoApellidos
             // 
             this.lblDatoApellidos.AutoSize = true;
-            this.lblDatoApellidos.Location = new System.Drawing.Point(57, 154);
+            this.lblDatoApellidos.Location = new System.Drawing.Point(48, 210);
             this.lblDatoApellidos.Name = "lblDatoApellidos";
             this.lblDatoApellidos.Size = new System.Drawing.Size(49, 13);
             this.lblDatoApellidos.TabIndex = 18;
@@ -194,7 +197,7 @@ namespace CapaPresentacion
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(206, 224);
+            this.btnEditar.Location = new System.Drawing.Point(188, 224);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 21);
@@ -224,7 +227,7 @@ namespace CapaPresentacion
             // rbtActivo
             // 
             this.rbtActivo.AutoSize = true;
-            this.rbtActivo.Location = new System.Drawing.Point(12, 185);
+            this.rbtActivo.Location = new System.Drawing.Point(12, 228);
             this.rbtActivo.Name = "rbtActivo";
             this.rbtActivo.Size = new System.Drawing.Size(55, 17);
             this.rbtActivo.TabIndex = 22;
@@ -235,7 +238,7 @@ namespace CapaPresentacion
             // rbtInactivo
             // 
             this.rbtInactivo.AutoSize = true;
-            this.rbtInactivo.Location = new System.Drawing.Point(85, 185);
+            this.rbtInactivo.Location = new System.Drawing.Point(85, 228);
             this.rbtInactivo.Name = "rbtInactivo";
             this.rbtInactivo.Size = new System.Drawing.Size(63, 17);
             this.rbtInactivo.TabIndex = 23;
@@ -243,11 +246,41 @@ namespace CapaPresentacion
             this.rbtInactivo.Text = "Inactivo";
             this.rbtInactivo.UseVisualStyleBackColor = true;
             // 
+            // BtnOtroUsuario
+            // 
+            this.BtnOtroUsuario.Location = new System.Drawing.Point(271, 224);
+            this.BtnOtroUsuario.Name = "BtnOtroUsuario";
+            this.BtnOtroUsuario.Size = new System.Drawing.Size(109, 21);
+            this.BtnOtroUsuario.TabIndex = 24;
+            this.BtnOtroUsuario.Text = "Editar otro usuario";
+            this.BtnOtroUsuario.UseVisualStyleBackColor = true;
+            this.BtnOtroUsuario.Click += new System.EventHandler(this.BtnOtroUsuario_Click);
+            // 
+            // txtBucarUsuario
+            // 
+            this.txtBucarUsuario.Location = new System.Drawing.Point(12, 11);
+            this.txtBucarUsuario.Name = "txtBucarUsuario";
+            this.txtBucarUsuario.Size = new System.Drawing.Size(135, 20);
+            this.txtBucarUsuario.TabIndex = 25;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(153, 10);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(85, 21);
+            this.btnBuscar.TabIndex = 26;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // ModificarUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(490, 256);
+            this.ClientSize = new System.Drawing.Size(476, 299);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.txtBucarUsuario);
+            this.Controls.Add(this.BtnOtroUsuario);
             this.Controls.Add(this.rbtInactivo);
             this.Controls.Add(this.rbtActivo);
             this.Controls.Add(this.txtContraseñaActual);
@@ -270,6 +303,7 @@ namespace CapaPresentacion
             this.Controls.Add(this.txtNombres);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ModificarUsuarios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ABMUsuarios";
             this.Load += new System.EventHandler(this.ModificarUsuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -300,5 +334,8 @@ namespace CapaPresentacion
         private System.Windows.Forms.TextBox txtContraseñaActual;
         private System.Windows.Forms.RadioButton rbtActivo;
         private System.Windows.Forms.RadioButton rbtInactivo;
+        private System.Windows.Forms.Button BtnOtroUsuario;
+        private System.Windows.Forms.TextBox txtBucarUsuario;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }

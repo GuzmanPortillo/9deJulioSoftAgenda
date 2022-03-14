@@ -49,13 +49,13 @@ namespace CapaDatos
                 {
                     if (UsuarioRol == "")
                     {
-                        sSql = "SELECT t.id_usuario, t.usuario, t.Nombres, t.Apellidos, r.id_rol, r.Nombre From tusuario as t inner join tUsuarioRoles as tu" +
+                        sSql = "SELECT t.id_usuario, t.Usuario, t.Nombres, t.Apellidos, r.id_rol, r.Nombre From tusuario as t inner join tUsuarioRoles as tu" +
                             " on t.id_usuario = tu.id_usuario inner join rol as r on tu.id_rol = r.id_rol";
                     }
                     else
                     {
-                        sSql = "SELECT t.id_usuario, t.usuario, t.Nombres, t.Apellidos, r.id_rol, r.Nombre From tusuario as t inner join tUsuarioRoles as tu" +
-                            " on t.id_usuario = tu.id_usuario inner join rol as r on tu.id_rol = r.id_rol where t.usuario = " + UsuarioRol + "'";
+                        sSql = "SELECT t.id_usuario, t.Usuario, t.Nombres, t.Apellidos, r.id_rol, r.Nombre From tusuario as t inner join tUsuarioRoles as tu" +
+                            " on t.id_usuario = tu.id_usuario inner join rol as r on tu.id_rol = r.id_rol where t.Usuario = '"  + UsuarioRol + "'";
                     }
 
                     DataTable dt = new DataTable();
@@ -87,28 +87,43 @@ namespace CapaDatos
             objDB.Ejecutar(sSql);
         }
 
-        //public DataTable consultarAgenda(string fecInicio, string Fecfin)
-        //{
-        //    using (var connection = GetConnection())
-        //    {
-
-        //        connection.Open();
-        //        using (var command = new SqlCommand())
-        //        {
-        //            string sSql = "SELECT * From Eventos Where CONVERT(datetime, Fecha, 0) Between '" + fecInicio + "' and '" + Fecfin + "'";
-        //            DataTable dt = new DataTable();
-        //            command.Connection = connection;
-        //            command.CommandText = sSql;
-        //            SqlDataReader dr = command.ExecuteReader();
-        //            dt.Load(dr);
-
-        //            // da.Fill(dt);
-        //            connection.Close();
-        //            return dt;
-        //        }
-
-        //    }
-        //}
-
+        public DataTable EditarOtroUsuario(string usuario)
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandText = "select * from tUsuario where Usuario=@user";
+                    command.Parameters.AddWithValue("@user", usuario);
+                    DataTable dt = new DataTable();
+                    command.CommandType = CommandType.Text;
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    connection.Close();
+                    return dt;
+                }
+            }
+        }
+        public DataTable NoExiste(string usuario)
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandText = "select * from tUsuario where Usuario=@user";
+                    command.Parameters.AddWithValue("@user", usuario);
+                    DataTable dt = new DataTable();
+                    command.CommandType = CommandType.Text;
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    connection.Close();
+                    return dt;
+                }
+            }
+        }  
     }
 }

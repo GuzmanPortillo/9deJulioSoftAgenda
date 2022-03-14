@@ -12,6 +12,7 @@ namespace CapaPresentacion
 {
     public partial class ModificarUsuarios : Form
     {
+        private CN_Usuarios objUserModif = new CN_Usuarios();
         public ModificarUsuarios()
         {
             InitializeComponent();
@@ -20,7 +21,10 @@ namespace CapaPresentacion
 
         private void ModificarUsuarios_Load(object sender, EventArgs e)
         {
+            StartPosition = FormStartPosition.CenterScreen;
             llenarDatosEdicion();
+            txtBucarUsuario.Visible = false;
+            btnBuscar.Visible = false;
         }
 
         private void llenarDatosEdicion()
@@ -29,7 +33,7 @@ namespace CapaPresentacion
             txtApellidos.Text = InicioSesion.apellidos;
             txtUsuario.Text = InicioSesion.usuario;
             txtContraseña.Text = InicioSesion.contrasenia;
-            txtConfirmarPass.Text = InicioSesion.contrasenia;
+            txtConfirmarPass.Text = "";
             txtContraseñaActual.Text = "";
             if(InicioSesion.estado == "Activo")
             {
@@ -38,6 +42,7 @@ namespace CapaPresentacion
             else
             {
                 rbtInactivo.Checked = true;
+                //rbtActivo.Checked = false;
             }
             Utiles.BloquearControles(this);
          
@@ -93,7 +98,8 @@ namespace CapaPresentacion
                             
                         var resultado = modeloUsuario.editarPerfilUsuario();
                         MessageBox.Show(resultado);
-                        reset();
+                        //reset();
+                        Utiles.LimpiarControles(this);
                     }
                     else
                         MessageBox.Show("Contraseña inconrrecta, intentar nuevamente");
@@ -105,5 +111,40 @@ namespace CapaPresentacion
                 MessageBox.Show("La contraseña debe tener 5 caracteres minimos");
 
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            DataTable dt = objUserModif.consultar_otroUsuario(txtBucarUsuario.Text);
+            if (dt.Rows.Count > 0)
+            {
+                string estado;
+                DataRow dr = dt.Rows[0];
+                txtNombres.Text = dr["Nombres"].ToString();
+                txtApellidos.Text = dr["Apellidos"].ToString();
+                txtContraseña.Text = dr["Contrasenia"].ToString();
+                txtUsuario.Text = dr["Usuario"].ToString();
+                estado = dr["Estado"].ToString();
+                if (estado == "Activo")
+                {
+                    rbtActivo.Checked = true;
+                }
+                else
+                {
+                    rbtInactivo.Checked = true;
+                    //rbtActivo.Checked = false;
+                }
+
+            }
+
+        }
+
+        private void BtnOtroUsuario_Click(object sender, EventArgs e)
+        {
+            txtBucarUsuario.Visible = true;
+            btnBuscar.Visible = true;
+            txtBucarUsuario.Enabled = true;
+            Utiles.LimpiarControles(this);
+        }
+
     }
 }

@@ -31,9 +31,9 @@ namespace CapaPresentacion
         {
             this.lblUsuario = new System.Windows.Forms.Label();
             this.lblRol = new System.Windows.Forms.Label();
-            this.txtAgregarUsuario = new System.Windows.Forms.TextBox();
             this.cboRoles = new System.Windows.Forms.ComboBox();
             this.grbAlta = new System.Windows.Forms.GroupBox();
+            this.cboUsuarios = new System.Windows.Forms.ComboBox();
             this.grbContieneBotones = new System.Windows.Forms.GroupBox();
             this.btnGuardarCambios = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -47,7 +47,6 @@ namespace CapaPresentacion
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbtModificacion = new System.Windows.Forms.RadioButton();
             this.rbtAlta = new System.Windows.Forms.RadioButton();
-            this.cboUsuarios = new System.Windows.Forms.ComboBox();
             this.grbAlta.SuspendLayout();
             this.grbContieneBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPermisoUsuario)).BeginInit();
@@ -76,14 +75,6 @@ namespace CapaPresentacion
             this.lblRol.TabIndex = 1;
             this.lblRol.Text = "Rol";
             // 
-            // txtAgregarUsuario
-            // 
-            this.txtAgregarUsuario.Location = new System.Drawing.Point(212, 11);
-            this.txtAgregarUsuario.Margin = new System.Windows.Forms.Padding(2);
-            this.txtAgregarUsuario.Name = "txtAgregarUsuario";
-            this.txtAgregarUsuario.Size = new System.Drawing.Size(129, 20);
-            this.txtAgregarUsuario.TabIndex = 5;
-            // 
             // cboRoles
             // 
             this.cboRoles.FormattingEnabled = true;
@@ -104,10 +95,18 @@ namespace CapaPresentacion
             this.grbAlta.Margin = new System.Windows.Forms.Padding(2);
             this.grbAlta.Name = "grbAlta";
             this.grbAlta.Padding = new System.Windows.Forms.Padding(2);
-            this.grbAlta.Size = new System.Drawing.Size(361, 120);
+            this.grbAlta.Size = new System.Drawing.Size(368, 120);
             this.grbAlta.TabIndex = 11;
             this.grbAlta.TabStop = false;
             this.grbAlta.Text = "Alta";
+            // 
+            // cboUsuarios
+            // 
+            this.cboUsuarios.FormattingEnabled = true;
+            this.cboUsuarios.Location = new System.Drawing.Point(11, 35);
+            this.cboUsuarios.Name = "cboUsuarios";
+            this.cboUsuarios.Size = new System.Drawing.Size(159, 21);
+            this.cboUsuarios.TabIndex = 16;
             // 
             // grbContieneBotones
             // 
@@ -123,7 +122,7 @@ namespace CapaPresentacion
             // 
             // btnGuardarCambios
             // 
-            this.btnGuardarCambios.Location = new System.Drawing.Point(123, 16);
+            this.btnGuardarCambios.Location = new System.Drawing.Point(237, 16);
             this.btnGuardarCambios.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardarCambios.Name = "btnGuardarCambios";
             this.btnGuardarCambios.Size = new System.Drawing.Size(109, 19);
@@ -151,7 +150,7 @@ namespace CapaPresentacion
             this.dgvPermisoUsuario.Name = "dgvPermisoUsuario";
             this.dgvPermisoUsuario.RowTemplate.Height = 28;
             this.dgvPermisoUsuario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPermisoUsuario.Size = new System.Drawing.Size(353, 119);
+            this.dgvPermisoUsuario.Size = new System.Drawing.Size(451, 119);
             this.dgvPermisoUsuario.TabIndex = 14;
             this.dgvPermisoUsuario.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPermisoUsuario_CellClick);
             this.dgvPermisoUsuario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -166,13 +165,13 @@ namespace CapaPresentacion
             this.grbContieneGrilla.Margin = new System.Windows.Forms.Padding(2);
             this.grbContieneGrilla.Name = "grbContieneGrilla";
             this.grbContieneGrilla.Padding = new System.Windows.Forms.Padding(2);
-            this.grbContieneGrilla.Size = new System.Drawing.Size(361, 175);
+            this.grbContieneGrilla.Size = new System.Drawing.Size(459, 175);
             this.grbContieneGrilla.TabIndex = 16;
             this.grbContieneGrilla.TabStop = false;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(283, 24);
+            this.btnBuscar.Location = new System.Drawing.Point(381, 27);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(74, 22);
@@ -201,7 +200,7 @@ namespace CapaPresentacion
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(282, 10);
+            this.btnSalir.Location = new System.Drawing.Point(376, 11);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(74, 21);
@@ -216,7 +215,7 @@ namespace CapaPresentacion
             this.grbContienSalir.Margin = new System.Windows.Forms.Padding(2);
             this.grbContienSalir.Name = "grbContienSalir";
             this.grbContienSalir.Padding = new System.Windows.Forms.Padding(2);
-            this.grbContienSalir.Size = new System.Drawing.Size(360, 36);
+            this.grbContienSalir.Size = new System.Drawing.Size(454, 36);
             this.grbContienSalir.TabIndex = 19;
             this.grbContienSalir.TabStop = false;
             // 
@@ -224,12 +223,11 @@ namespace CapaPresentacion
             // 
             this.groupBox1.Controls.Add(this.rbtModificacion);
             this.groupBox1.Controls.Add(this.rbtAlta);
-            this.groupBox1.Controls.Add(this.txtAgregarUsuario);
             this.groupBox1.Location = new System.Drawing.Point(18, 6);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(360, 36);
+            this.groupBox1.Size = new System.Drawing.Size(367, 36);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             // 
@@ -257,19 +255,11 @@ namespace CapaPresentacion
             this.rbtAlta.UseVisualStyleBackColor = true;
             this.rbtAlta.CheckedChanged += new System.EventHandler(this.rbtAlta_CheckedChanged);
             // 
-            // cboUsuarios
-            // 
-            this.cboUsuarios.FormattingEnabled = true;
-            this.cboUsuarios.Location = new System.Drawing.Point(11, 35);
-            this.cboUsuarios.Name = "cboUsuarios";
-            this.cboUsuarios.Size = new System.Drawing.Size(159, 21);
-            this.cboUsuarios.TabIndex = 16;
-            // 
             // PermisoUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(393, 390);
+            this.ClientSize = new System.Drawing.Size(496, 390);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grbContienSalir);
             this.Controls.Add(this.grbContieneGrilla);
@@ -295,7 +285,6 @@ namespace CapaPresentacion
 
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Label lblRol;
-        private System.Windows.Forms.TextBox txtAgregarUsuario;
         private System.Windows.Forms.ComboBox cboRoles;
         private System.Windows.Forms.GroupBox grbAlta;
         private System.Windows.Forms.GroupBox grbContieneBotones;

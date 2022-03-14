@@ -80,7 +80,7 @@ namespace CapaPresentacion
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1008, 9);
+            this.label1.Location = new System.Drawing.Point(772, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(164, 25);
             this.label1.TabIndex = 0;
@@ -90,7 +90,7 @@ namespace CapaPresentacion
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(22, 31);
+            this.lblNombre.Location = new System.Drawing.Point(23, 39);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(73, 19);
             this.lblNombre.TabIndex = 1;
@@ -100,7 +100,7 @@ namespace CapaPresentacion
             // 
             this.lblApellido.AutoSize = true;
             this.lblApellido.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApellido.Location = new System.Drawing.Point(22, 79);
+            this.lblApellido.Location = new System.Drawing.Point(20, 87);
             this.lblApellido.Name = "lblApellido";
             this.lblApellido.Size = new System.Drawing.Size(75, 19);
             this.lblApellido.TabIndex = 2;
@@ -110,7 +110,7 @@ namespace CapaPresentacion
             // 
             this.lblTipoDoc.AutoSize = true;
             this.lblTipoDoc.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipoDoc.Location = new System.Drawing.Point(22, 125);
+            this.lblTipoDoc.Location = new System.Drawing.Point(22, 133);
             this.lblTipoDoc.Name = "lblTipoDoc";
             this.lblTipoDoc.Size = new System.Drawing.Size(133, 19);
             this.lblTipoDoc.TabIndex = 3;
@@ -120,7 +120,7 @@ namespace CapaPresentacion
             // 
             this.lblNumDoc.AutoSize = true;
             this.lblNumDoc.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumDoc.Location = new System.Drawing.Point(304, 125);
+            this.lblNumDoc.Location = new System.Drawing.Point(304, 133);
             this.lblNumDoc.Name = "lblNumDoc";
             this.lblNumDoc.Size = new System.Drawing.Size(122, 19);
             this.lblNumDoc.TabIndex = 4;
@@ -130,7 +130,7 @@ namespace CapaPresentacion
             // 
             this.lblSexo.AutoSize = true;
             this.lblSexo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSexo.Location = new System.Drawing.Point(22, 170);
+            this.lblSexo.Location = new System.Drawing.Point(22, 178);
             this.lblSexo.Name = "lblSexo";
             this.lblSexo.Size = new System.Drawing.Size(39, 19);
             this.lblSexo.TabIndex = 5;
@@ -140,7 +140,7 @@ namespace CapaPresentacion
             // 
             this.lblTel1.AutoSize = true;
             this.lblTel1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTel1.Location = new System.Drawing.Point(22, 221);
+            this.lblTel1.Location = new System.Drawing.Point(22, 229);
             this.lblTel1.Name = "lblTel1";
             this.lblTel1.Size = new System.Drawing.Size(77, 19);
             this.lblTel1.TabIndex = 6;
@@ -150,7 +150,7 @@ namespace CapaPresentacion
             // 
             this.lblTel2.AutoSize = true;
             this.lblTel2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTel2.Location = new System.Drawing.Point(390, 221);
+            this.lblTel2.Location = new System.Drawing.Point(390, 229);
             this.lblTel2.Name = "lblTel2";
             this.lblTel2.Size = new System.Drawing.Size(77, 19);
             this.lblTel2.TabIndex = 7;
@@ -160,7 +160,7 @@ namespace CapaPresentacion
             // 
             this.lblMail.AutoSize = true;
             this.lblMail.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMail.Location = new System.Drawing.Point(22, 272);
+            this.lblMail.Location = new System.Drawing.Point(22, 280);
             this.lblMail.Name = "lblMail";
             this.lblMail.Size = new System.Drawing.Size(50, 19);
             this.lblMail.TabIndex = 8;
@@ -170,7 +170,7 @@ namespace CapaPresentacion
             // 
             this.lblDom.AutoSize = true;
             this.lblDom.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDom.Location = new System.Drawing.Point(22, 320);
+            this.lblDom.Location = new System.Drawing.Point(20, 328);
             this.lblDom.Name = "lblDom";
             this.lblDom.Size = new System.Drawing.Size(70, 19);
             this.lblDom.TabIndex = 9;
@@ -180,7 +180,7 @@ namespace CapaPresentacion
             // 
             this.lblPiso.AutoSize = true;
             this.lblPiso.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPiso.Location = new System.Drawing.Point(22, 373);
+            this.lblPiso.Location = new System.Drawing.Point(20, 381);
             this.lblPiso.Name = "lblPiso";
             this.lblPiso.Size = new System.Drawing.Size(36, 19);
             this.lblPiso.TabIndex = 10;
@@ -190,7 +190,7 @@ namespace CapaPresentacion
             // 
             this.lblDpto.AutoSize = true;
             this.lblDpto.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDpto.Location = new System.Drawing.Point(191, 373);
+            this.lblDpto.Location = new System.Drawing.Point(191, 381);
             this.lblDpto.Name = "lblDpto";
             this.lblDpto.Size = new System.Drawing.Size(44, 19);
             this.lblDpto.TabIndex = 11;
@@ -200,7 +200,7 @@ namespace CapaPresentacion
             // 
             this.lblCp.AutoSize = true;
             this.lblCp.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCp.Location = new System.Drawing.Point(394, 373);
+            this.lblCp.Location = new System.Drawing.Point(394, 381);
             this.lblCp.Name = "lblCp";
             this.lblCp.Size = new System.Drawing.Size(32, 19);
             this.lblCp.TabIndex = 12;
@@ -210,7 +210,7 @@ namespace CapaPresentacion
             // 
             this.lblLoc.AutoSize = true;
             this.lblLoc.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoc.Location = new System.Drawing.Point(24, 428);
+            this.lblLoc.Location = new System.Drawing.Point(19, 436);
             this.lblLoc.Name = "lblLoc";
             this.lblLoc.Size = new System.Drawing.Size(71, 19);
             this.lblLoc.TabIndex = 13;
@@ -220,7 +220,7 @@ namespace CapaPresentacion
             // 
             this.lblProv.AutoSize = true;
             this.lblProv.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProv.Location = new System.Drawing.Point(247, 428);
+            this.lblProv.Location = new System.Drawing.Point(247, 436);
             this.lblProv.Name = "lblProv";
             this.lblProv.Size = new System.Drawing.Size(68, 19);
             this.lblProv.TabIndex = 14;
@@ -230,7 +230,7 @@ namespace CapaPresentacion
             // 
             this.lblFechaNac.AutoSize = true;
             this.lblFechaNac.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaNac.Location = new System.Drawing.Point(245, 168);
+            this.lblFechaNac.Location = new System.Drawing.Point(245, 175);
             this.lblFechaNac.Name = "lblFechaNac";
             this.lblFechaNac.Size = new System.Drawing.Size(143, 19);
             this.lblFechaNac.TabIndex = 15;
@@ -240,7 +240,7 @@ namespace CapaPresentacion
             // 
             this.lblDep1.AutoSize = true;
             this.lblDep1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDep1.Location = new System.Drawing.Point(22, 485);
+            this.lblDep1.Location = new System.Drawing.Point(22, 490);
             this.lblDep1.Name = "lblDep1";
             this.lblDep1.Size = new System.Drawing.Size(73, 19);
             this.lblDep1.TabIndex = 16;
@@ -250,7 +250,7 @@ namespace CapaPresentacion
             // 
             this.lblDep2.AutoSize = true;
             this.lblDep2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDep2.Location = new System.Drawing.Point(343, 482);
+            this.lblDep2.Location = new System.Drawing.Point(341, 490);
             this.lblDep2.Name = "lblDep2";
             this.lblDep2.Size = new System.Drawing.Size(73, 19);
             this.lblDep2.TabIndex = 17;
@@ -260,7 +260,7 @@ namespace CapaPresentacion
             // 
             this.lblCat.AutoSize = true;
             this.lblCat.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCat.Location = new System.Drawing.Point(24, 535);
+            this.lblCat.Location = new System.Drawing.Point(24, 543);
             this.lblCat.Name = "lblCat";
             this.lblCat.Size = new System.Drawing.Size(72, 19);
             this.lblCat.TabIndex = 18;
@@ -359,7 +359,7 @@ namespace CapaPresentacion
             // txtLocalidad
             // 
             this.txtLocalidad.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLocalidad.Location = new System.Drawing.Point(111, 428);
+            this.txtLocalidad.Location = new System.Drawing.Point(101, 428);
             this.txtLocalidad.Name = "txtLocalidad";
             this.txtLocalidad.Size = new System.Drawing.Size(100, 27);
             this.txtLocalidad.TabIndex = 14;
@@ -394,7 +394,7 @@ namespace CapaPresentacion
             // 
             this.cbDeporte1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbDeporte1.FormattingEnabled = true;
-            this.cbDeporte1.Location = new System.Drawing.Point(111, 482);
+            this.cbDeporte1.Location = new System.Drawing.Point(101, 482);
             this.cbDeporte1.Name = "cbDeporte1";
             this.cbDeporte1.Size = new System.Drawing.Size(200, 27);
             this.cbDeporte1.TabIndex = 16;
@@ -411,7 +411,7 @@ namespace CapaPresentacion
             // txtCategoria
             // 
             this.txtCategoria.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCategoria.Location = new System.Drawing.Point(111, 535);
+            this.txtCategoria.Location = new System.Drawing.Point(101, 535);
             this.txtCategoria.MaxLength = 2;
             this.txtCategoria.Name = "txtCategoria";
             this.txtCategoria.Size = new System.Drawing.Size(100, 27);
@@ -431,7 +431,7 @@ namespace CapaPresentacion
             // 
             this.lblEst.AutoSize = true;
             this.lblEst.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEst.Location = new System.Drawing.Point(271, 535);
+            this.lblEst.Location = new System.Drawing.Point(271, 543);
             this.lblEst.Name = "lblEst";
             this.lblEst.Size = new System.Drawing.Size(53, 19);
             this.lblEst.TabIndex = 90;
@@ -440,9 +440,9 @@ namespace CapaPresentacion
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(736, 536);
+            this.btnGuardar.Location = new System.Drawing.Point(610, 535);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(200, 50);
+            this.btnGuardar.Size = new System.Drawing.Size(160, 50);
             this.btnGuardar.TabIndex = 92;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -451,7 +451,7 @@ namespace CapaPresentacion
             // pcbx1
             // 
             this.pcbx1.Image = ((System.Drawing.Image)(resources.GetObject("pcbx1.Image")));
-            this.pcbx1.Location = new System.Drawing.Point(858, 69);
+            this.pcbx1.Location = new System.Drawing.Point(764, 48);
             this.pcbx1.Name = "pcbx1";
             this.pcbx1.Size = new System.Drawing.Size(200, 200);
             this.pcbx1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -461,7 +461,7 @@ namespace CapaPresentacion
             // btnCargarFoto
             // 
             this.btnCargarFoto.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCargarFoto.Location = new System.Drawing.Point(858, 275);
+            this.btnCargarFoto.Location = new System.Drawing.Point(764, 272);
             this.btnCargarFoto.Name = "btnCargarFoto";
             this.btnCargarFoto.Size = new System.Drawing.Size(200, 50);
             this.btnCargarFoto.TabIndex = 94;
@@ -472,9 +472,9 @@ namespace CapaPresentacion
             // btnLimpiarP
             // 
             this.btnLimpiarP.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiarP.Location = new System.Drawing.Point(956, 535);
+            this.btnLimpiarP.Location = new System.Drawing.Point(791, 535);
             this.btnLimpiarP.Name = "btnLimpiarP";
-            this.btnLimpiarP.Size = new System.Drawing.Size(200, 50);
+            this.btnLimpiarP.Size = new System.Drawing.Size(173, 50);
             this.btnLimpiarP.TabIndex = 96;
             this.btnLimpiarP.Text = "Limpiar Pantalla";
             this.btnLimpiarP.UseVisualStyleBackColor = true;
@@ -492,7 +492,7 @@ namespace CapaPresentacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1168, 598);
+            this.ClientSize = new System.Drawing.Size(982, 598);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.btnLimpiarP);
             this.Controls.Add(this.btnCargarFoto);

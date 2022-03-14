@@ -69,11 +69,12 @@ namespace CapaPresentacion
             cboUsuarios.Text = dgvPermisoUsuario.SelectedRows[0].Cells[1].Value.ToString();
             cboRoles.SelectedValue = Convert.ToInt32(dgvPermisoUsuario.SelectedRows[0].Cells[4].Value.ToString());
             grbAlta.Enabled = true;
+            cboUsuarios.Enabled = false;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            mostrarUsuarioPermiso(txtAgregarUsuario.Text);
+            mostrarUsuarioPermiso(txtBuscarUsuario.Text);
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -98,6 +99,7 @@ namespace CapaPresentacion
             grbContieneGrilla.Enabled = false;
             btnGuardarCambios.Visible = false;
             rbtModificacion.Checked = false;
+            btnGuardar.Visible = true;
         }
 
         private void rbtModificacion_CheckedChanged(object sender, EventArgs e)

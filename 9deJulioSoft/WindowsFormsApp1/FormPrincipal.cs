@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using CapaSoporte.Cache;
+using System.Drawing;
 
 namespace CapaPresentacion
 {
@@ -22,8 +23,9 @@ namespace CapaPresentacion
         }
         private void AbrirFormulario<MiForm>() where MiForm : Form, new()
         {
-            Form formulario;
-            formulario = panelformularios.Controls.OfType<MiForm>().FirstOrDefault();//Busca en la colecion el formulario
+            
+            Form formulario ;
+            formulario = PanelFormularios.Controls.OfType<MiForm>().FirstOrDefault();//Busca en la colecion el formulario
                                                                                      //si el formulario/instancia no existe
             if (formulario == null)
             {
@@ -32,10 +34,14 @@ namespace CapaPresentacion
                 formulario.TopLevel = false;
                 formulario.FormBorderStyle = FormBorderStyle.FixedSingle;
                 //formulario.Dock = DockStyle.Fill;
-                panelformularios.Controls.Add(formulario);
-                panelformularios.Tag = formulario;
+                PanelFormularios.Controls.Add(formulario);
+                PanelFormularios.Tag = formulario;
+                formulario.ControlBox = false;
+                formulario.Top = (PanelFormularios.Height / 2) - (formulario.Height / 2);
+                formulario.Left = (PanelFormularios.Width / 2) - (formulario.Width / 2);
                 formulario.Show();
                 formulario.BringToFront();
+
             }
             //si el formulario/instancia existe
             else
@@ -136,5 +142,7 @@ namespace CapaPresentacion
         {
             AbrirFormulario<ReporteReservas>();
         }
+
+
     }
 }

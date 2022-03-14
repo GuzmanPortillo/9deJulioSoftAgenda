@@ -127,5 +127,19 @@ namespace CapaNegocio
             PasarDatos();
             objUsuario.actualizarRol();
         }
+
+        public DataTable consultar_otroUsuario(string usuario)
+        {
+            DataTable tabla = new DataTable();
+            tabla = objUsuario.EditarOtroUsuario(usuario);
+            return tabla;
+        }
+
+        public DataTable No_EXiste(string Usuario)
+        {
+            DataTable tabla = new DataTable();
+            tabla = objUsuario.NoExiste(Usuario);
+            return tabla;
+        }
     }
 }
