@@ -6,13 +6,16 @@ using iTextSharp.tool.xml;
 using System.IO;
 using CapaNegocio;
 using System.util;
-
+using System.Linq;
+using System.Collections.Generic;
 
 namespace CapaPresentacion
 {
     public partial class Pagos : Form
     {
         private CN_Pagos objCNpagos = new CN_Pagos();
+        const int COLUMNA_ESTADO = 5;
+        private int nro_socio = 0;
 
         public Pagos()
         {
@@ -26,50 +29,77 @@ namespace CapaPresentacion
 
         private void Pagos_Load(object sender, System.EventArgs e)
         {
-            //DataGridViewCheckBoxColumn chk = new DataGridViewCheckBoxColumn();
-            //dgvPagos.Columns.Add(chk);
-            dgvPagos.Refresh();
+
         }
 
         private void btnPagar_Click(object sender, System.EventArgs e)
         {
-            //int total = dgvPagos.Rows.Cast<DataGridViewRow>().Where(p => Convert.ToBoolean(p.Cells[0].Value) == true).Count();
-            //if (total > 0)
-            //{
-            try
+            List<DataGridViewRow> seleccionados = dgvPagos.Rows.Cast<DataGridViewRow>().Where(p => Convert.ToBoolean(p.Cells[0].Value) == true).ToList();
+
+            if (seleccionados.Any())
+            {
+                try
                 {
                     var resultado = MessageBox.Show("Desea realizar el pago", "Realizar Pago",
                                                      MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     if (resultado == DialogResult.OK)
                     {
-                        Hacer_pasajeDatos();
-                        objCNpagos.Actualizar_Cuota();
+                        foreach (DataGridViewRow seleccionado in seleccionados)
+                        {
+                            Hacer_pasajeDatos(seleccionado);
+                            objCNpagos.Actualizar_Cuota();
+                        }
+                        MessageBox.Show("Se realizo el pago");
+                        Buscar(nro_socio);
                     }
-
-                    MessageBox.Show("Se realizo el pago");
                 }
                 catch (Exception error)
                 {
                     MessageBox.Show("Ocurrió un error " + error.Message);
                 }
-
-
+            }
+            else
+            {
+                MessageBox.Show("Seleccione los registros a pagar", "Realizar Pago", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-    
+
 
         private void btnBuscar_Click(object sender, System.EventArgs e)
         {
-            int nro_socio = Convert.ToInt32(txtIngresarSocio.Text);
+            //int nro_socio = Convert.ToInt32(txtIngresarSocio.Text);
 
-            dgvPagos.DataSource = objCNpagos.consultar_cuota(nro_socio);
-            // dgvListaEventos.Refresh();
+            if (!int.TryParse(txtIngresarSocio.Text, out nro_socio))
+            {
+                MessageBox.Show("Ingrese un nro. de socio valido", "Pagos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Buscar(nro_socio);
         }
 
-        private void Hacer_pasajeDatos()
+        private void Buscar(int idSocio)
         {
-            objCNpagos.Idsociocuota = Convert.ToInt32(dgvPagos.Rows[dgvPagos.SelectedRows[0].Index].Cells["id_socio_cuota"].Value.ToString());
+            dgvPagos.DataSource = null;
+            dgvPagos.Columns.Clear();
+            dgvPagos.Refresh();
 
+            dgvPagos.DataSource = objCNpagos.consultar_cuota(idSocio);
+            DataGridViewCheckBoxColumn chk = new DataGridViewCheckBoxColumn();
+            dgvPagos.Columns.Insert(0, chk);
 
+            for (int i = 1, j = dgvPagos.Columns.Count; i < j; i++)
+                dgvPagos.Columns[i].ReadOnly = true;
+
+            for (int i = 0, j = dgvPagos.Rows.Count; i < j; i++)
+                dgvPagos[0, i].ReadOnly = (dgvPagos.Rows[i].Cells["estado"].Value.ToString() == "Pagado");
+
+            dgvPagos.Refresh();
+        }
+
+        private void Hacer_pasajeDatos(DataGridViewRow row)
+        {
+            objCNpagos.Idsociocuota = Convert.ToInt32(row.Cells["id_socio_cuota"].Value.ToString());
         }
 
         private void btnGenerarInforme_Click(object sender, EventArgs e)
@@ -138,5 +168,5 @@ namespace CapaPresentacion
             }
         }
     }
-        
+
 }

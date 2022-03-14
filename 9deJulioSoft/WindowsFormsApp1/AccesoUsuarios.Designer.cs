@@ -51,7 +51,7 @@ namespace CapaPresentacion
             this.btnlogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnlogin.Name = "btnlogin";
             this.btnlogin.Size = new System.Drawing.Size(188, 35);
-            this.btnlogin.TabIndex = 0;
+            this.btnlogin.TabIndex = 2;
             this.btnlogin.Text = "Ingresar";
             this.btnlogin.UseVisualStyleBackColor = true;
             this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click_1);
@@ -62,7 +62,7 @@ namespace CapaPresentacion
             this.txtuser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtuser.Name = "txtuser";
             this.txtuser.Size = new System.Drawing.Size(313, 26);
-            this.txtuser.TabIndex = 2;
+            this.txtuser.TabIndex = 0;
             // 
             // txtpass
             // 
@@ -70,7 +70,7 @@ namespace CapaPresentacion
             this.txtpass.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtpass.Name = "txtpass";
             this.txtpass.Size = new System.Drawing.Size(313, 26);
-            this.txtpass.TabIndex = 3;
+            this.txtpass.TabIndex = 1;
             this.txtpass.UseSystemPasswordChar = true;
             // 
             // label1

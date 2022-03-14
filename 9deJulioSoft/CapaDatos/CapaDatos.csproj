@@ -44,6 +44,7 @@
     <Compile Include="Accesodatos.cs" />
     <Compile Include="CD_Agenda.cs" />
     <Compile Include="CD_LlenarCombos.cs" />
+    <Compile Include="CD_Bitacora.cs" />
     <Compile Include="ConnectionToSql.cs" />
     <Compile Include="CD_Pagos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

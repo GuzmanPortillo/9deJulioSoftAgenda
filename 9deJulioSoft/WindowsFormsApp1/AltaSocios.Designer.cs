@@ -398,6 +398,7 @@ namespace CapaPresentacion
             this.cbDeporte1.Name = "cbDeporte1";
             this.cbDeporte1.Size = new System.Drawing.Size(200, 27);
             this.cbDeporte1.TabIndex = 16;
+            this.cbDeporte1.SelectedIndexChanged += new System.EventHandler(this.cbDeporte1_SelectedIndexChanged);
             // 
             // cbDeporte2
             // 

@@ -1,11 +1,13 @@
-﻿using System;
+﻿using CapaNegocio;
+using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace CapaPresentacion
 {
-    class Utiles
+    public class Utiles
     {
+        
         public static void LimpiarControles(Form FRM)
         {
             foreach (Control c in FRM.Controls)
@@ -132,4 +134,6 @@ namespace CapaPresentacion
 
         
     }
+
+    
 }

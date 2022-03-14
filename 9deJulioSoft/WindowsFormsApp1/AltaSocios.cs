@@ -174,5 +174,9 @@ namespace CapaPresentacion
             }
         }
 
+        private void cbDeporte1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

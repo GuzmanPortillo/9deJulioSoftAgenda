@@ -1,14 +1,14 @@
 ﻿using CapaDatos;
 using System;
 using CapaSoporte.Cache;
-
+using System.Data;
 
 namespace CapaNegocio
 {
     public class ModeloUsuario
     {
         Accesodatos accesoDatos = new Accesodatos();
-
+        public int IdUsuario { get; set; }
         public bool LoginUser(string usuario, string pass)
         {
             return accesoDatos.Login(usuario, pass);
