@@ -36,6 +36,8 @@ namespace CapaDatos
             get => idUsuarioAlta;
             set { idUsuarioAlta = value; }
         }
+
+      
         #endregion
 
         public DataTable ConsultaUsuarioRol(string UsuarioRol)
@@ -110,5 +112,30 @@ namespace CapaDatos
         //    }
         //}
 
+        public DataTable GetUsuarios()
+        {
+            string sSql;
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command = new SqlCommand())
+                {
+
+                    sSql = "SELECT * From tusuario order by usuario";
+                   
+                    DataTable dt = new DataTable();
+                    command.Connection = connection;
+                    command.CommandText = sSql;
+                    SqlDataReader dr = command.ExecuteReader();
+                    dt.Load(dr);
+
+                    // da.Fill(dt);
+                    connection.Close();
+                    return dt;
+                }
+
+            }
+        }
     }
+
 }

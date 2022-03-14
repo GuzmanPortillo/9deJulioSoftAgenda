@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using CapaSoporte.Cache;
 
 namespace CapaNegocio
 {
@@ -11,12 +13,26 @@ namespace CapaNegocio
     {
         public static void Insertar(int usuario,  string entidad, string accion, string detalle)
         {
-            var logDatos = new CD_Bitacora();
-            logDatos.Insertar(usuario, entidad, accion, detalle);
+            var bitacoraDatos = new CD_Bitacora();
+            bitacoraDatos.Insertar(usuario, entidad, accion, detalle);
         }
 
+        public static DataTable getAll(DateTime fechaDesde, DateTime fechaHasta, int idUsuario, string entidad, string accion)
+        {
+            var bitacoraDatos = new CD_Bitacora();
 
+            if (entidad == BitacoraEntidad.TODOS.ToString())
+            {
+                entidad = null;
+            }
 
+            if (accion == BitacoraAccion.TODOS.ToString())
+            {
+                accion = null;
+            }
+
+            return bitacoraDatos.getAll(fechaDesde, fechaHasta, idUsuario, entidad, accion);
+        }
 
     }
 }

@@ -274,8 +274,10 @@ namespace CapaPresentacion
             // 
             // panelformularios
             // 
-            this.panelformularios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelformularios.Location = new System.Drawing.Point(0, 25);
+            this.panelformularios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelformularios.Location = new System.Drawing.Point(0, 30);
             this.panelformularios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelformularios.Name = "panelformularios";
             this.panelformularios.Size = new System.Drawing.Size(1444, 857);

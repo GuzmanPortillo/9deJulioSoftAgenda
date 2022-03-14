@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -12,17 +13,65 @@ namespace CapaDatos
     {
         public void Insertar(int usuario, string entidad,  string accion, string detalle)
         {
-            string sSql = "Insert Into Bitacora" +
-            "(fecha, id_usuario, entidad,  accion, detalle)" +
-            " Values( " + "getdate(), " + usuario + "," + "'" + entidad + "'," + "'" + accion + "'," + "'" + detalle + "')";
-
-            using (var connection = GetConnection())
+            try
             {
-                connection.Open();
+                string sSql = "Insert Into Bitacora" +
+                "(fecha, id_usuario, entidad,  accion, detalle)" +
+                " Values( " + "getdate(), " + usuario + "," + "'" + entidad + "'," + "'" + accion + "'," + "'" + detalle + "')";
 
-                SqlCommand cmd = new SqlCommand(sSql, connection);
-                cmd.ExecuteNonQuery();
-                connection.Close();
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand(sSql, connection);
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public DataTable getAll(DateTime fechaDesde, DateTime fechaHasta, int idUsuario, string entidad, string accion)
+        {
+            var dt = new DataTable();
+
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    using (var command = new SqlCommand())
+                    {
+                        command.Connection = connection;
+                        command.CommandText = "sp_getBitacora";
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@fechaDesde", fechaDesde);
+                        command.Parameters.AddWithValue("@fechaHasta ", fechaHasta);
+                        
+                        if (idUsuario == -1 )
+                            command.Parameters.AddWithValue("@idUsuario", null);
+                        else
+                            command.Parameters.AddWithValue("@idUsuario", idUsuario);
+
+                        command.Parameters.AddWithValue("@entidad", entidad);
+                        command.Parameters.AddWithValue("@accion", accion);
+
+
+                        SqlDataReader dr = command.ExecuteReader();
+                        dt.Load(dr);
+                        command.Parameters.Clear();
+                        connection.Close();
+                        return dt;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return dt;
             }
         }
     }
