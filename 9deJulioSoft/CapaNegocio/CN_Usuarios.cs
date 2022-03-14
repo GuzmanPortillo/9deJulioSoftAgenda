@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using CapaDatos;
 using CapaSoporte;
@@ -35,6 +36,8 @@ namespace CapaNegocio
             set { idusuarioAlta = value; }
 
         }
+
+        public string Usuario { get; set; }
         #endregion
 
         private void PasarDatos()
@@ -140,6 +143,30 @@ namespace CapaNegocio
             DataTable tabla = new DataTable();
             tabla = objUsuario.NoExiste(Usuario);
             return tabla;
+        }
+
+        public List<CN_Usuarios> GetUsuarios()
+        {
+            var usuarios = new List<CN_Usuarios>();
+
+            var user = new CN_Usuarios();
+            user.IdUsuario = -1;
+            user.Usuario = "TODOS";
+            usuarios.Add(user);
+
+            var dt = objUsuario.GetUsuarios();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                var usuario = new CN_Usuarios();
+
+                usuario.IdUsuario = (int)row[0];
+                usuario.Usuario = row[1].ToString();
+
+                usuarios.Add(usuario);
+            }
+
+            return usuarios;
         }
     }
 }
