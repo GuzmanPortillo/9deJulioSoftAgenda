@@ -2,6 +2,7 @@
 using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using CapaSoporte.Cache;
 
 namespace CapaPresentacion
 {
@@ -24,6 +25,13 @@ namespace CapaPresentacion
             {
                 e.Cancel = true; //Cancela el cerrado del formulario
             }
+            else 
+            {
+                if (InicioSesion.usuario != null)
+                {
+                    CN_Bitacora.Guardar(InicioSesion.idusuario, BitacoraEntidad.Login.ToString(), BitacoraAccion.Salir.ToString(), $"El usuario {InicioSesion.usuario} salió del sistema");
+                }
+            }
         }
         private void btnlogin_Click_1(object sender, EventArgs e)
         {
@@ -36,6 +44,7 @@ namespace CapaPresentacion
                         var validlogin = usuario.LoginUser(txtuser.Text, txtpass.Text);
                         if (validlogin == true)
                         {
+                            CN_Bitacora.Guardar(InicioSesion.idusuario, BitacoraEntidad.Login.ToString(), BitacoraAccion.Ingresar.ToString(), $"El usuario  {InicioSesion.usuario} ingresó al sistema");
                             FormPrincipal mainmenu = new FormPrincipal();
                             mainmenu.Show();
                             mainmenu.FormClosed += Logout;

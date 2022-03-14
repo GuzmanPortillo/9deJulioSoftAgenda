@@ -36,7 +36,7 @@ namespace CapaPresentacion
                 var resultado = modeloUsuario.altaUsuario();
                 MessageBox.Show(resultado);
 
-                CN_Bitacora.Insertar(InicioSesion.idusuario, "Usuario", "Alta", "Alta de usuario " + txtUsuario.Text);
+                CN_Bitacora.Guardar(InicioSesion.idusuario, BitacoraEntidad.Usuario.ToString(), BitacoraAccion.Alta.ToString(), $"Alta de usuario {txtUsuario.Text}");
                 Utiles.LimpiarControles(this);
             }
             else

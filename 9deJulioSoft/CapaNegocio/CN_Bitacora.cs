@@ -11,7 +11,7 @@ namespace CapaNegocio
 {
     public static class CN_Bitacora
     {
-        public static void Insertar(int usuario,  string entidad, string accion, string detalle)
+        public static void Guardar(int usuario,  string entidad, string accion, string detalle)
         {
             var bitacoraDatos = new CD_Bitacora();
             bitacoraDatos.Insertar(usuario, entidad, accion, detalle);
