@@ -143,6 +143,9 @@ namespace CapaPresentacion
             AbrirFormulario<ReporteReservas>();
         }
 
-
+        private void abrirFormularioFrmBitacoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<FrmBitacora>();
+        }
     }
 }

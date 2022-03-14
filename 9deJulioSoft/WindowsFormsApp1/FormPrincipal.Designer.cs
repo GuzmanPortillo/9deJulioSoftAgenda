@@ -56,6 +56,7 @@ namespace CapaPresentacion
             this.permisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PanelFormularios = new System.Windows.Forms.Panel();
+            this.abrirFormularioFrmBitacoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -211,6 +212,8 @@ namespace CapaPresentacion
             // 
             // herramientasToolStripMenuItem
             // 
+            this.herramientasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.abrirFormularioFrmBitacoraToolStripMenuItem});
             this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
             this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
             this.herramientasToolStripMenuItem.Text = "Herramientas";
@@ -269,6 +272,13 @@ namespace CapaPresentacion
             this.PanelFormularios.Size = new System.Drawing.Size(963, 549);
             this.PanelFormularios.TabIndex = 1;
             // 
+            // abrirFormularioFrmBitacoraToolStripMenuItem
+            // 
+            this.abrirFormularioFrmBitacoraToolStripMenuItem.Name = "abrirFormularioFrmBitacoraToolStripMenuItem";
+            this.abrirFormularioFrmBitacoraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.abrirFormularioFrmBitacoraToolStripMenuItem.Text = "Bitacora";
+            this.abrirFormularioFrmBitacoraToolStripMenuItem.Click += new System.EventHandler(this.abrirFormularioFrmBitacoraToolStripMenuItem_Click);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -320,5 +330,6 @@ namespace CapaPresentacion
         private System.Windows.Forms.ToolStripMenuItem nuevaReservaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteToolStripMenuItem1;
         private System.Windows.Forms.Panel PanelFormularios;
+        private System.Windows.Forms.ToolStripMenuItem abrirFormularioFrmBitacoraToolStripMenuItem;
     }
 }

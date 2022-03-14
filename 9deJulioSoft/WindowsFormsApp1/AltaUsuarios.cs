@@ -36,6 +36,7 @@ namespace CapaPresentacion
                                     estado: "Activo");
                     var resultado = modeloUsuario.altaUsuario();
                     MessageBox.Show(resultado);
+                    CN_Bitacora.Guardar(InicioSesion.idusuario, BitacoraEntidad.Usuario.ToString(), BitacoraAccion.Alta.ToString(), $"Alta de usuario {txtUsuario.Text}");
                     Utiles.LimpiarControles(this);
                 }
                 else
