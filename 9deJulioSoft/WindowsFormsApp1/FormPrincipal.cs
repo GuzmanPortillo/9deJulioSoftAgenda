@@ -147,5 +147,10 @@ namespace CapaPresentacion
         {
             AbrirFormulario<FrmBitacora>();
         }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<BackupAndRestoreDB>();
+        }
     }
 }

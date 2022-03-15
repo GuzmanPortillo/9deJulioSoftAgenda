@@ -81,7 +81,12 @@ namespace CapaPresentacion
             this.txtCategoria = new System.Windows.Forms.TextBox();
             this.txtLocalidad = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pcbEditarsocio = new System.Windows.Forms.PictureBox();
+            this.btnEditarFoto = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.lblEditarSocio = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbEditarsocio)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -486,7 +491,7 @@ namespace CapaPresentacion
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(422, 15);
+            this.btnEditar.Location = new System.Drawing.Point(555, 15);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(81, 34);
             this.btnEditar.TabIndex = 86;
@@ -496,7 +501,7 @@ namespace CapaPresentacion
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(550, 15);
+            this.btnGuardar.Location = new System.Drawing.Point(675, 15);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 34);
             this.btnGuardar.TabIndex = 87;
@@ -551,19 +556,65 @@ namespace CapaPresentacion
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnSalir);
             this.groupBox1.Controls.Add(this.btnEditar);
             this.groupBox1.Controls.Add(this.btnGuardar);
             this.groupBox1.Location = new System.Drawing.Point(13, 551);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(636, 55);
+            this.groupBox1.Size = new System.Drawing.Size(872, 55);
             this.groupBox1.TabIndex = 96;
             this.groupBox1.TabStop = false;
+            // 
+            // pcbEditarsocio
+            // 
+            this.pcbEditarsocio.Image = ((System.Drawing.Image)(resources.GetObject("pcbEditarsocio.Image")));
+            this.pcbEditarsocio.Location = new System.Drawing.Point(676, 159);
+            this.pcbEditarsocio.Name = "pcbEditarsocio";
+            this.pcbEditarsocio.Size = new System.Drawing.Size(200, 200);
+            this.pcbEditarsocio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbEditarsocio.TabIndex = 97;
+            this.pcbEditarsocio.TabStop = false;
+            // 
+            // btnEditarFoto
+            // 
+            this.btnEditarFoto.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarFoto.Location = new System.Drawing.Point(676, 365);
+            this.btnEditarFoto.Name = "btnEditarFoto";
+            this.btnEditarFoto.Size = new System.Drawing.Size(200, 50);
+            this.btnEditarFoto.TabIndex = 98;
+            this.btnEditarFoto.Text = "Editar Foto";
+            this.btnEditarFoto.UseVisualStyleBackColor = true;
+            this.btnEditarFoto.Click += new System.EventHandler(this.btnEditarFoto_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Location = new System.Drawing.Point(788, 15);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 34);
+            this.btnSalir.TabIndex = 88;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // lblEditarSocio
+            // 
+            this.lblEditarSocio.AutoSize = true;
+            this.lblEditarSocio.Font = new System.Drawing.Font("Calibri", 18F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditarSocio.Location = new System.Drawing.Point(745, 48);
+            this.lblEditarSocio.Name = "lblEditarSocio";
+            this.lblEditarSocio.Size = new System.Drawing.Size(131, 29);
+            this.lblEditarSocio.TabIndex = 99;
+            this.lblEditarSocio.Text = "Editar Socio";
             // 
             // Socios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 618);
+            this.ClientSize = new System.Drawing.Size(897, 618);
+            this.Controls.Add(this.lblEditarSocio);
+            this.Controls.Add(this.btnEditarFoto);
+            this.Controls.Add(this.pcbEditarsocio);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtLocalidad);
             this.Controls.Add(this.btnBuscar);
@@ -618,6 +669,7 @@ namespace CapaPresentacion
             this.Text = "Administración de Socio";
             this.Load += new System.EventHandler(this.Socios_Load);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pcbEditarsocio)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -676,5 +728,9 @@ namespace CapaPresentacion
         private System.Windows.Forms.TextBox txtCategoria;
         private System.Windows.Forms.TextBox txtLocalidad;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox pcbEditarsocio;
+        private System.Windows.Forms.Button btnEditarFoto;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Label lblEditarSocio;
     }
 }

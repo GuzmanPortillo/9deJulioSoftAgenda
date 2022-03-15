@@ -93,6 +93,12 @@
     <Compile Include="AltaUsuarios.Designer.cs">
       <DependentUpon>AltaUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="BackupAndRestoreDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackupAndRestoreDB.Designer.cs">
+      <DependentUpon>BackupAndRestoreDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Confirmar Reserva.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +225,9 @@
     <Compile Include="Utiles.cs" />
     <EmbeddedResource Include="AltaUsuarios.resx">
       <DependentUpon>AltaUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackupAndRestoreDB.resx">
+      <DependentUpon>BackupAndRestoreDB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Confirmar Reserva.resx">
       <DependentUpon>Confirmar Reserva.cs</DependentUpon>

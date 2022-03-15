@@ -49,6 +49,8 @@ namespace CapaPresentacion
             this.cargarAgendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.abrirFormularioFrmBitacoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDe9deJulioSoftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,7 +58,6 @@ namespace CapaPresentacion
             this.permisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PanelFormularios = new System.Windows.Forms.Panel();
-            this.abrirFormularioFrmBitacoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -213,10 +214,25 @@ namespace CapaPresentacion
             // herramientasToolStripMenuItem
             // 
             this.herramientasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.abrirFormularioFrmBitacoraToolStripMenuItem});
+            this.abrirFormularioFrmBitacoraToolStripMenuItem,
+            this.toolStripMenuItem2});
             this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
             this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
             this.herramientasToolStripMenuItem.Text = "Herramientas";
+            // 
+            // abrirFormularioFrmBitacoraToolStripMenuItem
+            // 
+            this.abrirFormularioFrmBitacoraToolStripMenuItem.Name = "abrirFormularioFrmBitacoraToolStripMenuItem";
+            this.abrirFormularioFrmBitacoraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.abrirFormularioFrmBitacoraToolStripMenuItem.Text = "Bitacora";
+            this.abrirFormularioFrmBitacoraToolStripMenuItem.Click += new System.EventHandler(this.abrirFormularioFrmBitacoraToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Text = "Backup and Restore";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // ayudaToolStripMenuItem
             // 
@@ -272,13 +288,6 @@ namespace CapaPresentacion
             this.PanelFormularios.Size = new System.Drawing.Size(963, 549);
             this.PanelFormularios.TabIndex = 1;
             // 
-            // abrirFormularioFrmBitacoraToolStripMenuItem
-            // 
-            this.abrirFormularioFrmBitacoraToolStripMenuItem.Name = "abrirFormularioFrmBitacoraToolStripMenuItem";
-            this.abrirFormularioFrmBitacoraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.abrirFormularioFrmBitacoraToolStripMenuItem.Text = "Bitacora";
-            this.abrirFormularioFrmBitacoraToolStripMenuItem.Click += new System.EventHandler(this.abrirFormularioFrmBitacoraToolStripMenuItem_Click);
-            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -331,5 +340,6 @@ namespace CapaPresentacion
         private System.Windows.Forms.ToolStripMenuItem reporteToolStripMenuItem1;
         private System.Windows.Forms.Panel PanelFormularios;
         private System.Windows.Forms.ToolStripMenuItem abrirFormularioFrmBitacoraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     }
 }

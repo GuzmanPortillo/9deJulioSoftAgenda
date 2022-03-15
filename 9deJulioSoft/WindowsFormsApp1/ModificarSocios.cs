@@ -2,10 +2,15 @@
 using System;
 using CapaNegocio;
 using System.Data;
+using System.Drawing;
+using System.IO;
+
 namespace CapaPresentacion
 {
     public partial class Socios : Form
     {
+        public object ImageHelper { get; private set; }
+
         public Socios()
         {
             InitializeComponent();
@@ -39,6 +44,9 @@ namespace CapaPresentacion
                 cbSexo.SelectedValue = int.Parse(dr["Id_sexo"].ToString());
                 cbTipodoc.SelectedValue = int.Parse(dr["Id_doc"].ToString());
                 dtpFecNacimiento.Value = DateTime.Parse(dr["Fecha_Nac"].ToString());
+                MemoryStream ms = new MemoryStream((byte[])dr["foto"]);
+                Bitmap bm = new Bitmap(ms);
+                pcbEditarsocio.Image = bm;
             }
         }
 
@@ -86,7 +94,7 @@ namespace CapaPresentacion
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            //pcbx1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            pcbEditarsocio.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
 
             if (!string.IsNullOrWhiteSpace(txtNombre.Text))
             {
@@ -180,6 +188,21 @@ namespace CapaPresentacion
             }
             else
                 MessageBox.Show("Ingrese Nombre");
+        }
+
+        private void btnEditarFoto_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog foto = new OpenFileDialog();
+            DialogResult rs = foto.ShowDialog();
+            if (rs == DialogResult.OK)
+            {
+                pcbEditarsocio.Image = Image.FromFile(foto.FileName);
+            }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

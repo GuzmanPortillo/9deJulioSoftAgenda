@@ -30,7 +30,6 @@ namespace CapaPresentacion
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaSocios));
-            this.label1 = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
             this.lblTipoDoc = new System.Windows.Forms.Label();
@@ -73,18 +72,9 @@ namespace CapaPresentacion
             this.btnCargarFoto = new System.Windows.Forms.Button();
             this.btnLimpiarP = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.lblAltaSocio = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pcbx1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(772, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(164, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Alta de Socios";
             // 
             // lblNombre
             // 
@@ -441,7 +431,7 @@ namespace CapaPresentacion
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(610, 535);
+            this.btnGuardar.Location = new System.Drawing.Point(554, 536);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(160, 50);
             this.btnGuardar.TabIndex = 92;
@@ -452,7 +442,7 @@ namespace CapaPresentacion
             // pcbx1
             // 
             this.pcbx1.Image = ((System.Drawing.Image)(resources.GetObject("pcbx1.Image")));
-            this.pcbx1.Location = new System.Drawing.Point(764, 48);
+            this.pcbx1.Location = new System.Drawing.Point(739, 87);
             this.pcbx1.Name = "pcbx1";
             this.pcbx1.Size = new System.Drawing.Size(200, 200);
             this.pcbx1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -462,7 +452,7 @@ namespace CapaPresentacion
             // btnCargarFoto
             // 
             this.btnCargarFoto.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCargarFoto.Location = new System.Drawing.Point(764, 272);
+            this.btnCargarFoto.Location = new System.Drawing.Point(739, 297);
             this.btnCargarFoto.Name = "btnCargarFoto";
             this.btnCargarFoto.Size = new System.Drawing.Size(200, 50);
             this.btnCargarFoto.TabIndex = 94;
@@ -473,7 +463,7 @@ namespace CapaPresentacion
             // btnLimpiarP
             // 
             this.btnLimpiarP.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiarP.Location = new System.Drawing.Point(791, 535);
+            this.btnLimpiarP.Location = new System.Drawing.Point(756, 535);
             this.btnLimpiarP.Name = "btnLimpiarP";
             this.btnLimpiarP.Size = new System.Drawing.Size(173, 50);
             this.btnLimpiarP.TabIndex = 96;
@@ -489,11 +479,23 @@ namespace CapaPresentacion
             this.dateTimePicker1.Size = new System.Drawing.Size(297, 26);
             this.dateTimePicker1.TabIndex = 6;
             // 
+            // lblAltaSocio
+            // 
+            this.lblAltaSocio.AutoSize = true;
+            this.lblAltaSocio.Font = new System.Drawing.Font("Calibri", 18F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAltaSocio.Location = new System.Drawing.Point(808, 26);
+            this.lblAltaSocio.Name = "lblAltaSocio";
+            this.lblAltaSocio.Size = new System.Drawing.Size(113, 29);
+            this.lblAltaSocio.TabIndex = 100;
+            this.lblAltaSocio.Text = "Alta Socio";
+            // 
             // AltaSocios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(982, 598);
+            this.ClientSize = new System.Drawing.Size(957, 598);
+            this.Controls.Add(this.lblAltaSocio);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.btnLimpiarP);
             this.Controls.Add(this.btnCargarFoto);
@@ -536,7 +538,6 @@ namespace CapaPresentacion
             this.Controls.Add(this.lblTipoDoc);
             this.Controls.Add(this.lblApellido);
             this.Controls.Add(this.lblNombre);
-            this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AltaSocios";
             this.Text = "Alta Socios";
@@ -548,8 +549,6 @@ namespace CapaPresentacion
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.Label lblTipoDoc;
@@ -592,5 +591,6 @@ namespace CapaPresentacion
         private System.Windows.Forms.Button btnCargarFoto;
         private System.Windows.Forms.Button btnLimpiarP;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label lblAltaSocio;
     }
 }

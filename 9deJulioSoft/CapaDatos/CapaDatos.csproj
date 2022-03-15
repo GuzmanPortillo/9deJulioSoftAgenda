@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Accesodatos.cs" />
     <Compile Include="CD_Agenda.cs" />
+    <Compile Include="CD_BackupRestore.cs" />
     <Compile Include="CD_LlenarCombos.cs" />
     <Compile Include="CD_Bitacora.cs" />
     <Compile Include="ConnectionToSql.cs" />
