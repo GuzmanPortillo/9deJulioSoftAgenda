@@ -19,7 +19,7 @@ namespace CapaDatos
         //#endregion
 
         //Login
-        public void editarPerfil(int id, string usuario, string contrasenia, string nombres, string apellidos, string estado)
+        public void editarPerfil(int id, string usuario, string contrasenia, string nombres, string apellidos, string estado, byte[] foto)
         {
             using (var connection = GetConnection())
             {
@@ -27,21 +27,22 @@ namespace CapaDatos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = "update tusuario set Usuario=@usuario, Contrasenia=@contrasenia, Nombres=@Nombres, Apellidos=@apellidos, Estado=@estado where id_usuario=@id";
+                    command.CommandText = "sp_ModificarUsuario";
                     command.Parameters.AddWithValue("@usuario", usuario);
                     command.Parameters.AddWithValue("@contrasenia", contrasenia);
                     command.Parameters.AddWithValue("@Nombres", nombres);
                     command.Parameters.AddWithValue("@apellidos", apellidos);
-                    //command.Parameters.AddWithValue("@mail", mail);
                     command.Parameters.AddWithValue("@id", id);
                     command.Parameters.AddWithValue("@estado", estado);
-                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("@foto ", SqlDbType.Image).Value = foto;
+                    command.CommandType = CommandType.StoredProcedure;
                     command.ExecuteNonQuery();
+                    command.Parameters.Clear();
                 }
             }
         }
 
-        public void altaUsuario(string usuario, string contrasenia, string nombres, string apellidos, string estado)
+        public void altaUsuario(string usuario, string contrasenia, string nombres, string apellidos, string estado, byte[] foto)
         {
             using (var connection = GetConnection())
             {
@@ -49,18 +50,17 @@ namespace CapaDatos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = "insert  into tusuario(Usuario,Nombres, Apellidos, Contrasenia, Estado )" +
-                                            "Values" + "('" + usuario + "','" + nombres + "','" + apellidos  + "','" + contrasenia  + "','" + estado + "')";
+                    command.CommandText = "sp_AltaUsuario";
                     command.Parameters.AddWithValue("@usuario", usuario);
                     command.Parameters.AddWithValue("@Nombres", nombres);
                     command.Parameters.AddWithValue("@apellidos", apellidos);
                     command.Parameters.AddWithValue("@contrasenia", contrasenia);
                     command.Parameters.AddWithValue("@estado", estado);
-                    //command.Parameters.AddWithValue("@mail", mail);
-                    //command.Parameters.AddWithValue("@id", id);
+                    command.Parameters.AddWithValue("@foto ", SqlDbType.Image).Value = foto;
 
-                    command.CommandType = CommandType.Text;
+                    command.CommandType = CommandType.StoredProcedure;
                     command.ExecuteNonQuery();
+                    command.Parameters.Clear();
                 }
             }
         }
@@ -87,8 +87,11 @@ namespace CapaDatos
                             InicioSesion.nombres = reader.GetString(2);
                             InicioSesion.apellidos = reader.GetString(3);
                             InicioSesion.contrasenia = reader.GetString(4);
-                            //InicioSesion.cargo = reader.GetInt32(4);
-                            
+                            InicioSesion.estado = reader.GetString(5);
+                            if (!string.IsNullOrEmpty(reader["foto"].ToString()))
+                            {
+                                InicioSesion.foto = (byte[])reader["foto"];                            
+                            }
                         }
 
                         return true;
