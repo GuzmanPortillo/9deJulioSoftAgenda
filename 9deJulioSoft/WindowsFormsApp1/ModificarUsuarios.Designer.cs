@@ -119,18 +119,18 @@ namespace CapaPresentacion
             // 
             // btnAccion
             // 
-            this.btnAccion.Location = new System.Drawing.Point(504, 353);
+            this.btnAccion.Location = new System.Drawing.Point(354, 362);
             this.btnAccion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAccion.Name = "btnAccion";
-            this.btnAccion.Size = new System.Drawing.Size(100, 26);
+            this.btnAccion.Size = new System.Drawing.Size(144, 26);
             this.btnAccion.TabIndex = 9;
-            this.btnAccion.Text = "Editar";
+            this.btnAccion.Text = "Modificar Usuario";
             this.btnAccion.UseVisualStyleBackColor = true;
             this.btnAccion.Click += new System.EventHandler(this.btnAccion_Click);
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(520, 405);
+            this.btnSalir.Location = new System.Drawing.Point(520, 362);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(100, 26);
@@ -188,7 +188,7 @@ namespace CapaPresentacion
             // 
             // BtnOtroUsuario
             // 
-            this.BtnOtroUsuario.Location = new System.Drawing.Point(13, 405);
+            this.BtnOtroUsuario.Location = new System.Drawing.Point(13, 362);
             this.BtnOtroUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.BtnOtroUsuario.Name = "BtnOtroUsuario";
             this.BtnOtroUsuario.Size = new System.Drawing.Size(145, 26);
@@ -234,7 +234,7 @@ namespace CapaPresentacion
             this.groupBox1.Controls.Add(this.lblContraseñaActual);
             this.groupBox1.Controls.Add(this.lblConfirmarPass);
             this.groupBox1.Controls.Add(this.txtConfirmarPass);
-            this.groupBox1.Location = new System.Drawing.Point(286, 248);
+            this.groupBox1.Location = new System.Drawing.Point(286, 232);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(318, 100);
             this.groupBox1.TabIndex = 28;
@@ -291,7 +291,7 @@ namespace CapaPresentacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(635, 442);
+            this.ClientSize = new System.Drawing.Size(635, 401);
             this.Controls.Add(this.btnEditarFoto);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnMostrarPass);

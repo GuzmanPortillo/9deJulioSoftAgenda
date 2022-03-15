@@ -41,9 +41,12 @@ namespace CapaPresentacion
             {
                 rbtInactivo.Checked = true;
             }
-            MemoryStream ms = new MemoryStream(InicioSesion.foto);
-            Bitmap bm = new Bitmap(ms);
-            picPerfil.Image = bm;
+            if(InicioSesion.foto != null)
+            {
+                MemoryStream ms = new MemoryStream(InicioSesion.foto);
+                Bitmap bm = new Bitmap(ms);
+                picPerfil.Image = bm;
+            }
 
             Utiles.BloquearControles(this);
         }
@@ -53,7 +56,7 @@ namespace CapaPresentacion
             Utiles.BloquearControles(this);
             txtContraseña.PasswordChar = '*';
             picPerfil.Image = Utiles.ImagenUsuario();
-            btnAccion.Text = "Editar";
+            btnAccion.Text = "Modificar Usuario";
             btnAccion.Enabled = false;
             txtBucarUsuario.Enabled = true;
         }
@@ -181,7 +184,7 @@ namespace CapaPresentacion
 
         private void btnAccion_Click(object sender, EventArgs e)
         {
-            if (btnAccion.Text == "Editar")
+            if (btnAccion.Text == "Modificar Usuario")
             {
                 Utiles.DesbloquearControles(this);
                 btnAccion.Text = "Guardar";
@@ -190,7 +193,7 @@ namespace CapaPresentacion
             else
             {
                 if (GuardarCambios())
-                    btnAccion.Text = "Editar";
+                    btnAccion.Text = "Modificar Usuario";
             }
         }
     }
