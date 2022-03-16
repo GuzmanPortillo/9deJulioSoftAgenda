@@ -16,6 +16,7 @@ namespace CapaDatos
         private int idUsuarios;
         private int idRol;
         private int idUsuarioAlta;
+        private bool permitir;
 
         #endregion
 
@@ -36,6 +37,13 @@ namespace CapaDatos
             get => idUsuarioAlta;
             set { idUsuarioAlta = value; }
         }
+
+        public bool Permitir
+        {
+            get => permitir;
+            set { permitir = value; }
+        }
+
         #endregion
 
         public DataTable ConsultaUsuarioRol(int idUsuario)
@@ -72,8 +80,21 @@ namespace CapaDatos
 
         public void actualizarRol()
         {
-            string sSql = "UPDATE tUsuarioRoles set id_rol = " + idRol + " where id_usuario = " + idUsuarios;
-            objDB.Ejecutar(sSql);
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandText = "sp_ActualizarRol";
+                    command.Parameters.AddWithValue("@idUsuario", IdUsuario);
+                    command.Parameters.AddWithValue("@idRol", IdRol);
+                    command.Parameters.AddWithValue("@activo", Permitir);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
         }
 
         public DataTable EditarOtroUsuario(string usuario)

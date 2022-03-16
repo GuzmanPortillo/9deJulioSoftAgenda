@@ -122,7 +122,6 @@ namespace CapaPresentacion
                 usuariosToolStripMenuItem.Enabled = false;
                 usuariosToolStripMenuItem.Visible = false;
             }
-
         }
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)

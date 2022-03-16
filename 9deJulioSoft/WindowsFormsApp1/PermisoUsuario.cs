@@ -70,44 +70,12 @@ namespace CapaPresentacion
             dgvPermisoUsuario.Refresh();
         }
 
-        //private void Hacer_pasajeDatos()
-        //{
-        //    objusuarioModel.IdUsuario = Convert.ToInt32(dgvPermisoUsuario.SelectedRows[0].Cells[0].Value.ToString());
-        //    objusuarioModel.IdRol = cboRoles.SelectedValue.ToString();
-        //}
-        //private void Hacer_pasajeDatosAlta()
-        //{
-        //    objusuarioModel.IdUsuarioAlta = cboUsuarios.SelectedValue.ToString();
-        //    objusuarioModel.IdRol = cboRoles.SelectedValue.ToString();
-        //}
-
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private void Hacer_pasajeDatos(DataGridViewRow row)
         {
-            try
-            {
-                objusuarioModel.insertar_Datos();
-                MessageBox.Show("Se guardó correctamente");
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show("Error al guardar los dator por: \n" + error);
-
-            }
-        }
-
-        private void btnGuardarCambios_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //Hacer_pasajeDatos();
-                objusuarioModel.actualizar_rol();
-                MessageBox.Show("Se actualizó correctamente");
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show("Error al guardar los cambios por: \n" + error);
-            }
-        }
+            objusuarioModel.IdUsuario = Convert.ToInt32(cboUsuarios.SelectedValue);
+            objusuarioModel.IdRol = row.Cells["Id_Rol"].Value.ToString();
+            objusuarioModel.Permitir = Convert.ToBoolean(row.Cells["ActivoMod"].Value);
+       }
 
         private void cboUsuarios_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -116,6 +84,36 @@ namespace CapaPresentacion
 
             if (cboUsuarios.SelectedIndex > -1)
                 mostrarUsuarioPermiso(Convert.ToInt32(cboUsuarios.SelectedValue));
+
+            btnGuardar.Enabled = cboUsuarios.SelectedIndex > -1;
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnGuardar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                List<DataGridViewRow> permisos = dgvPermisoUsuario.Rows.Cast<DataGridViewRow>().ToList();
+                var resultado = MessageBox.Show("Desea guardar los cambios", "Permisos usuarios",
+                                                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (resultado == DialogResult.OK)
+                {
+                    foreach (DataGridViewRow item in permisos)
+                    {
+                        Hacer_pasajeDatos(item);
+                        objusuarioModel.actualizar_rol();
+                    }
+                    MessageBox.Show("Se actualizó correctamente");
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Ocurrió un error " + error.Message);
+            }
         }
     }
 }

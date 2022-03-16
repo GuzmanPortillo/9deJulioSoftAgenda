@@ -15,6 +15,7 @@ namespace CapaNegocio
         private int idusuarios;
         private string idRol;
         private string idusuarioAlta;
+        private bool permitir;
 
         #endregion
 
@@ -30,11 +31,11 @@ namespace CapaNegocio
             get => idRol;
             set { idRol = value; }
         }
-        public string IdUsuarioAlta
-        {
-            get => idusuarioAlta;
-            set { idusuarioAlta = value; }
 
+        public bool Permitir
+        {
+            get => permitir;
+            set { permitir = value; }
         }
 
         public string Usuario { get; set; }
@@ -45,16 +46,7 @@ namespace CapaNegocio
 
             objUsuario.IdUsuario = this.idusuarios;
             objUsuario.IdRol = Convert.ToInt32(idRol);
-            objUsuario.IdUsuarioAlta = Convert.ToInt32(idusuarioAlta);
-            
-
-
-        }
-
-        public void insertar_Datos()
-        {
-            PasarDatos();
-            objUsuario.insertarUsurioRol();
+            objUsuario.Permitir = this.permitir;
         }
 
         public DataTable consultaUsuarioPermiso(int idUsuario)
