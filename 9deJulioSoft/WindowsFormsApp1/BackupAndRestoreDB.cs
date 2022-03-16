@@ -40,7 +40,8 @@ namespace CapaPresentacion
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
+            this.Close();
         }
 
         private void BtnDirectorioRest_Click(object sender, EventArgs e)

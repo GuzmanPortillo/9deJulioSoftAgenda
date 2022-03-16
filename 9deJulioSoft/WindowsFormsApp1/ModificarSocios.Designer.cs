@@ -81,9 +81,9 @@ namespace CapaPresentacion
             this.txtCategoria = new System.Windows.Forms.TextBox();
             this.txtLocalidad = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.pcbEditarsocio = new System.Windows.Forms.PictureBox();
             this.btnEditarFoto = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.lblEditarSocio = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbEditarsocio)).BeginInit();
@@ -565,6 +565,16 @@ namespace CapaPresentacion
             this.groupBox1.TabIndex = 96;
             this.groupBox1.TabStop = false;
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Location = new System.Drawing.Point(788, 15);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 34);
+            this.btnSalir.TabIndex = 88;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // pcbEditarsocio
             // 
             this.pcbEditarsocio.Image = ((System.Drawing.Image)(resources.GetObject("pcbEditarsocio.Image")));
@@ -585,16 +595,6 @@ namespace CapaPresentacion
             this.btnEditarFoto.Text = "Editar Foto";
             this.btnEditarFoto.UseVisualStyleBackColor = true;
             this.btnEditarFoto.Click += new System.EventHandler(this.btnEditarFoto_Click);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Location = new System.Drawing.Point(788, 15);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 34);
-            this.btnSalir.TabIndex = 88;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // lblEditarSocio
             // 
@@ -664,6 +664,7 @@ namespace CapaPresentacion
             this.Controls.Add(this.txtDniBuscar);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Socios";
             this.Text = "Administración de Socio";

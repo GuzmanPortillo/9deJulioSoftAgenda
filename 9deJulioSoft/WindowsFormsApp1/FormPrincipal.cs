@@ -32,7 +32,7 @@ namespace CapaPresentacion
                 formulario = new MiForm();
 
                 formulario.TopLevel = false;
-                formulario.FormBorderStyle = FormBorderStyle.FixedSingle;
+                formulario.FormBorderStyle = FormBorderStyle.FixedDialog;
                 //formulario.Dock = DockStyle.Fill;
                 PanelFormularios.Controls.Add(formulario);
                 PanelFormularios.Tag = formulario;
