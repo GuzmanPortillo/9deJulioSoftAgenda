@@ -124,7 +124,7 @@ namespace CapaDatos
                 using (var command = new SqlCommand())
                 {
                     string sSql = "SELECT * From Eventos as a inner join EstablecimientoLugar as b " +
-                        " on a.idEspacio = b.idEspacioEst Where a.ID = " + idapp;
+                        " on a.idEspacio = b.idEspacioEst Where a.ID = ";//+ idapp;
                     //string sSql = "SELECT * From Eventos Where ID = " + idapp;
                     DataTable dt = new DataTable();
                     command.Connection = connection;
