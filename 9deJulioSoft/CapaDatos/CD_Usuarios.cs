@@ -38,33 +38,22 @@ namespace CapaDatos
         }
         #endregion
 
-        public DataTable ConsultaUsuarioRol(string UsuarioRol)
+        public DataTable ConsultaUsuarioRol(int idUsuario)
         {
-            string sSql;
             using (var connection = GetConnection())
             {
 
                 connection.Open();
                 using (var command = new SqlCommand())
                 {
-                    if (UsuarioRol == "")
-                    {
-                        sSql = "SELECT t.id_usuario, t.Usuario, t.Nombres, t.Apellidos, r.id_rol, r.Nombre From tusuario as t inner join tUsuarioRoles as tu" +
-                            " on t.id_usuario = tu.id_usuario inner join rol as r on tu.id_rol = r.id_rol";
-                    }
-                    else
-                    {
-                        sSql = "SELECT t.id_usuario, t.Usuario, t.Nombres, t.Apellidos, r.id_rol, r.Nombre From tusuario as t inner join tUsuarioRoles as tu" +
-                            " on t.id_usuario = tu.id_usuario inner join rol as r on tu.id_rol = r.id_rol where t.Usuario = '"  + UsuarioRol + "'";
-                    }
-
                     DataTable dt = new DataTable();
                     command.Connection = connection;
-                    command.CommandText = sSql;
+                    command.CommandText = "sp_ObtenerPermisosUsuario";
+                    command.Parameters.AddWithValue("@usuario", idUsuario);
+                    command.CommandType = CommandType.StoredProcedure;
                     SqlDataReader dr = command.ExecuteReader();
                     dt.Load(dr);
 
-                    // da.Fill(dt);
                     connection.Close();
                     return dt;
                 }

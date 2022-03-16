@@ -16,6 +16,7 @@ namespace CapaPresentacion
             InitializeComponent();
         }
 
+        int idUsuario = 0;
 
         private void ModificarUsuarios_Load(object sender, EventArgs e)
         {
@@ -31,6 +32,7 @@ namespace CapaPresentacion
             txtApellidos.Text = InicioSesion.apellidos;
             txtUsuario.Text = InicioSesion.usuario;
             txtContraseña.Text = InicioSesion.contrasenia;
+            idUsuario = InicioSesion.idusuario;
             txtConfirmarPass.Text = "";
             txtContraseñaNueva.Text = "";
             if (InicioSesion.estado == "Activo")
@@ -75,7 +77,7 @@ namespace CapaPresentacion
                         return false;
                     }
 
-                    if (txtContraseñaNueva.Text == txtConfirmarPass.Text)
+                    if (txtContraseñaNueva.Text != txtConfirmarPass.Text)
                     {
                         MessageBox.Show("La contraseña no coincide, intentar nuevamente");
                         return false;
@@ -86,7 +88,7 @@ namespace CapaPresentacion
                 picPerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
 
                 var modeloUsuario = new CN_Usuarios(
-                    idUsuario: InicioSesion.idusuario,
+                    idUsuario: idUsuario,
                     users: txtUsuario.Text,
                     contrasenia: string.IsNullOrWhiteSpace(txtContraseñaNueva.Text) ? txtContraseña.Text : txtContraseñaNueva.Text,
                     nombres: txtNombres.Text,
@@ -124,12 +126,12 @@ namespace CapaPresentacion
             {
                 string estado;
                 DataRow dr = dt.Rows[0];
+                idUsuario = Convert.ToInt32(dr["id_usuario"]);
                 txtNombres.Text = dr["Nombres"].ToString();
                 txtApellidos.Text = dr["Apellidos"].ToString();
                 txtContraseña.Text = dr["Contrasenia"].ToString();
                 txtUsuario.Text = dr["Usuario"].ToString();
                 estado = dr["Estado"].ToString();
-
                 if (estado == "Activo")
                     rbtActivo.Checked = true;
                 else
