@@ -34,9 +34,9 @@ namespace CapaPresentacion
             this.btnDirectorio = new System.Windows.Forms.Button();
             this.BtnDirectorioRest = new System.Windows.Forms.Button();
             this.grbRestore = new System.Windows.Forms.GroupBox();
+            this.btnRestoreDB = new System.Windows.Forms.Button();
             this.grbBkp = new System.Windows.Forms.GroupBox();
             this.btnbkpDB = new System.Windows.Forms.Button();
-            this.btnRestoreDB = new System.Windows.Forms.Button();
             this.grbSalir = new System.Windows.Forms.GroupBox();
             this.btnSalir = new System.Windows.Forms.Button();
             this.grbRestore.SuspendLayout();
@@ -76,6 +76,7 @@ namespace CapaPresentacion
             this.BtnDirectorioRest.TabIndex = 3;
             this.BtnDirectorioRest.Text = "Directorio";
             this.BtnDirectorioRest.UseVisualStyleBackColor = true;
+            this.BtnDirectorioRest.Click += new System.EventHandler(this.BtnDirectorioRest_Click);
             // 
             // grbRestore
             // 
@@ -88,6 +89,16 @@ namespace CapaPresentacion
             this.grbRestore.TabIndex = 4;
             this.grbRestore.TabStop = false;
             this.grbRestore.Text = "Restore";
+            // 
+            // btnRestoreDB
+            // 
+            this.btnRestoreDB.Location = new System.Drawing.Point(136, 69);
+            this.btnRestoreDB.Name = "btnRestoreDB";
+            this.btnRestoreDB.Size = new System.Drawing.Size(106, 27);
+            this.btnRestoreDB.TabIndex = 4;
+            this.btnRestoreDB.Text = "Recuperar ";
+            this.btnRestoreDB.UseVisualStyleBackColor = true;
+            this.btnRestoreDB.Click += new System.EventHandler(this.btnRestoreDB_Click);
             // 
             // grbBkp
             // 
@@ -110,15 +121,6 @@ namespace CapaPresentacion
             this.btnbkpDB.Text = "Backup ";
             this.btnbkpDB.UseVisualStyleBackColor = true;
             this.btnbkpDB.Click += new System.EventHandler(this.btnbkpDB_Click);
-            // 
-            // btnRestoreDB
-            // 
-            this.btnRestoreDB.Location = new System.Drawing.Point(136, 69);
-            this.btnRestoreDB.Name = "btnRestoreDB";
-            this.btnRestoreDB.Size = new System.Drawing.Size(106, 27);
-            this.btnRestoreDB.TabIndex = 4;
-            this.btnRestoreDB.Text = "Recuperar ";
-            this.btnRestoreDB.UseVisualStyleBackColor = true;
             // 
             // grbSalir
             // 
@@ -143,7 +145,7 @@ namespace CapaPresentacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(553, 372);
+            this.ClientSize = new System.Drawing.Size(538, 396);
             this.Controls.Add(this.grbSalir);
             this.Controls.Add(this.grbBkp);
             this.Controls.Add(this.grbRestore);

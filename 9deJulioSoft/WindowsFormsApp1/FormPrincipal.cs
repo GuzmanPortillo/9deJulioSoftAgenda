@@ -115,7 +115,14 @@ namespace CapaPresentacion
             {
                 agendaDeportivaToolStripMenuItem1.Enabled = false;
                 reporteToolStripMenuItem.Enabled = false;
+
             }
+            if (InicioSesion.cargo == Cargos.contador)
+            {
+                usuariosToolStripMenuItem.Enabled = false;
+                usuariosToolStripMenuItem.Visible = false;
+            }
+
         }
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)
