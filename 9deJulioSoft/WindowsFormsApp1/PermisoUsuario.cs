@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using CapaNegocio;
 
 namespace CapaPresentacion
-
 {
     public partial class PermisoUsuario : Form
     {
@@ -19,7 +18,7 @@ namespace CapaPresentacion
         {
             InitializeComponent();
         }
-
+        private bool comboLlenado = false;
 
         private void LlenarCombo(ComboBox cb, string NombreTabla, string CampoID, string CampoDescrip, string Condicion = "")
         {
@@ -38,50 +37,54 @@ namespace CapaPresentacion
 
         private void PermisoUsuario_Load(object sender, EventArgs e)
         {
-            LlenarCombo(cboRoles, "rol", "Id_Rol", "Nombre");
-            grbAlta.Enabled = false;
-            grbContieneGrilla.Enabled = false;
+            LlenarCombo(cboUsuarios, "tusuario", "id_usuario", "usuario");
+            comboLlenado = true;
         }
-        private void mostrarUsuarioPermiso(string usuario)
+        private void mostrarUsuarioPermiso(int idUsuario)
         {
-            dgvPermisoUsuario.DataSource = objusuarioModel.consultaUsuarioPermiso(usuario);
+            dgvPermisoUsuario.DataSource = null;
+            dgvPermisoUsuario.Columns.Clear();
+            dgvPermisoUsuario.Refresh();
+
+            dgvPermisoUsuario.DataSource = objusuarioModel.consultaUsuarioPermiso(idUsuario);
+
+            for (int i = 0, j = dgvPermisoUsuario.Columns.Count - 2; i < j; i++)
+                dgvPermisoUsuario.Columns[i].ReadOnly = true;
+
+            dgvPermisoUsuario.Columns["Id_Rol"].Visible = false;
+            dgvPermisoUsuario.Columns["IdPermiso"].Visible = false;
+            dgvPermisoUsuario.Columns["Activo"].Visible = false;
+
+            DataGridViewCheckBoxColumn chk = new DataGridViewCheckBoxColumn();
+            chk.Name = "ActivoMod";
+            chk.HeaderText = "Permitir";
+
+            dgvPermisoUsuario.Columns.Add(chk);
+
+            dgvPermisoUsuario.Columns["Nombre"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            for (int i = 0, j = dgvPermisoUsuario.Rows.Count; i < j; i++)
+                dgvPermisoUsuario[4, i].Value = dgvPermisoUsuario[3, i].Value;
+
+
+            dgvPermisoUsuario.Refresh();
         }
 
-        private void Hacer_pasajeDatos()
-        {
-            objusuarioModel.IdUsuario = Convert.ToInt32(dgvPermisoUsuario.SelectedRows[0].Cells[0].Value.ToString());
-            objusuarioModel.IdRol = cboRoles.SelectedValue.ToString();
-        }
-        private void Hacer_pasajeDatosAlta()
-        {
-            objusuarioModel.IdUsuarioAlta = cboUsuarios.SelectedValue.ToString();
-            objusuarioModel.IdRol = cboRoles.SelectedValue.ToString();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            grbContieneBotones.Enabled = true;
-            btnGuardar.Enabled = false;
-        }
-
-        private void dgvPermisoUsuario_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            cboUsuarios.Text = dgvPermisoUsuario.SelectedRows[0].Cells[1].Value.ToString();
-            cboRoles.SelectedValue = Convert.ToInt32(dgvPermisoUsuario.SelectedRows[0].Cells[4].Value.ToString());
-            grbAlta.Enabled = true;
-            cboUsuarios.Enabled = false;
-        }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            mostrarUsuarioPermiso(txtBuscarUsuario.Text);
-        }
+        //private void Hacer_pasajeDatos()
+        //{
+        //    objusuarioModel.IdUsuario = Convert.ToInt32(dgvPermisoUsuario.SelectedRows[0].Cells[0].Value.ToString());
+        //    objusuarioModel.IdRol = cboRoles.SelectedValue.ToString();
+        //}
+        //private void Hacer_pasajeDatosAlta()
+        //{
+        //    objusuarioModel.IdUsuarioAlta = cboUsuarios.SelectedValue.ToString();
+        //    objusuarioModel.IdRol = cboRoles.SelectedValue.ToString();
+        //}
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                Hacer_pasajeDatosAlta();
                 objusuarioModel.insertar_Datos();
                 MessageBox.Show("Se guardó correctamente");
             }
@@ -92,30 +95,11 @@ namespace CapaPresentacion
             }
         }
 
-        private void rbtAlta_CheckedChanged(object sender, EventArgs e)
-        {
-            grbAlta.Enabled = true;
-            LlenarCombo(cboUsuarios, "tusuario", "id_usuario", "usuario");
-            grbContieneGrilla.Enabled = false;
-            btnGuardarCambios.Visible = false;
-            rbtModificacion.Checked = false;
-            btnGuardar.Visible = true;
-        }
-
-        private void rbtModificacion_CheckedChanged(object sender, EventArgs e)
-        {
-            grbContieneGrilla.Enabled = true;
-            grbAlta.Enabled = false;
-            rbtAlta.Checked = false;
-            btnGuardar.Visible = false;
-            btnGuardarCambios.Visible = true;
-        }
-
         private void btnGuardarCambios_Click(object sender, EventArgs e)
         {
             try
             {
-                Hacer_pasajeDatos();
+                //Hacer_pasajeDatos();
                 objusuarioModel.actualizar_rol();
                 MessageBox.Show("Se actualizó correctamente");
             }
@@ -123,6 +107,15 @@ namespace CapaPresentacion
             {
                 MessageBox.Show("Error al guardar los cambios por: \n" + error);
             }
+        }
+
+        private void cboUsuarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!comboLlenado)
+                return;
+
+            if (cboUsuarios.SelectedIndex > -1)
+                mostrarUsuarioPermiso(Convert.ToInt32(cboUsuarios.SelectedValue));
         }
     }
 }
