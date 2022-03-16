@@ -111,16 +111,20 @@ namespace CapaPresentacion
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
-            if (InicioSesion.cargo == Cargos.recepcionista)
+            if (!InicioSesion.cargos.Contains(Cargos.administrador))
             {
-                agendaDeportivaToolStripMenuItem1.Enabled = false;
-                reporteToolStripMenuItem.Enabled = false;
+                if (InicioSesion.cargos.Contains(Cargos.recepcionista))
+                {
+                    agendaDeportivaToolStripMenuItem1.Enabled = false;
+                    reporteToolStripMenuItem.Enabled = false;
+                }
 
-            }
-            if (InicioSesion.cargo == Cargos.contador)
-            {
-                usuariosToolStripMenuItem.Enabled = false;
-                usuariosToolStripMenuItem.Visible = false;
+                if (InicioSesion.cargos.Contains(Cargos.contador))
+                {
+                    usuariosToolStripMenuItem.Enabled = false;
+                    usuariosToolStripMenuItem.Visible = false;
+                }
+
             }
         }
 

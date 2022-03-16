@@ -14,7 +14,7 @@ namespace CapaSoporte.Cache
         public static string nombres { get; set; }
         public static string apellidos { get; set; }
         public static string estado { get; set; }
-        public static int cargo { get; set; }
+        public static int[] cargos { get; set; }
         public static byte[] foto { get; set; }
     }
 }

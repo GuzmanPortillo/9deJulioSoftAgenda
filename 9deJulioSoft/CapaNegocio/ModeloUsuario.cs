@@ -12,17 +12,14 @@ namespace CapaNegocio
         public bool LoginUser(string usuario, string pass)
         {
             var resultado = accesoDatos.Login(usuario, pass);
+
+            if (resultado)
+            {
+                accesoDatos.ObtenerCargos();
+            }
+
             accesoDatos = null; //Si no se mata el objeto que de la capa de datos da error el restore de la DB
             return resultado;
-        }
-
-        public void tipocargo()
-        {
-            if (InicioSesion.cargo == Cargos.administrador)
-            { }
-
-            if (InicioSesion.cargo == Cargos.recepcionista)
-            { }
         }
     }
 

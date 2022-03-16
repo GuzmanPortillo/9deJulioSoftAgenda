@@ -14,7 +14,6 @@ namespace CapaNegocio
         #region Atributos
         private int idusuarios;
         private string idRol;
-        private string idusuarioAlta;
         private bool permitir;
 
         #endregion

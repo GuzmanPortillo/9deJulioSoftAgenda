@@ -68,15 +68,6 @@ namespace CapaDatos
 
             }
         }
-        public void insertarUsurioRol()
-        {
-
-            string sSql = "Insert Into tUsuarioRoles" +
-            "(id_usuario, id_rol)" +
-            "Values" + "('" + idUsuarioAlta + "'," + idRol + ")";
-            objDB.Ejecutar(sSql);
-
-        }
 
         public void actualizarRol()
         {
