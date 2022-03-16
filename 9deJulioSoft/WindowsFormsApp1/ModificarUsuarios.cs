@@ -4,9 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using CapaSoporte.Cache;
 using CapaNegocio;
-
-
-
+using System.IO;
 
 namespace CapaPresentacion
 {
@@ -34,87 +32,94 @@ namespace CapaPresentacion
             txtUsuario.Text = InicioSesion.usuario;
             txtContraseña.Text = InicioSesion.contrasenia;
             txtConfirmarPass.Text = "";
-            txtContraseñaActual.Text = "";
-            if(InicioSesion.estado == "Activo")
+            txtContraseñaNueva.Text = "";
+            if (InicioSesion.estado == "Activo")
             {
                 rbtActivo.Checked = true;
             }
             else
             {
                 rbtInactivo.Checked = true;
-                //rbtActivo.Checked = false;
             }
+            if(InicioSesion.foto != null)
+            {
+                MemoryStream ms = new MemoryStream(InicioSesion.foto);
+                Bitmap bm = new Bitmap(ms);
+                picPerfil.Image = bm;
+            }
+
             Utiles.BloquearControles(this);
-         
         }
-
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            if(btnEditar.Text == "Editar")
-            {               
-                Utiles.DesbloquearControles(this);
-            }
-            
-        }
-
-        //private void initializePassEditControls()
-        //{
-        //    LinkEditPass.Text = "Edit";
-        //    txtPassword.UseSystemPasswordChar = true;
-        //    txtPassword.Enabled = false;
-        //    txtConfirmPass.UseSystemPasswordChar = true;
-        //    txtConfirmPass.Enabled = false;
-        //}
         private void reset()
         {
-            llenarDatosEdicion();
+            Utiles.LimpiarControles(this);
+            Utiles.BloquearControles(this);
+            txtContraseña.PasswordChar = '*';
+            picPerfil.Image = Utiles.ImagenUsuario();
+            btnAccion.Text = "Modificar Usuario";
+            btnAccion.Enabled = false;
+            txtBucarUsuario.Enabled = true;
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private bool GuardarCambios()
         {
-            string estadoUser;
-            if(rbtActivo.Checked == true)
+            try
             {
-            estadoUser = "Activo";
-            }
-            else
-            {
-             estadoUser = "Inactivo";
-            }
+                string estadoUser = (rbtActivo.Checked == true) ? "Activo" : "Inactivo";
 
-            if (txtContraseña.Text.Length >= 5)
-            {
-                if (txtContraseña.Text == txtConfirmarPass.Text)
+                if (!string.IsNullOrEmpty(txtContraseñaNueva.Text))
                 {
-                    if (txtContraseñaActual.Text == InicioSesion.contrasenia)
+                    if (txtContraseñaNueva.Text.Length < 5)
                     {
-                        var modeloUsuario = new CN_Usuarios(
-                            idUsuario: InicioSesion.idusuario,
-                            users: txtUsuario.Text,
-                            contrasenia: txtContraseña.Text,
-                            nombres: txtNombres.Text,
-                            apellidos: txtApellidos.Text,
-                            estado: estadoUser);
-                            
-                        var resultado = modeloUsuario.editarPerfilUsuario();
-                        MessageBox.Show(resultado);
-                        //reset();
-                        Utiles.LimpiarControles(this);
+                        MessageBox.Show("La contraseña debe tener 5 caracteres minimos");
+                        return false;
                     }
-                    else
-                        MessageBox.Show("Contraseña inconrrecta, intentar nuevamente");
-                }
-                else
-                    MessageBox.Show("La contraseña no coincide, intentar nuevamente");
-            }
-            else
-                MessageBox.Show("La contraseña debe tener 5 caracteres minimos");
 
+                    if (txtContraseñaNueva.Text == txtConfirmarPass.Text)
+                    {
+                        MessageBox.Show("La contraseña no coincide, intentar nuevamente");
+                        return false;
+                    }
+                }
+
+                System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                picPerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                var modeloUsuario = new CN_Usuarios(
+                    idUsuario: InicioSesion.idusuario,
+                    users: txtUsuario.Text,
+                    contrasenia: string.IsNullOrWhiteSpace(txtContraseñaNueva.Text) ? txtContraseña.Text : txtContraseñaNueva.Text,
+                    nombres: txtNombres.Text,
+                    apellidos: txtApellidos.Text,
+                    estado: estadoUser,
+                    foto: ms.GetBuffer());
+
+                var resultado = modeloUsuario.editarPerfilUsuario();
+                MessageBox.Show(resultado);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            DataTable dt = objUserModif.consultar_otroUsuario(txtBucarUsuario.Text);
+            if (string.IsNullOrWhiteSpace(txtBucarUsuario.Text))
+            {
+                MessageBox.Show("Ingrese el usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                reset();
+                return;
+            }
+            string usuario = txtBucarUsuario.Text.Trim();
+            DataTable dt = objUserModif.consultar_otroUsuario(txtBucarUsuario.Text.Trim());
+            
+            reset();
+            
+            txtBucarUsuario.Text = usuario;
+
             if (dt.Rows.Count > 0)
             {
                 string estado;
@@ -124,27 +129,72 @@ namespace CapaPresentacion
                 txtContraseña.Text = dr["Contrasenia"].ToString();
                 txtUsuario.Text = dr["Usuario"].ToString();
                 estado = dr["Estado"].ToString();
+
                 if (estado == "Activo")
-                {
                     rbtActivo.Checked = true;
+                else
+                    rbtInactivo.Checked = true;
+
+                if(!string.IsNullOrEmpty(dr["foto"].ToString()))
+                {
+                    MemoryStream ms = new MemoryStream((byte[])dr["foto"]);
+                    Bitmap bm = new Bitmap(ms);
+                    picPerfil.Image = bm;
                 }
                 else
                 {
-                    rbtInactivo.Checked = true;
-                    //rbtActivo.Checked = false;
+                    picPerfil.Image = Utiles.ImagenUsuario();
                 }
 
+                btnAccion.Enabled = true;
             }
-
+            else
+            {
+                MessageBox.Show("No existe el usuario a buscar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnOtroUsuario_Click(object sender, EventArgs e)
         {
+            reset();
             txtBucarUsuario.Visible = true;
             btnBuscar.Visible = true;
-            txtBucarUsuario.Enabled = true;
-            Utiles.LimpiarControles(this);
+            btnEditarFoto.Enabled = false;
         }
 
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMostrarPass_Click(object sender, EventArgs e)
+        {
+            txtContraseña.PasswordChar = txtContraseña.PasswordChar == '*' ? '\0' : '*';
+        }
+
+        private void btnEditarFoto_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog foto = new OpenFileDialog();
+            DialogResult rs = foto.ShowDialog();
+            if (rs == DialogResult.OK)
+            {
+                picPerfil.Image = Image.FromFile(foto.FileName);
+            }
+        }
+
+        private void btnAccion_Click(object sender, EventArgs e)
+        {
+            if (btnAccion.Text == "Modificar Usuario")
+            {
+                Utiles.DesbloquearControles(this);
+                btnAccion.Text = "Guardar";
+                btnEditarFoto.Enabled = true;
+            }
+            else
+            {
+                if (GuardarCambios())
+                    btnAccion.Text = "Modificar Usuario";
+            }
+        }
     }
 }

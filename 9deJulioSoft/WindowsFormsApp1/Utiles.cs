@@ -1,5 +1,6 @@
 ﻿using CapaNegocio;
 using System;
+using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -37,10 +38,15 @@ namespace CapaPresentacion
                 {
                     ((ComboBox)c).Enabled = false;
                 }
+                if (c is RadioButton)
+                {
+                    ((RadioButton)c).Enabled = false;
+                }
                 if (c is GroupBox | c is Panel)
                 {
                     BC2(c);
                 }
+
             }
         }
 
@@ -56,6 +62,10 @@ namespace CapaPresentacion
                 {
                     ((ComboBox)h).Enabled = false;
                 }
+                if (h is RadioButton)
+                {
+                    ((RadioButton)h).Enabled = false;
+                }
             }
         }
 
@@ -64,6 +74,8 @@ namespace CapaPresentacion
         {
             foreach (Control c in FRM.Controls)
             {
+                Type tipo = c.GetType();
+
                 if (c is TextBox)
                 {
                     ((TextBox)c).Enabled = true;
@@ -76,6 +88,11 @@ namespace CapaPresentacion
                 {
                     DC2(c);
                 }
+                if(c is RadioButton)
+                {
+                    ((RadioButton)c).Enabled = true;
+                }
+
             }
         }
 
@@ -95,6 +112,10 @@ namespace CapaPresentacion
         }
         #endregion
 
+        public static Image ImagenUsuario()
+        {
+            return CapaPresentacion.Properties.Resources.usuario;
+        }
     }
     //Validar email
     class Validar_email
@@ -135,5 +156,4 @@ namespace CapaPresentacion
         
     }
 
-    
 }

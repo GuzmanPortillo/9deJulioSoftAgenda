@@ -71,10 +71,11 @@ namespace CapaNegocio
         private string nombres;
         private string apellidos;
         private string estado;
+        private byte[] foto;
         //private string cargo;
         #endregion
 
-        public CN_Usuarios(int idUsuario, string users, string contrasenia, string nombres, string apellidos, string estado)
+        public CN_Usuarios(int idUsuario, string users, string contrasenia, string nombres, string apellidos, string estado, byte[] foto)
         {
             this.idUsuario = idUsuario;
             this.users = users;
@@ -82,15 +83,17 @@ namespace CapaNegocio
             this.nombres = nombres;
             this.apellidos = apellidos;
             this.estado = estado;
+            this.foto = foto;
             //this.cargo = cargo;
         }
-        public CN_Usuarios(string users, string contrasenia, string nombres, string apellidos, string estado)
+        public CN_Usuarios(string users, string contrasenia, string nombres, string apellidos, string estado, byte[] foto)
         {
             this.users = users;
             this.contrasenia = contrasenia;
             this.nombres = nombres;
             this.apellidos = apellidos;
             this.estado = estado;
+            this.foto = foto;
             //this.cargo = cargo;
         }
 
@@ -108,20 +111,12 @@ namespace CapaNegocio
         //Methods
         public string editarPerfilUsuario()
         {
-
-            //try
-            //{
-                objuserdatos.editarPerfil(idUsuario, users, contrasenia, nombres, apellidos, estado);
-                return "Tu perfil se ha editado correctamente";
-            //}
-            //catch (Exception ex)
-            //{
-            //    return "Usuario existente, intente nuevamente" + ex;
-            //}
+            objuserdatos.editarPerfil(idUsuario, users, contrasenia, nombres, apellidos, estado, foto);
+            return "El perfil se ha editado correctamente";
         }
         public string altaUsuario()
         {
-            objuserdatos.altaUsuario(users, contrasenia, nombres, apellidos, estado);
+            objuserdatos.altaUsuario(users, contrasenia, nombres, apellidos, estado, foto);
             return "El usuario se dio de alta correctamente";
         }
 
