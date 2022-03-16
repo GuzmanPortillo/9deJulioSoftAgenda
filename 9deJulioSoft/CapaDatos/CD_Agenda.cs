@@ -94,11 +94,36 @@ namespace CapaDatos
         {
             using (var connection = GetConnection())
             {
+                //TODO
+                connection.Open();
+                using (var command = new SqlCommand())
+                {
+                    string sSql = "SELECT a.NombreEvento, a.Fecha, a.Hora, b.Espacio From Eventos as " +
+                        "  a.ID = " + idapp;
+                    //string sSql = "SELECT * From Eventos Where ID = " + idapp;
+                    DataTable dt = new DataTable();
+                    command.Connection = connection;
+                    command.CommandText = sSql;
+                    SqlDataReader dr = command.ExecuteReader();
+                    dt.Load(dr);
+
+                    // da.Fill(dt);
+                    connection.Close();
+                    return dt;
+                }
+
+            }
+        }
+
+        public DataTable GetEvento(string fecha, int hora, int idEspacio)
+        {
+            using (var connection = GetConnection())
+            {
 
                 connection.Open();
                 using (var command = new SqlCommand())
                 {
-                    string sSql = "SELECT a.NombreEvento, a.Fecha, a.Hora, b.Espacio From Eventos as a inner join EstablecimientoLugar as b " +
+                    string sSql = "SELECT * From Eventos as a inner join EstablecimientoLugar as b " +
                         " on a.idEspacio = b.idEspacioEst Where a.ID = " + idapp;
                     //string sSql = "SELECT * From Eventos Where ID = " + idapp;
                     DataTable dt = new DataTable();

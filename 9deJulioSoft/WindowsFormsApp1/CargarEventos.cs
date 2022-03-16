@@ -55,7 +55,7 @@ namespace CapaPresentacion
             cb.DataSource = LC.Cargar();
             cb.DisplayMember = CampoDescrip;
             cb.ValueMember = CampoID;
-            cb.SelectedIndex = -1;
+            //cb.SelectedIndex = -1;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -499,5 +499,15 @@ namespace CapaPresentacion
             }
         }
         #endregion
+
+        private void cmdCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpTiempo_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

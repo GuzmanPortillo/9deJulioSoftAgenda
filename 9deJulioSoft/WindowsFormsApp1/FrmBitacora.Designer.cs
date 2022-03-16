@@ -79,7 +79,7 @@ namespace CapaPresentacion
             this.dtpHasta.Location = new System.Drawing.Point(349, 36);
             this.dtpHasta.Name = "dtpHasta";
             this.dtpHasta.Size = new System.Drawing.Size(200, 24);
-            this.dtpHasta.TabIndex = 10;
+            this.dtpHasta.TabIndex = 2;
             // 
             // lblHasta
             // 
@@ -96,7 +96,7 @@ namespace CapaPresentacion
             this.dtpDesde.Location = new System.Drawing.Point(76, 36);
             this.dtpDesde.Name = "dtpDesde";
             this.dtpDesde.Size = new System.Drawing.Size(192, 24);
-            this.dtpDesde.TabIndex = 9;
+            this.dtpDesde.TabIndex = 1;
             // 
             // lblDesde
             // 
@@ -178,7 +178,7 @@ namespace CapaPresentacion
             this.cboUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.cboUsuario.Name = "cboUsuario";
             this.cboUsuario.Size = new System.Drawing.Size(192, 26);
-            this.cboUsuario.TabIndex = 2;
+            this.cboUsuario.TabIndex = 3;
             // 
             // lblUsuario
             // 
@@ -226,7 +226,7 @@ namespace CapaPresentacion
             this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(171, 36);
-            this.btnSalir.TabIndex = 8;
+            this.btnSalir.TabIndex = 9;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);

@@ -49,10 +49,11 @@ namespace CapaPresentacion
             // 
             this.dtpTiempo.CustomFormat = "YYYY/MM/DD";
             this.dtpTiempo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTiempo.Location = new System.Drawing.Point(128, 32);
+            this.dtpTiempo.Location = new System.Drawing.Point(126, 32);
             this.dtpTiempo.Name = "dtpTiempo";
             this.dtpTiempo.Size = new System.Drawing.Size(203, 20);
             this.dtpTiempo.TabIndex = 0;
+            this.dtpTiempo.ValueChanged += new System.EventHandler(this.dtpTiempo_ValueChanged);
             // 
             // lblFecha
             // 
@@ -83,7 +84,7 @@ namespace CapaPresentacion
             // 
             // txtEvento
             // 
-            this.txtEvento.Location = new System.Drawing.Point(128, 103);
+            this.txtEvento.Location = new System.Drawing.Point(127, 107);
             this.txtEvento.Name = "txtEvento";
             this.txtEvento.Size = new System.Drawing.Size(202, 20);
             this.txtEvento.TabIndex = 4;
@@ -91,8 +92,9 @@ namespace CapaPresentacion
             // 
             // cboEstablecimiento
             // 
+            this.cboEstablecimiento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEstablecimiento.FormattingEnabled = true;
-            this.cboEstablecimiento.Location = new System.Drawing.Point(127, 146);
+            this.cboEstablecimiento.Location = new System.Drawing.Point(128, 146);
             this.cboEstablecimiento.Name = "cboEstablecimiento";
             this.cboEstablecimiento.Size = new System.Drawing.Size(203, 21);
             this.cboEstablecimiento.TabIndex = 5;
@@ -149,7 +151,7 @@ namespace CapaPresentacion
             // 
             // msktxtHora
             // 
-            this.msktxtHora.Location = new System.Drawing.Point(128, 70);
+            this.msktxtHora.Location = new System.Drawing.Point(128, 74);
             this.msktxtHora.Mask = "00:00";
             this.msktxtHora.Name = "msktxtHora";
             this.msktxtHora.Size = new System.Drawing.Size(201, 20);
@@ -164,6 +166,7 @@ namespace CapaPresentacion
             this.cmdCancelar.TabIndex = 13;
             this.cmdCancelar.Text = "Cancelar";
             this.cmdCancelar.UseVisualStyleBackColor = true;
+            this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
             // 
             // btmGuardarCambios
             // 
