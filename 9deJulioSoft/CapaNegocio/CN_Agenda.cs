@@ -10,10 +10,10 @@ namespace CapaNegocio
 
         #region Atributos
         private int id;
-        private string fecha;
+        private DateTime fecha;
         private string hora;
         private string nombreEvento;
-        private string espacio;
+        private int espacio;
 
         #endregion
 
@@ -24,7 +24,7 @@ namespace CapaNegocio
             set { id = value; }
 
         }
-        public string Fecha
+        public DateTime Fecha
         {
             get => fecha;
             set { fecha = value; }
@@ -32,25 +32,93 @@ namespace CapaNegocio
         public string Hora
         {
             get => hora;
-            set { hora = value; }
+            set { hora = value.Replace(":", ""); }
         }
         public string NombreEvento
         {
             get => nombreEvento;
             set { nombreEvento = value; }
         }
-        public string Espacio
+        public int Espacio
         {
             get => espacio;
             set { espacio = value; }
         }
 
+        public string Error { get; set; }
         #endregion
+
+        public bool DatosValidos()
+        {
+            var resultado = true;
+            this.Error = string.Empty;
+
+            //si la fecha es menor a getdate
+            if (this.fecha < DateTime.Now)
+            {
+                resultado = false;
+                this.Error += "El evento no puede ser inferior a la fecha del día.";
+            }
+
+            //si el nombre esta vacio
+            if (this.hora.Trim() == string.Empty)
+            {
+                resultado = false;
+                this.Error += Environment.NewLine;
+                this.Error += "Debe ingresar la hora del evento.";
+            }
+
+            //hora completa
+            if (this.hora.Trim().Length != 4)
+            {
+                resultado = false;
+                this.Error += Environment.NewLine;
+                this.Error += "Formato de hora no valido.";
+            }
+
+            //hora valida
+            if (resultado)
+            {
+                var horaAuxiliar = int.Parse(this.hora.Substring(0, 2));
+                if (horaAuxiliar <= 0 || horaAuxiliar > 23)
+                {
+                    resultado = false;
+                    this.Error += "Hora invalida.";
+                }
+            }
+            
+
+            //si el nombre esta vacio
+            if (this.nombreEvento.Trim() == string.Empty)
+            {
+                resultado = false;
+                this.Error += Environment.NewLine;
+                this.Error += "Debe ingresar el nombre del evento.";
+            }
+
+            //si existe otro evento en la DB
+            if (resultado)
+            {
+                //var dtEvento = objDatos.GetEvento("", 1, 1);
+
+                //if (dtEvento.Rows.Count > 0)
+                //{
+                //    resultado = false;
+                //    this.Error += Environment.NewLine;
+                //    this.Error += "Ya existe un evento para la combinación de dia, hoya y establecimiento.";
+                //}
+            }
+
+            return resultado;
+
+            
+            
+        }
         private void PasarDatos()
         {
             objDatos.ID = id;
-            objDatos.Hora = this.hora;
-            objDatos.Fecha = this.fecha;
+            objDatos.Hora = int.Parse(this.hora.Substring(0,2));
+            objDatos.Fecha = this.fecha.Date;
             objDatos.NombreEvento = this.nombreEvento;
             objDatos.Espacio = Convert.ToInt32(this.espacio);
 

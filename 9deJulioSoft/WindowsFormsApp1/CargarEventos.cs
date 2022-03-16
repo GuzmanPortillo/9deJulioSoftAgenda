@@ -14,7 +14,9 @@ namespace CapaPresentacion
 {
     public partial class CargarEventos : Form
     {
-        CN_Agenda objAgenda = new CN_Agenda();
+        CN_Agenda AgendaNegocio = new CN_Agenda();
+
+        public int IdEspacio { get; set; }
 
         public CargarEventos()
         {
@@ -26,21 +28,17 @@ namespace CapaPresentacion
         private void CargarEventos_Load(object sender, EventArgs e)
         {
             AgendaDeportiva frm = new AgendaDeportiva();
-
-            if (idAPP == 0)
-            {
-                LlenarCombo(cboEstablecimiento, "EstablecimientoLugar", "idEspacioEst", "Espacio");
-                
-            }
+            LlenarCombo(cboEstablecimiento, "EstablecimientoLugar", "idEspacioEst", "Espacio");
+            cboEstablecimiento.SelectedIndex = this.IdEspacio; //Todo ver si es modificacion?
         }
         
         private void Hacer_pasajeDatos()
         {
-            objAgenda.ID = Convert.ToInt32(idAPP);
-            objAgenda.Fecha = dtpTiempo.Value.ToString(("yyyyMMdd"));
-            objAgenda.Hora = msktxtHora.Text;
-            objAgenda.NombreEvento = txtEvento.Text;
-            objAgenda.Espacio = cboEstablecimiento.SelectedValue.ToString();
+            AgendaNegocio.ID = Convert.ToInt32(idAPP);
+            AgendaNegocio.Fecha = dtpTiempo.Value.Date;
+            AgendaNegocio.Hora = msktxtHora.Text;
+            AgendaNegocio.NombreEvento = txtEvento.Text;
+            AgendaNegocio.Espacio = (int) cboEstablecimiento.SelectedValue;
 
         }
         private void LlenarCombo(ComboBox cb, string NombreTabla, string CampoID, string CampoDescrip, string Condicion = "")
@@ -63,12 +61,20 @@ namespace CapaPresentacion
             try
             {
                 Hacer_pasajeDatos();
-                objAgenda.insertar_Datos();
-                MessageBox.Show("Se guardó correctamente");
+                if (AgendaNegocio.DatosValidos())
+                {
+                    AgendaNegocio.insertar_Datos();
+                    MessageBox.Show("Se guardó correctamente");
+                }
+                else 
+                {
+                    MessageBox.Show(AgendaNegocio.Error);
+                }
+                
             }
             catch(Exception error)
             {
-                Console.WriteLine("Ocurrió un error " + error.Message);
+                MessageBox.Show("Ocurrió un error " + error.Message);
             }
         }
 
@@ -88,8 +94,8 @@ namespace CapaPresentacion
                                                  MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (resultado == DialogResult.OK)
                 {
-                    objAgenda.ID = Convert.ToInt32(idAPP);
-                    objAgenda.Eliminar();
+                    AgendaNegocio.ID = Convert.ToInt32(idAPP);
+                    AgendaNegocio.Eliminar();
                 }
 
                 MessageBox.Show("Se eliminó correctamente");
@@ -125,7 +131,7 @@ namespace CapaPresentacion
             try
             {
                 Hacer_pasajeDatos();
-                objAgenda.Actualizar_datos();
+                AgendaNegocio.Actualizar_datos();
                 MessageBox.Show("Se actualizó correctamente");
             }
             catch(Exception error)

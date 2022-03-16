@@ -119,11 +119,13 @@ namespace CapaPresentacion
             {
               
                 CargarEventos frm = new CargarEventos();
+                frm.StartPosition = FormStartPosition.CenterScreen;
                 frm.idAPP = idapp;
                 ((DateTimePicker)frm.Controls["dtpTiempo"]).Value = DateTime.Parse(fil["Fecha"].ToString());
                 ((MaskedTextBox)frm.Controls["msktxtHora"]).Text = fil["Hora"].ToString();
-                ((TextBox)frm.Controls["txtEvento"]).Text = fil["NombreEvento"].ToString();
-                ((ComboBox)frm.Controls["cboEstablecimiento"]).Text = fil["Espacio"].ToString();
+                ((TextBox)frm.Controls["txtEvento"]).Text = fil["Nombre"].ToString();
+                frm.IdEspacio = int.Parse(fil["idEspacio"].ToString());
+                //((ComboBox)frm.Controls["cboEstablecimiento"]).Text = fil["Espacio"].ToString();
 
                 frm.ShowDialog();
 
@@ -168,7 +170,7 @@ namespace CapaPresentacion
                 LinkLabel link = new LinkLabel();
                 link.Tag = fila["id"];
                 link.Name = $"link{fila["id"]}";
-                link.Text = fila["NombreEvento"].ToString();
+                link.Text = fila["Nombre"].ToString();
                 link.Click += new EventHandler(MostrardetalleEvento);
                 listafl[(diaApp.Day) + (DiaInicio - 2)].Controls.Add(link);
                 

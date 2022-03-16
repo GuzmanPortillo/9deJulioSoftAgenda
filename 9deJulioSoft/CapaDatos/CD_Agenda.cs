@@ -1,5 +1,7 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
+
 
 namespace CapaDatos
 {
@@ -7,8 +9,8 @@ namespace CapaDatos
     {
         #region Atributos
         private int id;
-        private string fecha;
-        private string hora;
+        private DateTime fecha;
+        private int hora;
         private string nombreEvento;
         private int espacio;
 
@@ -20,12 +22,12 @@ namespace CapaDatos
             set { id = value; }
 
         }
-        public string Fecha
+        public DateTime Fecha
         {
             get => fecha;
             set { fecha = value; }
         }
-        public string Hora
+        public int Hora
         {
             get => hora;
             set { hora = value; }
@@ -98,8 +100,8 @@ namespace CapaDatos
                 connection.Open();
                 using (var command = new SqlCommand())
                 {
-                    string sSql = "SELECT a.NombreEvento, a.Fecha, a.Hora, b.Espacio From Eventos as " +
-                        "  a.ID = " + idapp;
+                    string sSql = "SELECT a.Nombre, a.Fecha, right('0' + convert(varchar, a.Hora) + ':00',5) as Hora, a.idEspacio From Eventos as a " +
+                        "where  a.ID = " + idapp;
                     //string sSql = "SELECT * From Eventos Where ID = " + idapp;
                     DataTable dt = new DataTable();
                     command.Connection = connection;
@@ -136,23 +138,20 @@ namespace CapaDatos
                     connection.Close();
                     return dt;
                 }
-
             }
         }
 
         public void insertarDatos()
         {
- 
-                string sSql = "Insert Into Eventos" +
-                "(Fecha, Hora, NombreEvento, idEspacio)" +
-                "Values" + "('" + fecha + "','" + hora + "','" + nombreEvento + "'," + espacio + ")";
-                Ejecutar(sSql);
-
+            string sSql = "Insert Into Eventos" +
+            "(Fecha, Hora, Nombre, idEspacio)" +
+            "Values" + "('" + fecha.ToString("yyyyMMdd") + "'," + hora + ",'" + nombreEvento + "'," + espacio + ")";
+            Ejecutar(sSql);
         }
 
         public void Actualizar()
         {
-                string sSql = "UPDATE Eventos set " + " Fecha ='" + fecha + "',Hora = '" + hora + "',NombreEvento ='" + nombreEvento + "',idEspacio = " + espacio +
+                string sSql = "UPDATE Eventos set " + " Fecha ='" + fecha + "',Hora = '" + hora + "',Nombre ='" + nombreEvento + "',idEspacio = " + espacio +
                             " where ID = " + id;
                 Ejecutar(sSql);
         }

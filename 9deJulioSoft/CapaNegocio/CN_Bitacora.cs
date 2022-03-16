@@ -22,6 +22,7 @@ namespace CapaNegocio
         {
             var bitacoraDatos = new CD_Bitacora();
 
+            fechaHasta = new DateTime(fechaHasta.Year, fechaHasta.Month, fechaHasta.Day, 23, 59, 59);
             if (entidad == BitacoraEntidad.TODOS.ToString())
             {
                 entidad = null;

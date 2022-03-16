@@ -41,7 +41,7 @@ namespace CapaPresentacion
             string entidad = cboEntidad.SelectedItem.ToString();
             string accion = cboAccion.SelectedItem.ToString();
 
-            dt = CN_Bitacora.getAll(dtpDesde.Value, dtpHasta.Value, idUsuario, entidad, accion);
+            dt = CN_Bitacora.getAll(dtpDesde.Value.Date, dtpHasta.Value, idUsuario, entidad, accion);
 
             DgvBitacora.DataSource = dt;          
             DgvBitacora.AutoResizeColumns();

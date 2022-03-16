@@ -15,15 +15,23 @@ namespace CapaDatos
         {
             try
             {
+                //string sSql = "Insert Into Bitacora" +
+                //"(fecha, id_usuario, entidad,  accion, detalle)" +
+                //" Values( " + "getdate(), " + usuario + "," + "'" + entidad + "'," + "'" + accion + "'," + "'" + detalle + "')";
+
                 string sSql = "Insert Into Bitacora" +
                 "(fecha, id_usuario, entidad,  accion, detalle)" +
-                " Values( " + "getdate(), " + usuario + "," + "'" + entidad + "'," + "'" + accion + "'," + "'" + detalle + "')";
-
+                " Values(@fecha, @idUsurio, @entidad, @accion, @detalle )";
                 using (var connection = GetConnection())
                 {
                     connection.Open();
 
                     SqlCommand cmd = new SqlCommand(sSql, connection);
+                    cmd.Parameters.AddWithValue("@fecha", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@idUsurio",usuario);
+                    cmd.Parameters.AddWithValue("@entidad",entidad);
+                    cmd.Parameters.AddWithValue("@accion", accion);
+                    cmd.Parameters.AddWithValue("@detalle", detalle);
                     cmd.ExecuteNonQuery();
                     connection.Close();
                     connection.Dispose();
