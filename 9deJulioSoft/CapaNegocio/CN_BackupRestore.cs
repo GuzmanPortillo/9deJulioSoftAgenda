@@ -11,12 +11,12 @@ namespace CapaNegocio
     public class CN_BackupRestore
     {
         private CD_BackupRestore objbkpRes = new CD_BackupRestore();
-        public DataTable consultarEventoItem(string query)
-        {
-            DataTable tabla = new DataTable();
-            tabla = objbkpRes.Mitabla(query);
-            return tabla;
-        }
+        //public DataTable consultarEventoItem(string query)
+        //{
+        //    DataTable tabla = new DataTable();
+        //    tabla = objbkpRes.Mitabla(query);
+        //    return tabla;
+        //}
 
         public void dbGeneral(string query)
         {

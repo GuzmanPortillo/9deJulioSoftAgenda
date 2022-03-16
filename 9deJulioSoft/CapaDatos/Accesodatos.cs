@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using CapaSoporte.Cache;
@@ -44,6 +45,38 @@ namespace CapaDatos
                     command.ExecuteNonQuery();
                 }
             }
+        }
+
+        public void ObtenerCargos()
+        {
+            List<int> cargos = new List<int>();
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandText = "select * from tUsuario as t WHERE id_usuario = @idUsuario";
+                    command.Parameters.AddWithValue("@idUsuario", InicioSesion.idusuario);
+                    command.CommandType = CommandType.Text;
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                            cargos.Add(reader.GetInt32(0));
+
+                        InicioSesion.cargos = cargos.ToArray();
+                        connection.Close();
+                    }
+                    else
+                    {
+                        connection.Close();
+                    }
+
+                }
+            }
+
+
         }
 
         public void altaUsuario(string usuario, string contrasenia, string nombres, string apellidos, string estado, byte[] foto)
@@ -93,26 +126,22 @@ namespace CapaDatos
                             InicioSesion.nombres = reader.GetString(2);
                             InicioSesion.apellidos = reader.GetString(3);
                             InicioSesion.contrasenia = reader.GetString(4);
-                            InicioSesion.cargo = reader.GetInt32(5);
-
                         }
-
+                        connection.Close();
                         return true;
                     }
                     else
+                    {
+                        connection.Close();
                         return false;
+                    }
+                        
                 }
             }
         }
 
-        public void tipocargo()
-        {
-            if (InicioSesion.cargo == Cargos.administrador)
-            { }
 
-            if (InicioSesion.cargo == Cargos.recepcionista )
-            { }
-        }
+
         //Socios
         public void NuevoSocio(string Nombre, string Apellido, string Id_Doc, string Nº_Doc, string Fecha_Nac, string email, string Telefono1,
            string Telefono2, string Domicilio, string Piso, string Dpto, string Localidad, string Id_Provincia, string Categoria, string Id_Deporte1, string Id_Deporte2,

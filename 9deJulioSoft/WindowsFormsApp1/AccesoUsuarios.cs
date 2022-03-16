@@ -42,6 +42,8 @@ namespace CapaPresentacion
                     {
                         ModeloUsuario usuario = new ModeloUsuario();
                         var validlogin = usuario.LoginUser(txtuser.Text, txtpass.Text);
+                        //var validlogin = true;
+                        //InicioSesion.idusuario = 1;
                         if (validlogin == true)
                         {
                             CN_Bitacora.Guardar(InicioSesion.idusuario, BitacoraEntidad.Login.ToString(), BitacoraAccion.Ingresar.ToString(), $"El usuario  {InicioSesion.usuario} ingresó al sistema");

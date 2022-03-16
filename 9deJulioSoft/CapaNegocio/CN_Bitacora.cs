@@ -15,12 +15,14 @@ namespace CapaNegocio
         {
             var bitacoraDatos = new CD_Bitacora();
             bitacoraDatos.Insertar(usuario, entidad, accion, detalle);
+            bitacoraDatos = null;
         }
 
         public static DataTable getAll(DateTime fechaDesde, DateTime fechaHasta, int idUsuario, string entidad, string accion)
         {
             var bitacoraDatos = new CD_Bitacora();
 
+            fechaHasta = new DateTime(fechaHasta.Year, fechaHasta.Month, fechaHasta.Day, 23, 59, 59);
             if (entidad == BitacoraEntidad.TODOS.ToString())
             {
                 entidad = null;
