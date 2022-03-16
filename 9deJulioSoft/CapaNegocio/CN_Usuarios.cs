@@ -57,10 +57,10 @@ namespace CapaNegocio
             objUsuario.insertarUsurioRol();
         }
 
-        public DataTable consultaUsuarioPermiso(string Usuario)
+        public DataTable consultaUsuarioPermiso(int idUsuario)
         {
             DataTable tabla = new DataTable();
-            tabla = objUsuario.ConsultaUsuarioRol(Usuario);
+            tabla = objUsuario.ConsultaUsuarioRol(idUsuario);
             return tabla;
         }
 

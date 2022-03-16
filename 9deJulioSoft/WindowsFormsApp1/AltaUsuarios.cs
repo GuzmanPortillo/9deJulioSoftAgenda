@@ -26,6 +26,9 @@ namespace CapaPresentacion
             DataTable dt = objCNUsuarios.No_EXiste(txtUsuario.Text);
             if (dt.Rows.Count == 0)
             {
+                System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                picPerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+
                 if (txtConfirmarContrasenia.Text == txtContrasenia.Text)
                 {
                     var modeloUsuario = new CN_Usuarios(
@@ -33,7 +36,8 @@ namespace CapaPresentacion
                                     contrasenia: txtContrasenia.Text,
                                     nombres: txtNombres.Text,
                                     apellidos: txtApellidos.Text,
-                                    estado: "Activo");
+                                    estado: "Activo",
+                                      ms.GetBuffer());
                     var resultado = modeloUsuario.altaUsuario();
                     MessageBox.Show(resultado);
                     CN_Bitacora.Guardar(InicioSesion.idusuario, BitacoraEntidad.Usuario.ToString(), BitacoraAccion.Alta.ToString(), $"Alta de usuario {txtUsuario.Text}");

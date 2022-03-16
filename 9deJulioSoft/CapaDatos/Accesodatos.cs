@@ -19,7 +19,7 @@ namespace CapaDatos
         //#endregion
 
         //Login
-        public void editarPerfil(int id, string usuario, string contrasenia, string nombres, string apellidos, string estado)
+        public void editarPerfil(int id, string usuario, string contrasenia, string nombres, string apellidos, string estado, byte[] foto)
         {
             using (var connection = GetConnection())
             {
@@ -35,13 +35,18 @@ namespace CapaDatos
                     //command.Parameters.AddWithValue("@mail", mail);
                     command.Parameters.AddWithValue("@id", id);
                     command.Parameters.AddWithValue("@estado", estado);
+
                     command.CommandType = CommandType.Text;
+
+                    command.Parameters.AddWithValue("@foto", SqlDbType.Image).Value = foto;
+                    command.CommandType = CommandType.StoredProcedure;
+
                     command.ExecuteNonQuery();
                 }
             }
         }
 
-        public void altaUsuario(string usuario, string contrasenia, string nombres, string apellidos, string estado)
+        public void altaUsuario(string usuario, string contrasenia, string nombres, string apellidos, string estado, byte[] foto)
         {
             using (var connection = GetConnection())
             {

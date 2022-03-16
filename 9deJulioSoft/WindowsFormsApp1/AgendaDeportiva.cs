@@ -65,10 +65,8 @@ namespace CapaPresentacion
         }
         private void AgendaDeportiva_Load(object sender, System.EventArgs e)
         {
-
             GenerarDiaPanel(42);
             MostraDiaActual();
-
         }
 
 
@@ -105,6 +103,7 @@ namespace CapaPresentacion
                 flp.BackColor = Color.White;
                 flp.BorderStyle = BorderStyle.FixedSingle;
                 flp.Cursor = Cursors.Hand;
+                flp.AutoScroll = true;
                 flp.Click += new EventHandler(CargarNuevoEvento);
                 flowLayoutPanel1.Controls.Add(flp);
                 listafl.Add(flp);
@@ -197,8 +196,12 @@ namespace CapaPresentacion
         {
             SiguienteMes();
         }
+
         #endregion
 
-     
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
