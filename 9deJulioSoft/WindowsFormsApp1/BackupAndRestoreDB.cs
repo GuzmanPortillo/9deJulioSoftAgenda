@@ -27,7 +27,7 @@ namespace CapaPresentacion
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.AddExtension = true;
-            saveFileDialog1.Filter = "SQL SERVER database backup files (*.bak)|.bak";
+            saveFileDialog1.Filter = "SQL SERVER database backup files (*.bak)|*.bak";
             saveFileDialog1.ShowDialog();
             txtbkp.Text = saveFileDialog1.FileName;
         }
@@ -53,7 +53,7 @@ namespace CapaPresentacion
 
         private void btnRestoreDB_Click(object sender, EventArgs e)
         {
-            objbkp.dbGeneral("use master; restore database NueveDeJulio from disk='" + txtRestore + "'");
+            objbkp.dbGeneral("use master; Restore Database NueveDeJulio from disk='" + txtRestore + "'");
             MessageBox.Show("La restauración se realizó correctamente.");
         }
     }
