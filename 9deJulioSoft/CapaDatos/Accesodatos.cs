@@ -73,7 +73,8 @@ namespace CapaDatos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = "select * from tUsuario where Usuario=@user and contrasenia=@contrasenia";
+                    command.CommandText = "select t.id_usuario, t.usuario, t.Nombres, t.Apellidos, t.Contrasenia,r.id_rol from tUsuario as t " +
+                        " inner join tusuarioRoles as tr on tr.id_usuario = t.id_usuario inner join Rol as r on r.Id_Rol = tr.id_rol where Usuario=@user and contrasenia=@contrasenia";
                     command.Parameters.AddWithValue("@user", user);
                     command.Parameters.AddWithValue("@contrasenia", contrasenia);
                     command.CommandType = CommandType.Text;
@@ -87,8 +88,8 @@ namespace CapaDatos
                             InicioSesion.nombres = reader.GetString(2);
                             InicioSesion.apellidos = reader.GetString(3);
                             InicioSesion.contrasenia = reader.GetString(4);
-                            //InicioSesion.cargo = reader.GetInt32(4);
-                            
+                            InicioSesion.cargo = reader.GetInt32(5);
+
                         }
 
                         return true;
