@@ -53,7 +53,7 @@ namespace CapaPresentacion
 
         private void btnRestoreDB_Click(object sender, EventArgs e)
         {
-            objbkp.dbGeneral("use master; restore database NueveDeJulio from disk='" + txtRestore + "'");
+            objbkp.dbGeneral("use master restore database NueveDeJulio from disk= '" + txtRestore.Text + "'");
             MessageBox.Show("La restauración se realizó correctamente.");
         }
     }

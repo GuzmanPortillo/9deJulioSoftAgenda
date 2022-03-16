@@ -15,6 +15,7 @@ namespace CapaNegocio
         {
             var bitacoraDatos = new CD_Bitacora();
             bitacoraDatos.Insertar(usuario, entidad, accion, detalle);
+            bitacoraDatos = null;
         }
 
         public static DataTable getAll(DateTime fechaDesde, DateTime fechaHasta, int idUsuario, string entidad, string accion)

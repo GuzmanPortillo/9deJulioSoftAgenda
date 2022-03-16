@@ -96,11 +96,15 @@ namespace CapaDatos
                             InicioSesion.cargo = reader.GetInt32(5);
 
                         }
-
+                        connection.Close();
                         return true;
                     }
                     else
+                    {
+                        connection.Close();
                         return false;
+                    }
+                        
                 }
             }
         }

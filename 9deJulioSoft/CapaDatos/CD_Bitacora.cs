@@ -26,6 +26,7 @@ namespace CapaDatos
                     SqlCommand cmd = new SqlCommand(sSql, connection);
                     cmd.ExecuteNonQuery();
                     connection.Close();
+                    connection.Dispose();
                 }
             }
             catch (Exception)
