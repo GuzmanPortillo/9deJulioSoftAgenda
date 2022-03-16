@@ -36,8 +36,11 @@ namespace CapaDatos
                     command.Parameters.AddWithValue("@id", id);
                     command.Parameters.AddWithValue("@estado", estado);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     command.CommandType = CommandType.Text;
 =======
+=======
+>>>>>>> Stashed changes
                     command.Parameters.AddWithValue("@foto", SqlDbType.Image).Value = foto;
                     command.CommandType = CommandType.StoredProcedure;
 >>>>>>> Stashed changes
