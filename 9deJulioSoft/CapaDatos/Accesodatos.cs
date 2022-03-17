@@ -126,7 +126,7 @@ namespace CapaDatos
                             InicioSesion.nombres = reader.GetString(2);
                             InicioSesion.apellidos = reader.GetString(3);
                             InicioSesion.contrasenia = reader.GetString(4);
-                            InicioSesion.estado = reader.GetString(5);
+                            InicioSesion.estado = reader.GetString(6);
 
                             if (!string.IsNullOrEmpty(reader["foto"].ToString()))
                                 InicioSesion.foto = (byte[])reader["foto"];

@@ -225,6 +225,7 @@
     <Compile Include="Utiles.cs" />
     <EmbeddedResource Include="AltaUsuarios.resx">
       <DependentUpon>AltaUsuarios.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="BackupAndRestoreDB.resx">
       <DependentUpon>BackupAndRestoreDB.cs</DependentUpon>
