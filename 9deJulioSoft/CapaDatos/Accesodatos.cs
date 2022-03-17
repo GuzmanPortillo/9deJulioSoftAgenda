@@ -111,7 +111,7 @@ namespace CapaDatos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = "select t.id_usuario, t.usuario, t.Nombres, t.Apellidos, t.Contrasenia,r.id_rol, t.Estado from tUsuario as t " +
+                    command.CommandText = "select t.id_usuario, t.usuario, t.Nombres, t.Apellidos, t.Contrasenia,r.id_rol, t.Estado, t.Foto from tUsuario as t " +
                         " inner join tusuarioRoles as tr on tr.id_usuario = t.id_usuario inner join Rol as r on r.Id_Rol = tr.id_rol where Usuario=@user and contrasenia=@contrasenia";
                     command.Parameters.AddWithValue("@user", user);
                     command.Parameters.AddWithValue("@contrasenia", contrasenia);
@@ -126,8 +126,11 @@ namespace CapaDatos
                             InicioSesion.nombres = reader.GetString(2);
                             InicioSesion.apellidos = reader.GetString(3);
                             InicioSesion.contrasenia = reader.GetString(4);
+                            InicioSesion.estado = reader.GetString(6);
+
                             if (!string.IsNullOrEmpty(reader["foto"].ToString()))
                                 InicioSesion.foto = (byte[])reader["foto"];
+
                         }
                         connection.Close();
                         return true;
