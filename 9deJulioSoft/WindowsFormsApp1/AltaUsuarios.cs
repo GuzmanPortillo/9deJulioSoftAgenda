@@ -49,10 +49,19 @@ namespace CapaPresentacion
             else
                 MessageBox.Show("Ya existe el usuario, ingrese otro");
         }
+        private void btnAgregarFoto_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog foto = new OpenFileDialog();
+            DialogResult rs = foto.ShowDialog();
+            if (rs == DialogResult.OK)
+            {
+                picPerfil.Image = Image.FromFile(foto.FileName);
+            }
+        }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
     }
 }
