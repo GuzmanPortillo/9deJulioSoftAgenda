@@ -28,7 +28,7 @@ namespace CapaDatos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = "update tusuario set Usuario=@usuario, Contrasenia=@contrasenia, Nombres=@Nombres, Apellidos=@apellidos, Estado=@estado where id_usuario=@id";
+                    command.CommandText = "sp_ModificarUsuario";
                     command.Parameters.AddWithValue("@usuario", usuario);
                     command.Parameters.AddWithValue("@contrasenia", contrasenia);
                     command.Parameters.AddWithValue("@Nombres", nombres);
@@ -43,6 +43,8 @@ namespace CapaDatos
                     command.CommandType = CommandType.StoredProcedure;
 
                     command.ExecuteNonQuery();
+                    command.Parameters.Clear();
+                    connection.Close();
                 }
             }
         }
@@ -87,18 +89,18 @@ namespace CapaDatos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = "insert  into tusuario(Usuario,Nombres, Apellidos, Contrasenia, Estado )" +
-                                            "Values" + "('" + usuario + "','" + nombres + "','" + apellidos  + "','" + contrasenia  + "','" + estado + "')";
+                    command.CommandText = "sp_AltaUsuario";
                     command.Parameters.AddWithValue("@usuario", usuario);
                     command.Parameters.AddWithValue("@Nombres", nombres);
                     command.Parameters.AddWithValue("@apellidos", apellidos);
                     command.Parameters.AddWithValue("@contrasenia", contrasenia);
                     command.Parameters.AddWithValue("@estado", estado);
-                    //command.Parameters.AddWithValue("@mail", mail);
-                    //command.Parameters.AddWithValue("@id", id);
-
-                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("@foto ", SqlDbType.Image).Value = foto;
+ 
+                    command.CommandType = CommandType.StoredProcedure;
                     command.ExecuteNonQuery();
+                    command.Parameters.Clear();
+                    connection.Close();
                 }
             }
         }
