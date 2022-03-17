@@ -18,7 +18,7 @@ namespace CapaNegocio
                 accesoDatos.ObtenerCargos();
             }
 
-            accesoDatos = null; //Si no se mata el objeto que de la capa de datos da error el restore de la DB
+            //accesoDatos = null; //Si no se mata el objeto que de la capa de datos da error el restore de la DB
             return resultado;
         }
     }

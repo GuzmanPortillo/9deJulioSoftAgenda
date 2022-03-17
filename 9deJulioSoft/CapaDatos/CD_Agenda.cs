@@ -76,7 +76,7 @@ namespace CapaDatos
                 connection.Open();
                 using (var command = new SqlCommand())
                 {
-                    string sSql = "SELECT a.NombreEvento, a.Fecha, a.Hora, b.Espacio From Eventos as a inner join EstablecimientoLugar as b " +
+                    string sSql = "SELECT a.Nombre, a.Fecha, right('0' + convert(varchar, a.Hora) + ':00',5) as Hora, b.Espacio From Eventos as a inner join EstablecimientoLugar as b " +
                         " on a.idEspacio = b.idEspacioEst Where CONVERT(date, a.Fecha, 0) Between '" + fecInicio + "' and '" + Fecfin + "'";
                     DataTable dt = new DataTable();
                     command.Connection = connection;
