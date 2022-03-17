@@ -72,16 +72,24 @@ namespace CapaPresentacion
 
         private void CargarNuevoEvento(object sender, System.EventArgs e)
         {
-            int day = (int)((FlowLayoutPanel)sender).Tag;
+            int day;
+
+            if (sender is FlowLayoutPanel)
+                day = (int)((FlowLayoutPanel)sender).Tag;
+            else
+            {
+                day = (int)((LinkLabel)sender).Tag;
+            }
 
             CargarEventos frm = new CargarEventos();
+            frm.StartPosition = FormStartPosition.CenterScreen;
             if (day != 0) 
             {
                 frm.idAPP = 0;
                 ((DateTimePicker)frm.Controls["dtpTiempo"]).Value = new DateTime(diaActual.Year, diaActual.Month, day);
                 ((MaskedTextBox)frm.Controls["msktxtHora"]).Text = "";
                 ((TextBox)frm.Controls["txtEvento"]).Text = "";
-                ((ComboBox)frm.Controls["cboEstablecimiento"]).Text = "";
+                //((ComboBox)frm.Controls["cboEstablecimiento"]).Text = "";
 
                 frm.ShowDialog();
 
@@ -160,6 +168,7 @@ namespace CapaPresentacion
             //int idappp = (int)((LinkLabel)sender).Tag;
             DateTime iniciofecha = new DateTime(diaActual.Year, diaActual.Month, 1);
             DateTime finfecha = iniciofecha.AddMonths(1).AddDays(-1);
+            var dias = new List<int>();
 
             DataTable dt = objEventos.consultarAgenda(iniciofecha.ToString("yyyyMMdd"), finfecha.ToString("yyyyMMdd"));
 
@@ -173,9 +182,26 @@ namespace CapaPresentacion
                 link.Text = fila["Nombre"].ToString();
                 link.Click += new EventHandler(MostrardetalleEvento);
                 listafl[(diaApp.Day) + (DiaInicio - 2)].Controls.Add(link);
-                
+                dias.Add(diaApp.Day);
             }
 
+            //Para poder agregar uno nuevo
+            List<int> diasConVariosEventos = dias.GroupBy(x => x)
+                            .Where(x => x.Count() > 1)
+                            .Select(grp => grp.Key)
+                            .ToList();
+
+            foreach (int dia in diasConVariosEventos)
+            {
+                DateTime diaApp = iniciofecha;
+                LinkLabel link = new LinkLabel();
+                link.Tag = dia;
+                link.Name = $"linkNuevo";
+                link.Text = "Agregar";
+                link.Click += new EventHandler(CargarNuevoEvento);
+                //listafl[(diaApp.Day) + (DiaInicio - 2)].Controls.Add(link);
+                listafl[dia+1].Controls.Add(link);
+            }
         }
         
 

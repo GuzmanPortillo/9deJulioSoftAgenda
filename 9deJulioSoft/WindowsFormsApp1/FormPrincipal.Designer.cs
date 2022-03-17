@@ -35,6 +35,10 @@ namespace CapaPresentacion
             this.altaSociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.admSociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.altaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.permisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaEmpleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,17 +50,12 @@ namespace CapaPresentacion
             this.reservasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevaReservaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cargarAgendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirFormularioFrmBitacoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDe9deJulioSoftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.altaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.permisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PanelFormularios = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -108,6 +107,37 @@ namespace CapaPresentacion
             this.informesToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.informesToolStripMenuItem.Text = "Informes";
             this.informesToolStripMenuItem.Click += new System.EventHandler(this.informesToolStripMenuItem_Click);
+            // 
+            // usuariosToolStripMenuItem
+            // 
+            this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.altaToolStripMenuItem,
+            this.permisosToolStripMenuItem,
+            this.modificarToolStripMenuItem});
+            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(64, 22);
+            this.usuariosToolStripMenuItem.Text = "Usuarios";
+            // 
+            // altaToolStripMenuItem
+            // 
+            this.altaToolStripMenuItem.Name = "altaToolStripMenuItem";
+            this.altaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.altaToolStripMenuItem.Text = "Alta";
+            this.altaToolStripMenuItem.Click += new System.EventHandler(this.altaToolStripMenuItem_Click);
+            // 
+            // permisosToolStripMenuItem
+            // 
+            this.permisosToolStripMenuItem.Name = "permisosToolStripMenuItem";
+            this.permisosToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.permisosToolStripMenuItem.Text = "Permisos";
+            this.permisosToolStripMenuItem.Click += new System.EventHandler(this.permisosToolStripMenuItem_Click);
+            // 
+            // modificarToolStripMenuItem
+            // 
+            this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
+            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.modificarToolStripMenuItem.Text = "Modificar";
+            this.modificarToolStripMenuItem.Click += new System.EventHandler(this.modificarToolStripMenuItem_Click);
             // 
             // administracionToolStripMenuItem
             // 
@@ -161,7 +191,6 @@ namespace CapaPresentacion
             this.agendaDeportivaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.agendaDeportivaToolStripMenuItem1,
             this.reservasToolStripMenuItem,
-            this.cargarAgendaToolStripMenuItem,
             this.reporteToolStripMenuItem});
             this.agendaDeportivaToolStripMenuItem.Name = "agendaDeportivaToolStripMenuItem";
             this.agendaDeportivaToolStripMenuItem.Size = new System.Drawing.Size(60, 22);
@@ -170,7 +199,7 @@ namespace CapaPresentacion
             // agendaDeportivaToolStripMenuItem1
             // 
             this.agendaDeportivaToolStripMenuItem1.Name = "agendaDeportivaToolStripMenuItem1";
-            this.agendaDeportivaToolStripMenuItem1.Size = new System.Drawing.Size(169, 22);
+            this.agendaDeportivaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.agendaDeportivaToolStripMenuItem1.Text = "Agenda Deportiva";
             this.agendaDeportivaToolStripMenuItem1.Click += new System.EventHandler(this.agendaDeportivaToolStripMenuItem1_Click);
             // 
@@ -180,7 +209,7 @@ namespace CapaPresentacion
             this.nuevaReservaToolStripMenuItem,
             this.reporteToolStripMenuItem1});
             this.reservasToolStripMenuItem.Name = "reservasToolStripMenuItem";
-            this.reservasToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.reservasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.reservasToolStripMenuItem.Text = "Reservas";
             this.reservasToolStripMenuItem.Click += new System.EventHandler(this.reservasToolStripMenuItem_Click);
             // 
@@ -198,17 +227,10 @@ namespace CapaPresentacion
             this.reporteToolStripMenuItem1.Text = "Reporte";
             this.reporteToolStripMenuItem1.Click += new System.EventHandler(this.reporteToolStripMenuItem1_Click);
             // 
-            // cargarAgendaToolStripMenuItem
-            // 
-            this.cargarAgendaToolStripMenuItem.Name = "cargarAgendaToolStripMenuItem";
-            this.cargarAgendaToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.cargarAgendaToolStripMenuItem.Text = "CargarAgenda";
-            this.cargarAgendaToolStripMenuItem.Click += new System.EventHandler(this.cargarAgendaToolStripMenuItem_Click);
-            // 
             // reporteToolStripMenuItem
             // 
             this.reporteToolStripMenuItem.Name = "reporteToolStripMenuItem";
-            this.reporteToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.reporteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.reporteToolStripMenuItem.Text = "Reporte";
             this.reporteToolStripMenuItem.Click += new System.EventHandler(this.reporteToolStripMenuItem_Click);
             // 
@@ -249,37 +271,6 @@ namespace CapaPresentacion
             this.acercaDe9deJulioSoftToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.acercaDe9deJulioSoftToolStripMenuItem.Text = "Acerca de 9deJulioSoft ";
             this.acercaDe9deJulioSoftToolStripMenuItem.Click += new System.EventHandler(this.acercaDe9deJulioSoftToolStripMenuItem_Click);
-            // 
-            // usuariosToolStripMenuItem
-            // 
-            this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.altaToolStripMenuItem,
-            this.permisosToolStripMenuItem,
-            this.modificarToolStripMenuItem});
-            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(64, 22);
-            this.usuariosToolStripMenuItem.Text = "Usuarios";
-            // 
-            // altaToolStripMenuItem
-            // 
-            this.altaToolStripMenuItem.Name = "altaToolStripMenuItem";
-            this.altaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.altaToolStripMenuItem.Text = "Alta";
-            this.altaToolStripMenuItem.Click += new System.EventHandler(this.altaToolStripMenuItem_Click);
-            // 
-            // permisosToolStripMenuItem
-            // 
-            this.permisosToolStripMenuItem.Name = "permisosToolStripMenuItem";
-            this.permisosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.permisosToolStripMenuItem.Text = "Permisos";
-            this.permisosToolStripMenuItem.Click += new System.EventHandler(this.permisosToolStripMenuItem_Click);
-            // 
-            // modificarToolStripMenuItem
-            // 
-            this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.modificarToolStripMenuItem.Text = "Modificar";
-            this.modificarToolStripMenuItem.Click += new System.EventHandler(this.modificarToolStripMenuItem_Click);
             // 
             // PanelFormularios
             // 
@@ -331,7 +322,6 @@ namespace CapaPresentacion
         private System.Windows.Forms.ToolStripMenuItem reservasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem altaEmpleadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem admDeEmpleadosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cargarAgendaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem altaToolStripMenuItem;

@@ -29,7 +29,17 @@ namespace CapaPresentacion
         {
             AgendaDeportiva frm = new AgendaDeportiva();
             LlenarCombo(cboEstablecimiento, "EstablecimientoLugar", "idEspacioEst", "Espacio");
-            cboEstablecimiento.SelectedIndex = this.IdEspacio; //Todo ver si es modificacion?
+
+            if (idAPP == 0) //Nuevo
+            {
+                cboEstablecimiento.SelectedIndex = 0;
+                btnEliminar.Enabled = false;
+            }
+            else 
+            {
+                cboEstablecimiento.SelectedValue = this.IdEspacio; 
+            }
+            
         }
         
         private void Hacer_pasajeDatos()
@@ -63,28 +73,43 @@ namespace CapaPresentacion
                 Hacer_pasajeDatos();
                 if (AgendaNegocio.DatosValidos())
                 {
-                    AgendaNegocio.insertar_Datos();
-                    MessageBox.Show("Se guardó correctamente");
+                    string mensaje = string.Empty;
+
+                    if (this.idAPP == 0) //Nuevo
+                    {
+                        AgendaNegocio.insertar_Datos();
+                        mensaje = "Se guardó el evento correctamente";
+                    }
+                    else
+                    {
+                        AgendaNegocio.Actualizar_datos();
+                        mensaje = "Se actualizó el evento correctamente";
+                    }
+                    
+                    MessageBox.Show(mensaje, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
                 }
-                else 
+                else
                 {
-                    MessageBox.Show(AgendaNegocio.Error);
+                    MessageBox.Show(AgendaNegocio.Error, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                
+
             }
-            catch(Exception error)
+            catch (Exception error)
             {
-                MessageBox.Show("Ocurrió un error " + error.Message);
+                MessageBox.Show("Ocurrió un error " + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void btnActualizar_Click(object sender, EventArgs e)
-        {
-            DesbloquearControles(this);
-            btnFormularios(this, btnActualizar);
-            msktxtHora.Focus();
-            LlenarCombo(cboEstablecimiento, "EstablecimientoLugar", "idEspacioEst", "Espacio");
-        }
+     
+
+        //private void btnActualizar_Click(object sender, EventArgs e)
+        //{
+        //    DesbloquearControles(this);
+        //    btnFormularios(this, btnActualizar);
+        //    msktxtHora.Focus();
+        //    LlenarCombo(cboEstablecimiento, "EstablecimientoLugar", "idEspacioEst", "Espacio");
+        //}
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -98,17 +123,18 @@ namespace CapaPresentacion
                     AgendaNegocio.Eliminar();
                 }
 
-                MessageBox.Show("Se eliminó correctamente");
+                MessageBox.Show("Se eliminó correctamente","Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             catch(Exception error)
             {
-                Console.WriteLine("Ocurrió un error " + error.Message);
+                Console.WriteLine("Ocurrió un error " + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private void cboEstablecimiento_SelectedIndexChanged(object sender, EventArgs e)
@@ -126,385 +152,266 @@ namespace CapaPresentacion
             }
         }
 
-        private void btmGuardarCambios_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Hacer_pasajeDatos();
-                AgendaNegocio.Actualizar_datos();
-                MessageBox.Show("Se actualizó correctamente");
-            }
-            catch(Exception error)
-            {
-                Console.WriteLine("Ocurrió un error " + error.Message);
-            }
-        }
+        //private void btmGuardarCambios_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        Hacer_pasajeDatos();
+        //        AgendaNegocio.Actualizar_datos();
+        //        MessageBox.Show("Se actualizó correctamente");
+        //    }
+        //    catch(Exception error)
+        //    {
+        //        Console.WriteLine("Ocurrió un error " + error.Message);
+        //    }
+        //}
 
 
         #region Botonera
-        private void btnFormularios(Form fAux, Button btn)
-        {
-            string nombre = btn.Name;
-            switch (nombre)
-            {
-                case "btnAgregar":
-                    foreach (Control c in fAux.Controls)
-                    {
-                        if (c is GroupBox | c is Panel)
-                        {
-                            foreach (Object x in c.Controls)
-                            {
-                                if (x is Button)
-                                {
-                                    if (((Button)x).Name == "btnAgregar")
-                                    {
-                                        ((Button)x).Enabled = false;
-                                        ((Button)x).Visible = false;
-                                    }
-                                    if (((Button)x).Name == "btnGuardar")
-                                    {
-                                        ((Button)x).Enabled = true;
-                                        ((Button)x).Visible = true;
-                                    }
-                                    if (((Button)x).Name == "btnActualizar")
-                                    {
-                                        ((Button)x).Enabled = false;
-                                        ((Button)x).Visible = false;
-                                    }
-                                    if (((Button)x).Name == "btnGuardarCambios")
-                                    {
-                                        ((Button)x).Enabled = false;
-                                        ((Button)x).Visible = false;
-                                    }
-                                    if (((Button)x).Name == "btnCancelar")
-                                    {
-                                        ((Button)x).Enabled = true;
-                                        ((Button)x).Visible = true;
-                                    }
-                                    if (((Button)x).Name == "btnEliminar")
-                                    {
-                                        ((Button)x).Enabled = false;
-                                        ((Button)x).Visible = false;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    break;
-                case "btnGuardar":
-                    foreach (Control c in fAux.Controls)
-                    {
-                        if (c is GroupBox | c is Panel)
-                        {
-                            foreach (object x in c.Controls)
-                            {
-                                if (x is Button)
-                                {
-                                    if (((Button)x).Name == "btnAgregar")
-                                    {
-                                        ((Button)x).Enabled = true;
-                                        ((Button)x).Visible = true;
-                                    }
-                                    if (((Button)x).Name == "btnGuardar")
-                                    {
-                                        ((Button)x).Enabled = false;
-                                        ((Button)x).Visible = false;
-                                    }
-                                    if (((Button)x).Name == "btnActualizar")
-                                    {
-                                        ((Button)x).Enabled = true;
-                                        ((Button)x).Visible = true;
-                                    }
-                                    if (((Button)x).Name == "btnGuardarCambios")
-                                    {
-                                        ((Button)x).Enabled = false;
-                                        ((Button)x).Visible = false;
-                                    }
-                                    if (((Button)x).Name == "btnCancelar")
-                                    {
-                                        ((Button)x).Enabled = false;
-                                        ((Button)x).Visible = false;
-                                    }
-                                    if (((Button)x).Name == "btnEliminar")
-                                    {
-                                        ((Button)x).Enabled = true;
-                                        ((Button)x).Visible = true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    break;
-                case "btnmodificar":
-                    foreach (Control c in fAux.Controls)
-                    {
-                        if (c is GroupBox | c is Panel)
-                        {
-                            foreach (object x in c.Controls)
-                            {
-                                if (x is Button)
-                                {
-                                    if (((Button)x).Name == "btnAgregar")
-                                    {
-                                        ((Button)x).Enabled = false;
-                                        ((Button)x).Visible = false;
-                                    }
-                                    if (((Button)x).Name == "btnGuardar")
-                                    {
-                                        ((Button)x).Enabled = false;
-                                        ((Button)x).Visible = false;
-                                    }
-                                    if (((Button)x).Name == "btnActualizar")
-                                    {
-                                        ((Button)x).Enabled = false;
-                                        ((Button)x).Visible = false;
-                                    }
-                                    if (((Button)x).Name == "btnGuardaCambios")
-                                    {
-                                        ((Button)x).Enabled = true;
-                                        ((Button)x).Visible = true;
-                                    }
-                                    if (((Button)x).Name == "btnCancelar")
-                                    {
-                                        ((Button)x).Enabled = true;
-                                        ((Button)x).Visible = true;
-                                    }
-                                    if (((Button)x).Name == "btnEliminar")
-                                    {
-                                        ((Button)x).Enabled = false;
-                                        ((Button)x).Visible = false;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    break;
-                case "btnGuardarCambios":
-                    foreach (Control c in fAux.Controls)
-                    {
-                        if (c is GroupBox | c is Panel)
-                        {
-                            foreach (object x in c.Controls)
-                            {
-                                if (x is Button)
-                                {
-                                    if (((Button)x).Name == "btnAgregar")
-                                    {
-                                        ((Button)x).Enabled = true;
-                                        ((Button)x).Visible = true;
-                                    }
-                                    if (((Button)x).Name == "btnGuardar")
-                                    {
-                                        ((Button)x).Enabled = false;
-                                        ((Button)x).Visible = false;
-                                    }
-                                    if (((Button)x).Name == "btnActualizar")
-                                    {
-                                        ((Button)x).Enabled = true;
-                                        ((Button)x).Visible = true;
-                                    }
-                                    if (((Button)x).Name == "btnGuardarCambios")
-                                    {
-                                        ((Button)x).Enabled = false;
-                                        ((Button)x).Visible = false;
-                                    }
-                                    if (((Button)x).Name == "btnCancelar")
-                                    {
-                                        ((Button)x).Enabled = false;
-                                        ((Button)x).Visible = false;
-                                    }
-                                    if (((Button)x).Name == "btnEliminar")
-                                    {
-                                        ((Button)x).Enabled = true;
-                                        ((Button)x).Visible = true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    break;
-                case "btnEliminar":
-                    foreach (Control c in fAux.Controls)
-                    {
-                        if (c is GroupBox | c is Panel)
-                        {
-                            foreach (object x in c.Controls)
-                            {
+        //private void btnFormularios(Form fAux, Button btn)
+        //{
+        //    string nombre = btn.Name;
+        //    switch (nombre)
+        //    {
+        //        case "btnAgregar":
+        //            foreach (Control c in fAux.Controls)
+        //            {
+        //                if (c is GroupBox | c is Panel)
+        //                {
+        //                    foreach (Object x in c.Controls)
+        //                    {
+        //                        if (x is Button)
+        //                        {
+        //                            if (((Button)x).Name == "btnAgregar")
+        //                            {
+        //                                ((Button)x).Enabled = false;
+        //                                ((Button)x).Visible = false;
+        //                            }
+        //                            if (((Button)x).Name == "btnGuardar")
+        //                            {
+        //                                ((Button)x).Enabled = true;
+        //                                ((Button)x).Visible = true;
+        //                            }
+        //                            if (((Button)x).Name == "btnActualizar")
+        //                            {
+        //                                ((Button)x).Enabled = false;
+        //                                ((Button)x).Visible = false;
+        //                            }
+        //                            if (((Button)x).Name == "btnGuardarCambios")
+        //                            {
+        //                                ((Button)x).Enabled = false;
+        //                                ((Button)x).Visible = false;
+        //                            }
+        //                            if (((Button)x).Name == "btnCancelar")
+        //                            {
+        //                                ((Button)x).Enabled = true;
+        //                                ((Button)x).Visible = true;
+        //                            }
+        //                            if (((Button)x).Name == "btnEliminar")
+        //                            {
+        //                                ((Button)x).Enabled = false;
+        //                                ((Button)x).Visible = false;
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //            break;
+        //        case "btnGuardar":
+        //            foreach (Control c in fAux.Controls)
+        //            {
+        //                if (c is GroupBox | c is Panel)
+        //                {
+        //                    foreach (object x in c.Controls)
+        //                    {
+        //                        if (x is Button)
+        //                        {
+        //                            if (((Button)x).Name == "btnAgregar")
+        //                            {
+        //                                ((Button)x).Enabled = true;
+        //                                ((Button)x).Visible = true;
+        //                            }
+        //                            if (((Button)x).Name == "btnGuardar")
+        //                            {
+        //                                ((Button)x).Enabled = false;
+        //                                ((Button)x).Visible = false;
+        //                            }
+        //                            if (((Button)x).Name == "btnActualizar")
+        //                            {
+        //                                ((Button)x).Enabled = true;
+        //                                ((Button)x).Visible = true;
+        //                            }
+        //                            if (((Button)x).Name == "btnGuardarCambios")
+        //                            {
+        //                                ((Button)x).Enabled = false;
+        //                                ((Button)x).Visible = false;
+        //                            }
+        //                            if (((Button)x).Name == "btnCancelar")
+        //                            {
+        //                                ((Button)x).Enabled = false;
+        //                                ((Button)x).Visible = false;
+        //                            }
+        //                            if (((Button)x).Name == "btnEliminar")
+        //                            {
+        //                                ((Button)x).Enabled = true;
+        //                                ((Button)x).Visible = true;
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //            break;
+        //        case "btnmodificar":
+        //            foreach (Control c in fAux.Controls)
+        //            {
+        //                if (c is GroupBox | c is Panel)
+        //                {
+        //                    foreach (object x in c.Controls)
+        //                    {
+        //                        if (x is Button)
+        //                        {
+        //                            if (((Button)x).Name == "btnAgregar")
+        //                            {
+        //                                ((Button)x).Enabled = false;
+        //                                ((Button)x).Visible = false;
+        //                            }
+        //                            if (((Button)x).Name == "btnGuardar")
+        //                            {
+        //                                ((Button)x).Enabled = false;
+        //                                ((Button)x).Visible = false;
+        //                            }
+        //                            if (((Button)x).Name == "btnActualizar")
+        //                            {
+        //                                ((Button)x).Enabled = false;
+        //                                ((Button)x).Visible = false;
+        //                            }
+        //                            if (((Button)x).Name == "btnGuardaCambios")
+        //                            {
+        //                                ((Button)x).Enabled = true;
+        //                                ((Button)x).Visible = true;
+        //                            }
+        //                            if (((Button)x).Name == "btnCancelar")
+        //                            {
+        //                                ((Button)x).Enabled = true;
+        //                                ((Button)x).Visible = true;
+        //                            }
+        //                            if (((Button)x).Name == "btnEliminar")
+        //                            {
+        //                                ((Button)x).Enabled = false;
+        //                                ((Button)x).Visible = false;
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //            break;
+        //        case "btnGuardarCambios":
+        //            foreach (Control c in fAux.Controls)
+        //            {
+        //                if (c is GroupBox | c is Panel)
+        //                {
+        //                    foreach (object x in c.Controls)
+        //                    {
+        //                        if (x is Button)
+        //                        {
+        //                            if (((Button)x).Name == "btnAgregar")
+        //                            {
+        //                                ((Button)x).Enabled = true;
+        //                                ((Button)x).Visible = true;
+        //                            }
+        //                            if (((Button)x).Name == "btnGuardar")
+        //                            {
+        //                                ((Button)x).Enabled = false;
+        //                                ((Button)x).Visible = false;
+        //                            }
+        //                            if (((Button)x).Name == "btnActualizar")
+        //                            {
+        //                                ((Button)x).Enabled = true;
+        //                                ((Button)x).Visible = true;
+        //                            }
+        //                            if (((Button)x).Name == "btnGuardarCambios")
+        //                            {
+        //                                ((Button)x).Enabled = false;
+        //                                ((Button)x).Visible = false;
+        //                            }
+        //                            if (((Button)x).Name == "btnCancelar")
+        //                            {
+        //                                ((Button)x).Enabled = false;
+        //                                ((Button)x).Visible = false;
+        //                            }
+        //                            if (((Button)x).Name == "btnEliminar")
+        //                            {
+        //                                ((Button)x).Enabled = true;
+        //                                ((Button)x).Visible = true;
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //            break;
+        //        case "btnEliminar":
+        //            foreach (Control c in fAux.Controls)
+        //            {
+        //                if (c is GroupBox | c is Panel)
+        //                {
+        //                    foreach (object x in c.Controls)
+        //                    {
 
-                            }
-                        }
-                    }
-                    break;
-                case "btnCancelar":
-                    foreach (Control c in fAux.Controls)
-                    {
-                        if (c is GroupBox | c is Panel)
-                        {
-                            foreach (object x in c.Controls)
-                            {
-                                if (x is Button)
-                                {
-                                    if (((Button)x).Name == "btnAgregar")
-                                    {
-                                        ((Button)x).Enabled = true;
-                                        ((Button)x).Visible = true;
-                                    }
-                                    if (((Button)x).Name == "btnGuardar")
-                                    {
-                                        ((Button)x).Enabled = false;
-                                        ((Button)x).Visible = false;
-                                    }
-                                    if (((Button)x).Name == "btnActualizar")
-                                    {
-                                        ((Button)x).Enabled = true;
-                                        ((Button)x).Visible = true;
-                                    }
-                                    if (((Button)x).Name == "btnGuardarCambios")
-                                    {
-                                        ((Button)x).Enabled = false;
-                                        ((Button)x).Visible = false;
-                                    }
-                                    if (((Button)x).Name == "btnCancelar")
-                                    {
-                                        ((Button)x).Enabled = false;
-                                        ((Button)x).Visible = false;
-                                    }
-                                    if (((Button)x).Name == "btnEliminar")
-                                    {
-                                        ((Button)x).Enabled = true;
-                                        ((Button)x).Visible = true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    break;
-            }
-        }
+        //                    }
+        //                }
+        //            }
+        //            break;
+        //        case "btnCancelar":
+        //            foreach (Control c in fAux.Controls)
+        //            {
+        //                if (c is GroupBox | c is Panel)
+        //                {
+        //                    foreach (object x in c.Controls)
+        //                    {
+        //                        if (x is Button)
+        //                        {
+        //                            if (((Button)x).Name == "btnAgregar")
+        //                            {
+        //                                ((Button)x).Enabled = true;
+        //                                ((Button)x).Visible = true;
+        //                            }
+        //                            if (((Button)x).Name == "btnGuardar")
+        //                            {
+        //                                ((Button)x).Enabled = false;
+        //                                ((Button)x).Visible = false;
+        //                            }
+        //                            if (((Button)x).Name == "btnActualizar")
+        //                            {
+        //                                ((Button)x).Enabled = true;
+        //                                ((Button)x).Visible = true;
+        //                            }
+        //                            if (((Button)x).Name == "btnGuardarCambios")
+        //                            {
+        //                                ((Button)x).Enabled = false;
+        //                                ((Button)x).Visible = false;
+        //                            }
+        //                            if (((Button)x).Name == "btnCancelar")
+        //                            {
+        //                                ((Button)x).Enabled = false;
+        //                                ((Button)x).Visible = false;
+        //                            }
+        //                            if (((Button)x).Name == "btnEliminar")
+        //                            {
+        //                                ((Button)x).Enabled = true;
+        //                                ((Button)x).Visible = true;
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //            break;
+        //    }
+        //}
         #endregion
 
-        #region Limpiar
-        private void LimpiarControles(Form FRM)
-        {
-            foreach (Control c in FRM.Controls)
-            {
-                if (c is TextBox)
-                {
-                    ((TextBox)c).Text = null;
-                }
-                if (c is ComboBox)
-                {
-                    ((ComboBox)c).Text = null;
-                }
-                if (c is GroupBox | c is Panel)
-                {
-                    LC2(c);
-                }
-            }
-        }
 
-        private static void LC2(Control x)
-        {
-            foreach (Control h in x.Controls)
-            {
-                if (h is TextBox)
-                {
-                    ((TextBox)h).Text = null;
-                }
-                if (h is ComboBox)
-                {
-                    ((ComboBox)h).Text = null;
-                }
-            }
-        }
-        #endregion
-
-        #region Habilitar/Desabiltar
-        public void BloquearControles(Form FRM)
-        {
-            foreach (Control c in FRM.Controls)
-            {
-                if (c is TextBox)
-                {
-                    ((TextBox)c).Enabled = false;
-                }
-                if (c is ComboBox)
-                {
-                    ((ComboBox)c).Enabled = false;
-                }
-                if (c is MaskedTextBox)
-                {
-                    ((MaskedTextBox)c).Enabled = false;
-                }
-                if (c is GroupBox | c is Panel)
-                {
-                    BC2(c);
-                }
-            }
-        }
-
-        private static void BC2(Control x)
-        {
-            foreach (Control h in x.Controls)
-            {
-                if (h is TextBox)
-                {
-                    ((TextBox)h).Enabled = false;
-                }
-                if (h is ComboBox)
-                {
-                    ((ComboBox)h).Enabled = false;
-                }
-                if (h is MaskedTextBox)
-                {
-                    ((MaskedTextBox)h).Enabled = false;
-                }
-            }
-        }
-
-
-        public void DesbloquearControles(Form FRM)
-        {
-            foreach (Control c in FRM.Controls)
-            {
-                if (c is TextBox)
-                {
-                    ((TextBox)c).Enabled = true;
-                }
-                if (c is ComboBox)
-                {
-                    ((ComboBox)c).Enabled = true;
-                }
-                if (c is MaskedTextBox)
-                {
-                    ((MaskedTextBox)c).Enabled = true;
-                }
-                if (c is GroupBox | c is Panel)
-                {
-                    DC2(c);
-                }
-            }
-        }
-
-        private static void DC2(Control x)
-        {
-            foreach (Control h in x.Controls)
-            {
-                if (h is TextBox)
-                {
-                    ((TextBox)h).Enabled = true;
-                }
-                if (h is ComboBox)
-                {
-                    ((ComboBox)h).Enabled = true;
-                }
-                if (h is MaskedTextBox)
-                {
-                    ((MaskedTextBox)h).Enabled = true;
-                }
-            }
-        }
-        #endregion
+        
+       
 
         private void cmdCancelar_Click(object sender, EventArgs e)
         {

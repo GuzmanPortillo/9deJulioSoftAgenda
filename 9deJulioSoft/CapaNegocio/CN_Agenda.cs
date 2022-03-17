@@ -99,14 +99,18 @@ namespace CapaNegocio
             //si existe otro evento en la DB
             if (resultado)
             {
-                //var dtEvento = objDatos.GetEvento("", 1, 1);
+                var dtEvento = objDatos.GetEvento(this.fecha, int.Parse(this.hora.Substring(0, 2)), this.espacio);
 
-                //if (dtEvento.Rows.Count > 0)
-                //{
-                //    resultado = false;
-                //    this.Error += Environment.NewLine;
-                //    this.Error += "Ya existe un evento para la combinación de dia, hoya y establecimiento.";
-                //}
+                if (dtEvento.Rows.Count > 0)
+                {
+                    var idEvento = int.Parse(dtEvento.Rows[0][0].ToString()); 
+                    if (idEvento != this.id) //Este controlo lo hago para las modificaciones
+                    {
+                        resultado = false;
+                        this.Error += Environment.NewLine;
+                        this.Error += "Ya existe un evento para la combinación de dia, hora y establecimiento.";
+                    }
+                }
             }
 
             return resultado;
@@ -154,7 +158,7 @@ namespace CapaNegocio
         }
         public void Eliminar()
         {
-            PasarDatos();
+            objDatos.ID = this.id;
             objDatos.Delete();
         }
     }
