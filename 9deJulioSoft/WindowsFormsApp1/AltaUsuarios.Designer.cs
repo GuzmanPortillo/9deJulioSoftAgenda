@@ -49,101 +49,90 @@ namespace CapaPresentacion
             // lblNombres
             // 
             this.lblNombres.AutoSize = true;
-            this.lblNombres.Location = new System.Drawing.Point(400, 43);
-            this.lblNombres.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombres.Location = new System.Drawing.Point(300, 35);
             this.lblNombres.Name = "lblNombres";
-            this.lblNombres.Size = new System.Drawing.Size(63, 16);
+            this.lblNombres.Size = new System.Drawing.Size(49, 13);
             this.lblNombres.TabIndex = 1;
             this.lblNombres.Text = "Nombres";
             // 
             // lblApellidos
             // 
             this.lblApellidos.AutoSize = true;
-            this.lblApellidos.Location = new System.Drawing.Point(400, 92);
-            this.lblApellidos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblApellidos.Location = new System.Drawing.Point(300, 75);
             this.lblApellidos.Name = "lblApellidos";
-            this.lblApellidos.Size = new System.Drawing.Size(64, 16);
+            this.lblApellidos.Size = new System.Drawing.Size(49, 13);
             this.lblApellidos.TabIndex = 2;
             this.lblApellidos.Text = "Apellidos";
             // 
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(400, 139);
-            this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUsuario.Location = new System.Drawing.Point(300, 113);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(54, 16);
+            this.lblUsuario.Size = new System.Drawing.Size(43, 13);
             this.lblUsuario.TabIndex = 3;
             this.lblUsuario.Text = "Usuario";
             // 
             // lblcontrasenia
             // 
             this.lblcontrasenia.AutoSize = true;
-            this.lblcontrasenia.Location = new System.Drawing.Point(400, 183);
-            this.lblcontrasenia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblcontrasenia.Location = new System.Drawing.Point(300, 149);
             this.lblcontrasenia.Name = "lblcontrasenia";
-            this.lblcontrasenia.Size = new System.Drawing.Size(76, 16);
+            this.lblcontrasenia.Size = new System.Drawing.Size(61, 13);
             this.lblcontrasenia.TabIndex = 4;
             this.lblcontrasenia.Text = "Contraseña";
             // 
             // lblConfirmarContrasenia
             // 
             this.lblConfirmarContrasenia.AutoSize = true;
-            this.lblConfirmarContrasenia.Location = new System.Drawing.Point(343, 226);
-            this.lblConfirmarContrasenia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblConfirmarContrasenia.Location = new System.Drawing.Point(257, 184);
             this.lblConfirmarContrasenia.Name = "lblConfirmarContrasenia";
-            this.lblConfirmarContrasenia.Size = new System.Drawing.Size(134, 16);
+            this.lblConfirmarContrasenia.Size = new System.Drawing.Size(107, 13);
             this.lblConfirmarContrasenia.TabIndex = 5;
             this.lblConfirmarContrasenia.Text = "Confirmar contraseña";
             // 
             // txtNombres
             // 
-            this.txtNombres.Location = new System.Drawing.Point(495, 41);
-            this.txtNombres.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombres.Location = new System.Drawing.Point(371, 33);
             this.txtNombres.Name = "txtNombres";
-            this.txtNombres.Size = new System.Drawing.Size(188, 22);
+            this.txtNombres.Size = new System.Drawing.Size(142, 20);
             this.txtNombres.TabIndex = 6;
             // 
             // txtApellidos
             // 
-            this.txtApellidos.Location = new System.Drawing.Point(495, 90);
-            this.txtApellidos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtApellidos.Location = new System.Drawing.Point(371, 73);
             this.txtApellidos.Name = "txtApellidos";
-            this.txtApellidos.Size = new System.Drawing.Size(188, 22);
+            this.txtApellidos.Size = new System.Drawing.Size(142, 20);
             this.txtApellidos.TabIndex = 7;
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(495, 137);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUsuario.Location = new System.Drawing.Point(371, 111);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(188, 22);
+            this.txtUsuario.Size = new System.Drawing.Size(142, 20);
             this.txtUsuario.TabIndex = 8;
             // 
             // txtContrasenia
             // 
-            this.txtContrasenia.Location = new System.Drawing.Point(495, 181);
-            this.txtContrasenia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContrasenia.Location = new System.Drawing.Point(371, 147);
             this.txtContrasenia.Name = "txtContrasenia";
             this.txtContrasenia.PasswordChar = '*';
-            this.txtContrasenia.Size = new System.Drawing.Size(188, 22);
+            this.txtContrasenia.Size = new System.Drawing.Size(142, 20);
             this.txtContrasenia.TabIndex = 9;
             // 
             // txtConfirmarContrasenia
             // 
-            this.txtConfirmarContrasenia.Location = new System.Drawing.Point(495, 224);
-            this.txtConfirmarContrasenia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtConfirmarContrasenia.Location = new System.Drawing.Point(371, 182);
             this.txtConfirmarContrasenia.Name = "txtConfirmarContrasenia";
             this.txtConfirmarContrasenia.PasswordChar = '*';
-            this.txtConfirmarContrasenia.Size = new System.Drawing.Size(188, 22);
+            this.txtConfirmarContrasenia.Size = new System.Drawing.Size(142, 20);
             this.txtConfirmarContrasenia.TabIndex = 10;
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(365, 277);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardar.Location = new System.Drawing.Point(274, 225);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(121, 30);
+            this.btnGuardar.Size = new System.Drawing.Size(91, 24);
             this.btnGuardar.TabIndex = 11;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -151,10 +140,9 @@ namespace CapaPresentacion
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(563, 277);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSalir.Location = new System.Drawing.Point(422, 225);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(121, 30);
+            this.btnSalir.Size = new System.Drawing.Size(91, 24);
             this.btnSalir.TabIndex = 12;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -163,29 +151,28 @@ namespace CapaPresentacion
             // picPerfil
             // 
             this.picPerfil.Image = global::CapaPresentacion.Properties.Resources.usuario;
-            this.picPerfil.Location = new System.Drawing.Point(41, 34);
-            this.picPerfil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picPerfil.Location = new System.Drawing.Point(31, 28);
             this.picPerfil.Name = "picPerfil";
-            this.picPerfil.Size = new System.Drawing.Size(219, 187);
+            this.picPerfil.Size = new System.Drawing.Size(164, 152);
             this.picPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picPerfil.TabIndex = 13;
             this.picPerfil.TabStop = false;
             // 
             // btnAgregarFoto
             // 
-            this.btnAgregarFoto.Location = new System.Drawing.Point(41, 229);
-            this.btnAgregarFoto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAgregarFoto.Location = new System.Drawing.Point(31, 186);
             this.btnAgregarFoto.Name = "btnAgregarFoto";
-            this.btnAgregarFoto.Size = new System.Drawing.Size(219, 37);
+            this.btnAgregarFoto.Size = new System.Drawing.Size(164, 30);
             this.btnAgregarFoto.TabIndex = 14;
             this.btnAgregarFoto.Text = "Agregar foto";
             this.btnAgregarFoto.UseVisualStyleBackColor = true;
+            this.btnAgregarFoto.Click += new System.EventHandler(this.btnAgregarFoto_Click_1);
             // 
             // AltaUsuarios
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(735, 332);
+            this.ClientSize = new System.Drawing.Size(551, 270);
             this.Controls.Add(this.picPerfil);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnGuardar);
@@ -200,7 +187,6 @@ namespace CapaPresentacion
             this.Controls.Add(this.lblApellidos);
             this.Controls.Add(this.lblNombres);
             this.Controls.Add(this.btnAgregarFoto);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AltaUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AltaBajaUsuarios";

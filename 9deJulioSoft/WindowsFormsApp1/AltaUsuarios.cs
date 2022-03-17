@@ -42,6 +42,7 @@ namespace CapaPresentacion
                     MessageBox.Show(resultado);
                     CN_Bitacora.Guardar(InicioSesion.idusuario, BitacoraEntidad.Usuario.ToString(), BitacoraAccion.Alta.ToString(), $"Alta de usuario {txtUsuario.Text}");
                     Utiles.LimpiarControles(this);
+                    picPerfil.Image = Utiles.ImagenUsuario();
                 }
                 else
                     MessageBox.Show("La contraseña no coincide, intentar nuevamente");
@@ -49,19 +50,22 @@ namespace CapaPresentacion
             else
                 MessageBox.Show("Ya existe el usuario, ingrese otro");
         }
-        private void btnAgregarFoto_Click(object sender, EventArgs e)
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAgregarFoto_Click_1(object sender, EventArgs e)
         {
             OpenFileDialog foto = new OpenFileDialog();
+            foto.Filter = "Imagen JPG (*.jpg)|*.jpg";
             DialogResult rs = foto.ShowDialog();
             if (rs == DialogResult.OK)
             {
                 picPerfil.Image = Image.FromFile(foto.FileName);
             }
-        }
 
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

@@ -177,6 +177,7 @@ namespace CapaPresentacion
         private void btnEditarFoto_Click(object sender, EventArgs e)
         {
             OpenFileDialog foto = new OpenFileDialog();
+            foto.Filter = "Imagen JPG (*.jpg)|*.jpg";
             DialogResult rs = foto.ShowDialog();
             if (rs == DialogResult.OK)
             {
