@@ -117,7 +117,7 @@ namespace CapaDatos
             }
         }
 
-        public DataTable GetEvento(string fecha, int hora, int idEspacio)
+        public DataTable GetEvento(DateTime fecha, int hora, int idEspacio)
         {
             using (var connection = GetConnection())
             {
@@ -125,16 +125,14 @@ namespace CapaDatos
                 connection.Open();
                 using (var command = new SqlCommand())
                 {
-                    string sSql = "SELECT * From Eventos as a inner join EstablecimientoLugar as b " +
-                        " on a.idEspacio = b.idEspacioEst Where a.ID = ";//+ idapp;
-                    //string sSql = "SELECT * From Eventos Where ID = " + idapp;
+                    string sSql = "select id from Eventos where fecha = '" + fecha.ToString("yyyyMMdd") + "' and hora = " + hora + " and idEspacio = " + idEspacio;
+                        
                     DataTable dt = new DataTable();
                     command.Connection = connection;
                     command.CommandText = sSql;
                     SqlDataReader dr = command.ExecuteReader();
                     dt.Load(dr);
-
-                    // da.Fill(dt);
+                     
                     connection.Close();
                     return dt;
                 }
@@ -151,7 +149,7 @@ namespace CapaDatos
 
         public void Actualizar()
         {
-                string sSql = "UPDATE Eventos set " + " Fecha ='" + fecha + "',Hora = '" + hora + "',Nombre ='" + nombreEvento + "',idEspacio = " + espacio +
+                string sSql = "UPDATE Eventos set " + " Fecha ='" + fecha.ToString("yyyyMMdd") + "',Hora = " + hora + " ,Nombre ='" + nombreEvento + "',idEspacio = " + espacio +
                             " where ID = " + id;
                 Ejecutar(sSql);
         }

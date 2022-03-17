@@ -39,10 +39,7 @@ namespace CapaPresentacion
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.lblHora = new System.Windows.Forms.Label();
-            this.btnActualizar = new System.Windows.Forms.Button();
             this.msktxtHora = new System.Windows.Forms.MaskedTextBox();
-            this.cmdCancelar = new System.Windows.Forms.Button();
-            this.btmGuardarCambios = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // dtpTiempo
@@ -87,7 +84,7 @@ namespace CapaPresentacion
             this.txtEvento.Location = new System.Drawing.Point(127, 107);
             this.txtEvento.Name = "txtEvento";
             this.txtEvento.Size = new System.Drawing.Size(202, 20);
-            this.txtEvento.TabIndex = 4;
+            this.txtEvento.TabIndex = 2;
             this.txtEvento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEvento_KeyPress);
             // 
             // cboEstablecimiento
@@ -97,14 +94,14 @@ namespace CapaPresentacion
             this.cboEstablecimiento.Location = new System.Drawing.Point(128, 146);
             this.cboEstablecimiento.Name = "cboEstablecimiento";
             this.cboEstablecimiento.Size = new System.Drawing.Size(203, 21);
-            this.cboEstablecimiento.TabIndex = 5;
+            this.cboEstablecimiento.TabIndex = 3;
             this.cboEstablecimiento.SelectedIndexChanged += new System.EventHandler(this.cboEstablecimiento_SelectedIndexChanged);
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(43, 205);
+            this.btnGuardar.Location = new System.Drawing.Point(209, 237);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(65, 26);
+            this.btnGuardar.Size = new System.Drawing.Size(98, 26);
             this.btnGuardar.TabIndex = 6;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -122,9 +119,9 @@ namespace CapaPresentacion
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(229, 237);
+            this.btnEliminar.Location = new System.Drawing.Point(43, 237);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(67, 26);
+            this.btnEliminar.Size = new System.Drawing.Size(78, 26);
             this.btnEliminar.TabIndex = 8;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -139,54 +136,21 @@ namespace CapaPresentacion
             this.lblHora.TabIndex = 9;
             this.lblHora.Text = "Hora";
             // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Location = new System.Drawing.Point(43, 237);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(65, 26);
-            this.btnActualizar.TabIndex = 11;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
-            // 
             // msktxtHora
             // 
             this.msktxtHora.Location = new System.Drawing.Point(128, 74);
             this.msktxtHora.Mask = "00:00";
             this.msktxtHora.Name = "msktxtHora";
             this.msktxtHora.Size = new System.Drawing.Size(201, 20);
-            this.msktxtHora.TabIndex = 12;
+            this.msktxtHora.TabIndex = 1;
             this.msktxtHora.ValidatingType = typeof(System.DateTime);
-            // 
-            // cmdCancelar
-            // 
-            this.cmdCancelar.Location = new System.Drawing.Point(313, 205);
-            this.cmdCancelar.Name = "cmdCancelar";
-            this.cmdCancelar.Size = new System.Drawing.Size(67, 26);
-            this.cmdCancelar.TabIndex = 13;
-            this.cmdCancelar.Text = "Cancelar";
-            this.cmdCancelar.UseVisualStyleBackColor = true;
-            this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
-            // 
-            // btmGuardarCambios
-            // 
-            this.btmGuardarCambios.Location = new System.Drawing.Point(127, 237);
-            this.btmGuardarCambios.Name = "btmGuardarCambios";
-            this.btmGuardarCambios.Size = new System.Drawing.Size(95, 26);
-            this.btmGuardarCambios.TabIndex = 14;
-            this.btmGuardarCambios.Text = "Guardar cambios";
-            this.btmGuardarCambios.UseVisualStyleBackColor = true;
-            this.btmGuardarCambios.Click += new System.EventHandler(this.btmGuardarCambios_Click);
             // 
             // CargarEventos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(392, 275);
-            this.Controls.Add(this.btmGuardarCambios);
-            this.Controls.Add(this.cmdCancelar);
             this.Controls.Add(this.msktxtHora);
-            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.lblHora);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnCerrar);
@@ -221,9 +185,6 @@ namespace CapaPresentacion
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Label lblHora;
-        private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.MaskedTextBox msktxtHora;
-        private System.Windows.Forms.Button cmdCancelar;
-        private System.Windows.Forms.Button btmGuardarCambios;
     }
 }
