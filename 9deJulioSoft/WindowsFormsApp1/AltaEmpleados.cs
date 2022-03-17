@@ -30,29 +30,35 @@ namespace CapaPresentacion
                                                  { if (!string.IsNullOrWhiteSpace(cbPuesto.Text))
                                                       {   if (!string.IsNullOrWhiteSpace(txtCP.Text))
                                                              {  if (!string.IsNullOrWhiteSpace(cbSexo.Text))
-                                                                   {    var empleadoModel = new ModeloEmpleado(
-                                                              Id_Socio: 0,
-                                                              Nombre: txtNombre.Text,
-                                                              Apellido: txtApellido.Text,
-                                                              Id_Doc: cbTipodoc.SelectedValue.ToString(),
-                                                              Nº_Doc: txtNumDoc.Text,
-                                                              Fecha_Nac: dateTimePicker1.Value.ToString("yyyy-MM-dd"),
-                                                              email: txtEmail.Text,
-                                                              Telefono1: txtTel1.Text,
-                                                              Telefono2: txtTel2.Text,
-                                                              Domicilio: txtDomicilio.Text,
-                                                              Piso: txtPiso.Text,
-                                                              Dpto: txtDpto.Text,
-                                                              Localidad: txtLocalidad.Text,
-                                                              Id_Provincia: cbProv.SelectedValue.ToString(),
-                                                              Id_Sector: cbSector.SelectedValue.ToString(),
-                                                              Id_Puesto: cbPuesto.SelectedValue.ToString(),
-                                                              foto: ms.GetBuffer(),
-                                                              CodigoPostal: txtCP.Text,
-                                                              Id_Sexo: cbSexo.SelectedValue.ToString());;
-                                                              var result = empleadoModel.CrearEmpleadoProfile();
-                                                              MessageBox.Show(result);
-                                                              
+                                                                   {
+                                                                if (!string.IsNullOrWhiteSpace(cbEstado.Text))
+                                                                {
+                                                                    var empleadoModel = new ModeloEmpleado(
+                                                                     Nombre: txtNombre.Text,
+                                                                     Apellido: txtApellido.Text,
+                                                                     Id_Doc: cbTipodoc.SelectedValue.ToString(),
+                                                                     Nro_Doc: txtNumDoc.Text,
+                                                                     Fecha_Nac: dateTimePicker1.Value.ToString("yyyy-MM-dd"),
+                                                                     email: txtEmail.Text,
+                                                                     Telefono1: txtTel1.Text,
+                                                                     Telefono2: txtTel2.Text,
+                                                                     Domicilio: txtDomicilio.Text,
+                                                                     Piso: txtPiso.Text,
+                                                                     Dpto: txtDpto.Text,
+                                                                     Localidad: txtLocalidad.Text,
+                                                                     Id_Provincia: cbProv.SelectedValue.ToString(),
+                                                                     Id_Estado: cbEstado.SelectedValue.ToString(),
+                                                                     foto: ms.GetBuffer(),
+                                                                     CodigoPostal: txtCP.Text,
+                                                                     Id_Sector: cbSector.SelectedValue.ToString(),
+                                                                     Id_Puesto: cbPuesto.SelectedValue.ToString(),
+                                                                     Id_Sexo: cbSexo.SelectedValue.ToString()); ;
+                                                                    var result = empleadoModel.CrearEmpleadoProfile();
+                                                                    MessageBox.Show(result);
+
+                                                                }
+                                                                else
+                                                                    MessageBox.Show("Ingrese el Estado");
                                                             } else
                                                               MessageBox.Show("Ingrese el Sexo");
                                                       } else
@@ -126,6 +132,8 @@ namespace CapaPresentacion
             LlenarCombo(cbProv, "Provincia", "Id_Provincia", "Nombre");
             LlenarCombo(cbSector, "Sector", "Id_Sector", "Nombre");
             LlenarCombo(cbPuesto, "Puesto", "Id_Puesto", "Nombre");
+            LlenarCombo(cbEstado, "Estado", "Id_Estado", "Estado");
+
         }
 
         private void btnCargarFoto_Click_1(object sender, EventArgs e)
@@ -141,6 +149,21 @@ namespace CapaPresentacion
         private void btnLimpiarP_Click(object sender, EventArgs e)
         {
             Utiles.LimpiarControles(this);
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPuesto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pcbx1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
